@@ -1,0 +1,1462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F77F65F7-EE35-411A-ABB8-6137A1FFD762}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BODAPP</RootNamespace>
+    <AssemblyName>BODAPP</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EPPlus">
+      <HintPath>C:\Users\lenovo\Desktop\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces">
+      <HintPath>C:\Users\lenovo\Desktop\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing">
+      <HintPath>C:\Users\lenovo\Desktop\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AssessmentController.cs" />
+    <Compile Include="Controllers\StakeholderController.cs" />
+    <Compile Include="Controllers\EnterpriseController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScriptJsonController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="fonts\OpenReport\MailSending.aspx.cs">
+      <DependentUpon>MailSending.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fonts\OpenReport\MailSending.aspx.designer.cs">
+      <DependentUpon>MailSending.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fonts\OpenReport\OpenReport.aspx.cs">
+      <DependentUpon>OpenReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fonts\OpenReport\OpenReport.aspx.designer.cs">
+      <DependentUpon>OpenReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Utility\JsonNetFilterAttribute.cs" />
+    <Compile Include="Utility\JsonNetResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SMMEController.cs" />
+    <Content Include="Content\assets\css\demo-dark.css" />
+    <Content Include="Content\assets\css\demo.css" />
+    <Content Include="Content\assets\css\newMobileMenu.css" />
+    <Content Include="Content\assets\css\projectBudget.css" />
+    <Content Include="Content\assets\customcss\Enterprise.css" />
+    <Content Include="Content\assets\img\android-chrome-192x192.png" />
+    <Content Include="Content\assets\img\android-chrome-512x512.png" />
+    <Content Include="Content\assets\img\apple-touch-icon.png" />
+    <Content Include="Content\assets\img\avatars\1.png" />
+    <Content Include="Content\assets\img\avatars\10.png" />
+    <Content Include="Content\assets\img\avatars\11.png" />
+    <Content Include="Content\assets\img\avatars\12.png" />
+    <Content Include="Content\assets\img\avatars\13.png" />
+    <Content Include="Content\assets\img\avatars\14.png" />
+    <Content Include="Content\assets\img\avatars\15.png" />
+    <Content Include="Content\assets\img\avatars\2.png" />
+    <Content Include="Content\assets\img\avatars\3.png" />
+    <Content Include="Content\assets\img\avatars\4.png" />
+    <Content Include="Content\assets\img\avatars\5.png" />
+    <Content Include="Content\assets\img\avatars\6.png" />
+    <Content Include="Content\assets\img\avatars\7.png" />
+    <Content Include="Content\assets\img\avatars\8.png" />
+    <Content Include="Content\assets\img\avatars\9.png" />
+    <Content Include="Content\assets\img\avatars\Consulting_PNG.png" />
+    <Content Include="Content\assets\img\avatars\default_companyphoto.png" />
+    <Content Include="Content\assets\img\avatars\default_photo.png" />
+    <Content Include="Content\assets\img\avatars\userpic.png" />
+    <Content Include="Content\assets\img\Consulting_PNG.png" />
+    <Content Include="Content\assets\img\Esd_Loader.png" />
+    <Content Include="Content\assets\img\ESD_LOGO_DARK.png" />
+    <Content Include="Content\assets\img\ESD_LOGO_LIGHT.png" />
+    <Content Include="Content\assets\img\favicon-16x16.png" />
+    <Content Include="Content\assets\img\favicon-32x32.png" />
+    <Content Include="Content\assets\img\favicon.ico" />
+    <Content Include="Content\assets\img\icons\misc\icon-jpeg.jpg" />
+    <Content Include="Content\assets\img\icons\misc\icon-jpg.png" />
+    <Content Include="Content\assets\img\icons\misc\icon-png.png" />
+    <Content Include="Content\assets\img\illustrations\auth-register-multisteps-illustration.png" />
+    <Content Include="Content\assets\img\Logo Placeholder 2.png" />
+    <Content Include="Content\assets\img\Logo Placeholder.png" />
+    <Content Include="Content\assets\img\products\1.png" />
+    <Content Include="Content\assets\img\products\2.png" />
+    <Content Include="Content\assets\img\products\amazon-echo.png" />
+    <Content Include="Content\assets\img\products\apple-watch.png" />
+    <Content Include="Content\assets\img\products\headphones.png" />
+    <Content Include="Content\assets\img\products\iphone.png" />
+    <Content Include="Content\assets\img\products\nike-air-jordan.png" />
+    <Content Include="Content\assets\img\products\play-station.png" />
+    <Content Include="Content\assets\js\pages-auth-multisteps-smme.js" />
+    <Content Include="Content\assets\js\pages-auth-multisteps.js" />
+    <Content Include="Content\assets\vendor\css\rtl\coreUser.css" />
+    <Content Include="Content\loader.css" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_cs.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_da.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_de.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_en.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_es.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_fi.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_fr.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_hu.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_it.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_ja.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_ko.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_nb.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_nl.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_pl.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_pt.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_ru.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_sk.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_sv.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_th.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_tr.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_zh_CN.cab" />
+    <Content Include="crystalreportviewers13\ActiveXControls\PrintControl_res_zh_TW.cab" />
+    <Content Include="crystalreportviewers13\allInOne.js" />
+    <Content Include="crystalreportviewers13\allStrings_cs.js" />
+    <Content Include="crystalreportviewers13\allStrings_da.js" />
+    <Content Include="crystalreportviewers13\allStrings_de.js" />
+    <Content Include="crystalreportviewers13\allStrings_en.js" />
+    <Content Include="crystalreportviewers13\allStrings_es.js" />
+    <Content Include="crystalreportviewers13\allStrings_fi.js" />
+    <Content Include="crystalreportviewers13\allStrings_fr.js" />
+    <Content Include="crystalreportviewers13\allStrings_hu.js" />
+    <Content Include="crystalreportviewers13\allStrings_it.js" />
+    <Content Include="crystalreportviewers13\allStrings_ja.js" />
+    <Content Include="crystalreportviewers13\allStrings_ko.js" />
+    <Content Include="crystalreportviewers13\allStrings_nb.js" />
+    <Content Include="crystalreportviewers13\allStrings_nl.js" />
+    <Content Include="crystalreportviewers13\allStrings_pl.js" />
+    <Content Include="crystalreportviewers13\allStrings_pt.js" />
+    <Content Include="crystalreportviewers13\allStrings_ru.js" />
+    <Content Include="crystalreportviewers13\allStrings_sk.js" />
+    <Content Include="crystalreportviewers13\allStrings_sv.js" />
+    <Content Include="crystalreportviewers13\allStrings_th.js" />
+    <Content Include="crystalreportviewers13\allStrings_tr.js" />
+    <Content Include="crystalreportviewers13\allStrings_zh_CN.js" />
+    <Content Include="crystalreportviewers13\allStrings_zh_TW.js" />
+    <Content Include="crystalreportviewers13\css\cedefault.css" />
+    <Content Include="crystalreportviewers13\css\default.css" />
+    <Content Include="crystalreportviewers13\css\exception.css" />
+    <Content Include="crystalreportviewers13\css\prompting.css" />
+    <Content Include="crystalreportviewers13\html\calendar.html" />
+    <Content Include="crystalreportviewers13\html\calendarbottom.html" />
+    <Content Include="crystalreportviewers13\html\calendartop.html" />
+    <Content Include="crystalreportviewers13\images\buttonl.gif" />
+    <Content Include="crystalreportviewers13\images\buttonm.gif" />
+    <Content Include="crystalreportviewers13\images\buttonr.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive350.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortActive50.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover350.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortHover50.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\DownArrowSortInactive50.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive350.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortActive50.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover350.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortHover50.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive100.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive150.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive200.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive250.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive300.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive400.gif" />
+    <Content Include="crystalreportviewers13\images\isort\UpArrowSortInactive50.gif" />
+    <Content Include="crystalreportviewers13\js\calendar.js" />
+    <Content Include="crystalreportviewers13\js\calendar_param.js" />
+    <Content Include="crystalreportviewers13\js\crviewerinclude.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\api.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ArgumentNormalizer.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\bobjcallback.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ButtonList.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Calendar.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Colors.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\common.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\crv.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Dialogs.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\dom.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\encoding.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\event.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\GroupTree.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\GroupTreeListener.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\GroupTreeNode.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\html.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ImageSprites.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\allInOne.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\allInOneBG.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\arrow_button_depressed.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\arrow_button_hover.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\breadcrumbSep.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\calendar.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\catalyst.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\clearValues.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\clear_x.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\closePanel.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\delete.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\drill_cursor.cur" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\export.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\filledCircle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\first.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\grouptree_toggle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\hollowCircle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\last.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\leftTriangle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\line.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\logo.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\magnify.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\min.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\next.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\open_parameter_arrow.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\panelHeaderBG.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\panelNavigatorItemHL.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\panelNavigatorItemSelectedBG.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\panel_toggle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\param_datafetching.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\param_dirty.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\param_info.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\param_run.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\param_warning.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\plus.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\prev.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\print.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\refresh.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\rightTriangle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\search.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\separator.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\StackedTab.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\style.css" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_background.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_background.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_left.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_right.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_button_depressed.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_button_hover.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_menuarrow_depressed.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_menuarrow_hover.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_pagenav_buttons.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\toolbar_separator_icon.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\undo.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\up.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\images\WarningPopupTriangle.gif" />
+    <Content Include="crystalreportviewers13\js\crviewer\initDhtmlLib.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\IOAdapters.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\LeftPanel.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\OptionalParameterUI.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\OptionalParameterValueRow.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\PanelHeader.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\PanelNavigator.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\PanelNavigatorItem.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Parameter.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterController.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterDialog.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterInfoRow.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterPanel.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterPanelToolbar.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterUI.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ParameterValueRow.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\PromptPage.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\RangeField.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ReportAlbum.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ReportPage.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ReportView.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Separator.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\SharedWidgetHolder.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\SignalDisposer.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\StackedPanel.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\StackedTab.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\StateManager.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Statusbar.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_cs.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_da.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_de.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_en.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_es.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_fi.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_fr.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_hu.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_it.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_ja.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_ko.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_nb.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_nl.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_pl.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_pt.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_ru.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_sk.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_sv.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_th.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_tr.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_zh_CN.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\strings_zh_TW.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\TextCombo.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\TextField.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Toolbar.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ToolPanel.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\Viewer.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ViewerFlexParameterAdapter.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\ViewerListener.js" />
+    <Content Include="crystalreportviewers13\js\crviewer\WarningPopup.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\bolist.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\calendar.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\dialog.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\dom.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\empty.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\borders.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\help.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\loading.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\lov.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\min.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\plus.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\print.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\print_fe.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\prompt.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\resizepattern.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\bolist.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\button.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\buttonIcons.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\critical_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogelements.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframe.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframeleftright.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframetopbottom.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogtitle.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\down.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\iconsep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\information_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\left.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\menus.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\node.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\progress.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\resize.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\right.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\scroll_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\sep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\sep_solid.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style_fe.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\tabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\up.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\wait01.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\wait02.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_coloredline\warning_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\bolist.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\button.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\buttonIcons.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\critical_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogelements.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframe.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframeleftright.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframetopbottom.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogtitle.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\down.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\iconsep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\information_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\left.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\menus.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\node.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\progress.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\resize.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\right.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\scroll_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\sep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\sep_solid.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\style.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\style.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\style_fe.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\tabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\up.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\wait01.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\wait02.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_corporate\warning_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\bolist.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\button.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\buttonIcons.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\critical_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\dialogelements.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframe.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframeleftright.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframetopbottom.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\dialogtitle.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\down.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\iconsep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\information_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\left.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\menus.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\node.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\progress.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\resize.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\right.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\scroll_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\sep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\sep_solid.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\style.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\style.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\style_fe.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\tabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\up.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\wait01.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\wait02.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_default\warning_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\background_field.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\background_menusel.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\bolist.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\button.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\buttonIcons.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\critical_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\critical_icon.png" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogelements.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframe.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframeleftright.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframetopbottom.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogtitle.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\down.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\hgrab.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\horiz_tabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\iconsep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\information_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\left.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\menuitem_check.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\menus.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\node.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\panemenu.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\panetitle.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\progress.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\resize.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\right.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\scroll_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\sep.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\sep_solid.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\style.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\style.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\style_fe.css" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\tabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\toolbar_elements.png" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\up.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\vgrab.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\wait01.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\wait02.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\skin_standard\warning_icon.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\swap.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\transp.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\images\tree.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\cs\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\da\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\de\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\en\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\es\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\fi\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\fr\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\hu\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\it\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\ja\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\ko\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\nb\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\nl\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\pl\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\pt\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\ru\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\sk\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\sv\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\th\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\tr\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\zh_CN\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\language\zh_TW\labels.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\lov.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\menu.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\palette.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\prompttree.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\psheet.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\andorwidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\basicDialog.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\blockWhileWait.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\bolist.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\borderswidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\buttons.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\calendar.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\checktree.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\default.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\dim.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\dim_close.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\dim_o.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\dim_open.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\empty.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\eventsDialog.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\fieldswidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\format.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\framezone.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\grabber.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\iconlistpopupwidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\iconscrollmenuwidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\imgtabs.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\inconwidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\infowidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\lov.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\measure.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\measure_o.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\menu.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\navigation.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\palettes.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\pane.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\parent_dialog.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\progressBar.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\prompttree.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\qualif.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\scrolltabs.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\simplelist.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\skinIntl.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\tabs.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\textcombowidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\tooltipwidget.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\treeicons.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\treeview.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\unv_close.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\unv_o.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\unv_open.gif" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\samples\waitDialog.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\treeview.js" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\validator\default.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\validator\validator_res.html" />
+    <Content Include="crystalreportviewers13\js\dhtmllib\waitdialog.js" />
+    <Content Include="crystalreportviewers13\js\dt_param.js" />
+    <Content Include="crystalreportviewers13\js\external\date.js" />
+    <Content Include="crystalreportviewers13\js\FlexParameterBridge.js" />
+    <Content Include="crystalreportviewers13\js\KeyDownEvent.js" />
+    <Content Include="crystalreportviewers13\js\log4javascript\log4javascript.js" />
+    <Content Include="crystalreportviewers13\js\log4javascript\log4javascript_stub.js" />
+    <Content Include="crystalreportviewers13\js\log4javascript\log4javascript_stub_uncompressed.js" />
+    <Content Include="crystalreportviewers13\js\log4javascript\log4javascript_uncompressed.js" />
+    <Content Include="crystalreportviewers13\js\log4javascript\main.css" />
+    <Content Include="crystalreportviewers13\js\MochiKit\3rdParty.txt" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Async.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Base.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Color.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Controls.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\DateTime.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\DOM.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\DragAndDrop.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Format.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Iter.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\License.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Logging.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\LoggingPane.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\MochiKit.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\MockDOM.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\New.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Signal.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Sortable.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Style.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Test.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\Visual.js" />
+    <Content Include="crystalreportviewers13\js\MochiKit\__package__.js" />
+    <Content Include="crystalreportviewers13\js\previewerror.js" />
+    <Content Include="crystalreportviewers13\js\prompts.js" />
+    <Content Include="crystalreportviewers13\js\prompts_param.js" />
+    <Content Include="crystalreportviewers13\js\swfobject\swfobject.js" />
+    <Content Include="crystalreportviewers13\parameterUIController-compressed.js" />
+    <Content Include="crystalreportviewers13\processindicator.js" />
+    <Content Include="crystalreportviewers13\promptengine-compressed.js" />
+    <Content Include="crystalreportviewers13\prompting\css\promptengine2.css" />
+    <Content Include="crystalreportviewers13\prompting\css\promptengine_default.css" />
+    <Content Include="crystalreportviewers13\prompting\html\calendar.html" />
+    <Content Include="crystalreportviewers13\prompting\html\calendarbottom.html" />
+    <Content Include="crystalreportviewers13\prompting\html\calendartop.html" />
+    <Content Include="crystalreportviewers13\prompting\images\addallfield.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\addallfield_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\addfield.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\addfield_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\back.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\background_field.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\back_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\button.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\button_left_normal.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\button_middle_normal.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\button_right_normal.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\calendar.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\cfilter.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\cfilter_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\dialogelements.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\dialogtitle.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\error.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\errormsg.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\filter.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\filter_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\forward.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\forward_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\info.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\infomsg.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\minus.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\next.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\next_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\plus.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\prev.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\prev_over.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\resize.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\transp.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\warning.gif" />
+    <Content Include="crystalreportviewers13\prompting\images\warningmsg.gif" />
+    <Content Include="crystalreportviewers13\prompting\js\initDhtmlLib.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_calendar.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_calendar2.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_prompts.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_prompts2.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_cs.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_da.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_de.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_en.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_es.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_fi.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_fr.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_hu.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_it.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_ja.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_ko.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_nb.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_nl.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_pl.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_pt.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_ru.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_sk.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_sv.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_th.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_tr.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_zh_CN.js" />
+    <Content Include="crystalreportviewers13\prompting\js\promptengine_strings_zh_TW.js" />
+    <Content Include="crystalreportviewers13\urlreporting\activexviewer.js" />
+    <Content Include="crystalreportviewers13\urlreporting\appletviewer.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\OpenReport\MailSending.aspx" />
+    <Content Include="fonts\OpenReport\OpenReport.aspx" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
+    <Content Include="Scripts\Barcode\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\Barcode\jquery-barcode.js" />
+    <Content Include="Scripts\Barcode\JsBarcode.all.min.js" />
+    <Content Include="Scripts\Barcode\prototype-barcode.js" />
+    <Content Include="Scripts\Barcode\prototype.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\assets\img\site.webmanifest" />
+    <None Include="Properties\PublishProfiles\PURCHASE.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\custom\ActivityDescriptionForStakeholder.js" />
+    <Content Include="Scripts\custom\AddBranchDetailsForStakeholder.js" />
+    <Content Include="Scripts\custom\AddBulkSMMEForEnterprise.js" />
+    <Content Include="Scripts\custom\AddBulkSMMEForAdmin.js" />
+    <Content Include="Scripts\custom\AddCustomerDetailsForStakeholder.js" />
+    <Content Include="Scripts\custom\AllAssignAssessmnetByAdminForSingleSMME.js" />
+    <Content Include="Scripts\custom\AllAssignAssessmnetByStakeholder.js" />
+    <Content Include="Scripts\custom\AllReports.js" />
+    <Content Include="Scripts\custom\AssessmentKPISetUp.js" />
+    <Content Include="Scripts\custom\AssessmentCategorySetUpForStakeholder.js" />
+    <Content Include="Scripts\custom\AssessmentSegmentSetUpForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignProjectWiseStakeholderForEnterpriseStakeholder.js" />
+    <Content Include="Scripts\custom\AssignProjectWiseStakeholderForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignSMMEAssessmentForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseAssessmentForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseAssessment.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseJobForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseJob.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseSMMEForStakeholder.js" />
+    <Content Include="Scripts\custom\AssignStakeholderWiseSMME.js" />
+    <Content Include="Scripts\custom\AsssemnetWiseSMMEForStakeholder.js" />
+    <Content Include="Scripts\custom\BranchDashboard.js" />
+    <Content Include="Scripts\custom\ProjectWiseSMMEModal.js" />
+    <Content Include="Scripts\custom\UserWiseArea.js" />
+    <Content Include="Scripts\custom\BranchWiseUser.js" />
+    <Content Include="Scripts\custom\BranchWiseProject.js" />
+    <Content Include="Scripts\custom\ChangePassword.js" />
+    <Content Include="Scripts\custom\ChangePasswordConfirm.js" />
+    <Content Include="Scripts\custom\ActivityDescription.js" />
+    <Content Include="Scripts\custom\BranchWiseArea.js" />
+    <Content Include="Scripts\custom\UserWiseProject.js" />
+    <Content Include="Scripts\custom\UserWiseSMME.js" />
+    <Content Include="Scripts\custom\UserProfileDetails.js" />
+    <Content Include="Scripts\custom\KPICategoryGroupSetUp.js" />
+    <Content Include="Scripts\custom\KPICategorySetUp.js" />
+    <Content Include="Scripts\custom\DynamicBanner.js" />
+    <Content Include="Scripts\custom\EnterpriseBranchForStakeholder.js" />
+    <Content Include="Scripts\custom\KPIAllocationList.js" />
+    <Content Include="Scripts\custom\StakeholderDashboard.js" />
+    <Content Include="Scripts\custom\EnterpriseDashboard.js" />
+    <Content Include="Scripts\custom\EnterpriseProjectForStakeholder.js" />
+    <Content Include="Scripts\custom\EnterpriseSMMEForStakeholder.js" />
+    <Content Include="Scripts\custom\FinancialYearSetUp.js" />
+    <Content Include="Scripts\custom\CreateActivityForStakeholder.js" />
+    <Content Include="Scripts\custom\CreateActivityListStakeholder.js" />
+    <Content Include="Scripts\custom\CreateJobsForStakeholder.js" />
+    <Content Include="Scripts\custom\CreateTaskForStakeholder.js" />
+    <Content Include="Scripts\custom\CustomerDetailsForStakeholder.js" />
+    <Content Include="Scripts\custom\customThemeSwitcher.js" />
+    <Content Include="Scripts\custom\EnterpriseBranchAdmin.js" />
+    <Content Include="Scripts\custom\EnterpriseProfileForStakeholder.js" />
+    <Content Include="Scripts\custom\EnterpriseProfileAdmin.js" />
+    <Content Include="Scripts\custom\EnterpriseProjectAdmin.js" />
+    <Content Include="Scripts\custom\EnterpriseSMMEAdmin.js" />
+    <Content Include="Scripts\custom\CountrySetUp.js" />
+    <Content Include="Scripts\custom\EnterpriseWiseReport.js" />
+    <Content Include="Scripts\custom\ESDPlatformRpt.js" />
+    <Content Include="Scripts\custom\JobInvoiceStakeholderList.js" />
+    <Content Include="Scripts\custom\AssignedStakeholder.js" />
+    <Content Include="Scripts\custom\MyStakeholder.js" />
+    <Content Include="Scripts\custom\pages-auth-multisteps.js" />
+    <Content Include="Scripts\custom\ProjectFundExpenditureForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectFundExpenditure.js" />
+    <Content Include="Scripts\custom\ProjectBudgetDashboardForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectDetailsForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectDetailsNewForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectListForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectListToAssignSMMEFromStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectWiseDocForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectWiseReport.js" />
+    <Content Include="Scripts\custom\AssignProjectWiseStakeholderForEnterprise.js" />
+    <Content Include="Scripts\custom\QuestionBuildingForStakeholder.js" />
+    <Content Include="Scripts\custom\QuestionSetupForStakeholder.js" />
+    <Content Include="Scripts\custom\QuestionSetupListForStakeholder.js" />
+    <Content Include="Scripts\custom\ReortForProject.js" />
+    <Content Include="Scripts\custom\ESDPlatformRptSMME.js" />
+    <Content Include="Scripts\custom\ESDPlatformRptEnterprise.js" />
+    <Content Include="Scripts\custom\ManagePermissionForStakeholder.js" />
+    <Content Include="Scripts\custom\ProjectListAsStakeHolderForAdmin.js" />
+    <Content Include="Scripts\custom\ProjectListAsStakeHolderEnterprise.js" />
+    <Content Include="Scripts\custom\ProjectWiseStakeholderForEnterprise.js" />
+    <Content Include="Scripts\custom\ProjectWiseStakeholderForAdmin.js" />
+    <Content Include="Scripts\custom\ResetPassword.js" />
+    <Content Include="Scripts\custom\SaveThemeStyle.js" />
+    <Content Include="Scripts\custom\SaveTheneStyleForWhiteListing.js" />
+    <Content Include="Scripts\custom\SMMEDashboard.js" />
+    <Content Include="Scripts\custom\EnrDashboard.js" />
+    <Content Include="Scripts\custom\AdminDashboard.js" />
+    <Content Include="Scripts\custom\CostManagement.js" />
+    <Content Include="Scripts\custom\AddBranchDetails.js" />
+    <Content Include="Scripts\custom\AddUserForAdmin.js" />
+    <Content Include="Scripts\custom\AddSMMEUserForAdmin.js" />
+    <Content Include="Scripts\custom\AllAssessmentListForSMME.js" />
+    <Content Include="Scripts\custom\AllAssignAssessmnetByEnterp.js" />
+    <Content Include="Scripts\custom\AssessmentSegmentSetUp.js" />
+    <Content Include="Scripts\custom\AssignProjectListForSMME.js" />
+    <Content Include="Scripts\custom\AllEnterpriseWiseProject.js" />
+    <Content Include="Scripts\custom\AsssemnetWiseSMME.js" />
+    <Content Include="Scripts\custom\JobInvoiceEnterpriseList.js" />
+    <Content Include="Scripts\custom\JobInvoiceList.js" />
+    <Content Include="Scripts\custom\FundType.js" />
+    <Content Include="Scripts\custom\BudgetType.js" />
+    <Content Include="Scripts\custom\CalenderEventForSMME.js" />
+    <Content Include="Scripts\custom\CalenderForSMME.js" />
+    <Content Include="Scripts\custom\CreateActivity.js" />
+    <Content Include="Scripts\custom\AddCustomerDetails.js" />
+    <Content Include="Scripts\custom\ActivityListSMME.js" />
+    <Content Include="Scripts\custom\CreateJobsForSMME.js" />
+    <Content Include="Scripts\custom\CreateJobsForEnterprise.js" />
+    <Content Include="Scripts\custom\CreateJobs.js" />
+    <Content Include="Scripts\custom\EnterpriseBranch.js" />
+    <Content Include="Scripts\custom\CustomerDetails.js" />
+    <Content Include="Scripts\custom\EnterpriseProfileComplete.js" />
+    <Content Include="Scripts\custom\EnterpriseSMME.js" />
+    <Content Include="Scripts\custom\EnterpriseProject.js" />
+    <Content Include="Scripts\custom\JobCalenderForSMME.js" />
+    <Content Include="Scripts\custom\JobProgressAdmin.js" />
+    <Content Include="Scripts\custom\KanbanFetchData.js" />
+    <Content Include="Scripts\custom\ProjectBudgetDashboard.js" />
+    <Content Include="Scripts\custom\SMMEProfileForStakeholder.js" />
+    <Content Include="Scripts\custom\SMMEProfile_DashboardForStakeholder.js" />
+    <Content Include="Scripts\custom\SMMEProfile_Job.js" />
+    <Content Include="Scripts\custom\SMMEProfile_JobForStakeholder.js" />
+    <Content Include="Scripts\custom\SMMEProfile_TaskForStakeholder.js" />
+    <Content Include="Scripts\custom\SMMEProfile_Task.js" />
+    <Content Include="Scripts\custom\SMMEProfile.js" />
+    <Content Include="Scripts\custom\ProjectWiseDoc.js" />
+    <Content Include="Scripts\custom\SMMESettingsForStakeholder.js" />
+    <Content Include="Scripts\custom\SMMEWiseReport.js" />
+    <Content Include="Scripts\custom\TaskBoard.js" />
+    <Content Include="Scripts\custom\TaskListForStakeholder.js" />
+    <Content Include="Scripts\custom\TaskProgressEnterpriseForStakeholder.js" />
+    <Content Include="Scripts\custom\TaskProgressEnterprise.js" />
+    <Content Include="Scripts\custom\JobProgressEnterprise.js" />
+    <Content Include="Scripts\custom\AssignedUserForSMME.js" />
+    <Content Include="Scripts\custom\UserManagePermissionForStakeholder.js" />
+    <Content Include="Scripts\custom\UserManagePermission.js" />
+    <Content Include="Scripts\custom\TaskProgressSMME.js" />
+    <Content Include="Scripts\custom\JobProgressSMME.js" />
+    <Content Include="Scripts\custom\ProjectDetailsNew.js" />
+    <Content Include="Scripts\custom\TaskListSMME.js" />
+    <Content Include="Scripts\custom\TeamBuildForEnterprise.js" />
+    <Content Include="Scripts\custom\TeamBuildingListForEnterprise.js" />
+    <Content Include="Scripts\custom\TeamBuildingListForSMME.js" />
+    <Content Include="Scripts\custom\SMMEWiseCustomer.js" />
+    <Content Include="Scripts\custom\EnterpriseWiseCustomer.js" />
+    <Content Include="Scripts\custom\JobCategoriesSetUp.js" />
+    <Content Include="Scripts\custom\CustomerTypeSetUp.js" />
+    <Content Include="Scripts\custom\ProjectListToAssignSMMEFromEnterp.js" />
+    <Content Include="Scripts\custom\ProjectListToAssignSMME.js" />
+    <Content Include="Scripts\custom\AssignSMMEAssessmentForEnterprise.js" />
+    <Content Include="Scripts\custom\AssignSMMEToEnterprise.js" />
+    <Content Include="Scripts\custom\AddEnterpriseUserForAdmin.js" />
+    <Content Include="Scripts\custom\AssignProjectToEnterprise.js" />
+    <Content Include="Scripts\custom\CreateTask.js" />
+    <Content Include="Scripts\custom\ProjectDetails.js" />
+    <Content Include="Scripts\custom\EnterpriseUserForAdmin.js" />
+    <Content Include="Scripts\custom\ProjectListForEnterprise.js" />
+    <Content Include="Scripts\custom\AssignSMMEAssessmentForadmin.js" />
+    <Content Include="Scripts\custom\CreateActivityList.js" />
+    <Content Include="Scripts\custom\ShowAssessment.js" />
+    <Content Include="Scripts\custom\TaskList.js" />
+    <Content Include="Scripts\custom\AllAssignAssessmnetByAdmin.js" />
+    <Content Include="Scripts\custom\TeamBuildForSMME.js" />
+    <Content Include="Scripts\custom\UserPermissionListForSMME.js" />
+    <Content Include="Scripts\custom\UserPermissionListForStakeHolder.js" />
+    <Content Include="Scripts\custom\UserProfileSettingsEnr.js" />
+    <Content Include="Scripts\custom\User_AdminToEnterprise.js" />
+    <Content Include="Scripts\custom\UserPermissionForSMME.js" />
+    <Content Include="Scripts\custom\ViewAllBranchForStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAllKPIQuestion.js" />
+    <Content Include="Scripts\custom\ViewAllBuildQuestionStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAllCost.js" />
+    <Content Include="Scripts\custom\ViewAllBuildQuestionEnterprise.js" />
+    <Content Include="Scripts\custom\ViewAllCustomerForStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAllEnterpriseUserForAdmin.js" />
+    <Content Include="Scripts\custom\ViewAllJobsCardForSMME.js" />
+    <Content Include="Scripts\custom\ViewAllBranch.js" />
+    <Content Include="Scripts\custom\ViewAllJobsForStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAllJobsForSMME.js" />
+    <Content Include="Scripts\custom\ViewAllJobsForEnterprise.js" />
+    <Content Include="Scripts\custom\ViewAllJobsForAdmin.js" />
+    <Content Include="Scripts\custom\ViewAllCustomerForSMME.js" />
+    <Content Include="Scripts\custom\ViewAllCustomerForEnterprise.js" />
+    <Content Include="Scripts\custom\ViewAllCustomerForAdmin.js" />
+    <Content Include="Scripts\custom\ViewAllSMMEForStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAllSMMEUser.js" />
+    <Content Include="Scripts\custom\UserPermissionList.js" />
+    <Content Include="Scripts\custom\UserProfileSettings.js" />
+    <Content Include="Scripts\custom\ViewAllUserStakeHolder.js" />
+    <Content Include="Scripts\custom\ViewAllUserForAdminPermission.js" />
+    <Content Include="Scripts\custom\ViewAllUserForAdmin.js" />
+    <Content Include="Scripts\custom\ViewAllUser.js" />
+    <Content Include="Scripts\custom\UserPermissionAllEnterpriseUserForAdmin.js" />
+    <Content Include="Scripts\custom\EnterpriseWiseSMME.js" />
+    <Content Include="Scripts\custom\EnterPriseWiseSMMEList.js" />
+    <Content Include="Scripts\custom\ViewAllSMMEForEnterprise.js" />
+    <Content Include="Scripts\custom\ProjectListForAdmin.js" />
+    <Content Include="Scripts\custom\ViewAssessmentBackup.js" />
+    <Content Include="Scripts\custom\SMMEProfile_Dashboard.js" />
+    <Content Include="Scripts\custom\ViewSMMEWiseAssessment.js" />
+    <Content Include="Scripts\custom\ViewAssessmentForSMMEForStakeholder.js" />
+    <Content Include="Scripts\custom\KPIAllocation.js" />
+    <Content Include="Scripts\custom\ViewAssessmentKPI.js" />
+    <Content Include="Scripts\custom\ViewAssessmentForStakeholder.js" />
+    <Content Include="Scripts\custom\ViewAssessmentForSMME.js" />
+    <Content Include="Scripts\custom\ViewAssessment.js" />
+    <Content Include="Scripts\custom\YourAssessment.js" />
+    <Content Include="Scripts\custom\EnterpriseList.js" />
+    <Content Include="Scripts\custom\EnterpriseProfile.js" />
+    <Content Include="Scripts\custom\EnterpriseSettings.js" />
+    <Content Include="Scripts\custom\QuestionBuilding.js" />
+    <Content Include="Scripts\custom\QuestionSetup.js" />
+    <Content Include="Scripts\custom\ItemSetUp.js" />
+    <Content Include="Scripts\custom\DesignationSetUp.js" />
+    <Content Include="Scripts\custom\EnterpriseTypeSetUp.js" />
+    <Content Include="Scripts\custom\IncomeTypeSetUp.js" />
+    <Content Include="Scripts\custom\LegalEntitySetUp.js" />
+    <Content Include="Scripts\custom\ProvinceSetUp.js" />
+    <Content Include="Scripts\custom\RoleSetUp.js" />
+    <Content Include="Scripts\custom\AssessmentCategorySetUp.js" />
+    <Content Include="Scripts\custom\SectorSetUp.js" />
+    <Content Include="Scripts\custom\QuestionSetupList.js" />
+    <Content Include="Scripts\custom\SMMEList.js" />
+    <Content Include="Scripts\custom\SMMERegistration.js" />
+    <Content Include="Scripts\custom\SMMESettings.js" />
+    <Content Include="Scripts\custom\UserMaster.js" />
+    <Content Include="Scripts\custom\UserView.js" />
+    <Content Include="Scripts\custom\User_Permission.js" />
+    <Content Include="Scripts\custom\common.js" />
+    <Content Include="Scripts\custom\listmaster.js" />
+    <Content Include="Scripts\custom\listTransaction.js" />
+    <Content Include="Scripts\custom\Login.js" />
+    <Content Include="Scripts\custom\ViewAllBuildQuestion.js" />
+    <Content Include="Scripts\DoctorMaster.js" />
+    <Content Include="Scripts\custom\EnterpriseRegistration.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\utility\ChildPageMenuForStakeholder.js" />
+    <Content Include="Scripts\utility\ChildPageMenuForEnterprise.js" />
+    <Content Include="Scripts\utility\ChildPageMenu.js" />
+    <Content Include="Scripts\utility\ChildPageMenuForSMME.js" />
+    <Content Include="Scripts\utility\confirmBox.js" />
+    <Content Include="Scripts\utility\DeleteRecord.js" />
+    <Content Include="Scripts\utility\dropdownjoin.js" />
+    <Content Include="Scripts\utility\dropdown.js" />
+    <Content Include="Scripts\utility\dropdowninit.js" />
+    <Content Include="Scripts\utility\dtableextension.js" />
+    <Content Include="Scripts\utility\Loading.js" />
+    <Content Include="Scripts\utility\PhoneNumberFormet.js" />
+    <Content Include="Scripts\utility\places-autocomplete-element.js" />
+    <Content Include="Scripts\utility\BranchWiseSMMEModal.js" />
+    <Content Include="Scripts\utility\ProjectWiseSMMEModal.js" />
+    <Content Include="Scripts\utility\scrollTab.js" />
+    <Content Include="Scripts\utility\sendsms.js" />
+    <Content Include="Scripts\utility\toastCustom.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Upload\coke-logo.jpeg" />
+    <Content Include="Upload\default_photo.png" />
+    <Content Include="Upload\email-template.html" />
+    <Content Include="Upload\index_img_msme.jpg" />
+    <Content Include="Upload\index_img_msme_microsoft.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\AdminLogin.cshtml" />
+    <Content Include="Views\Account\AdminRegister.cshtml" />
+    <Content Include="Views\Account\EnterpriseLogin.cshtml" />
+    <Content Include="Views\Account\EnterpriseRegistration.cshtml" />
+    <Content Include="Views\Account\EnterpriseSettings_company.cshtml" />
+    <Content Include="Views\Account\EnterpriseSettings_contact.cshtml" />
+    <Content Include="Views\Account\EnterpriseSettings_financial.cshtml" />
+    <Content Include="Views\Account\EnterpriseSettings_legalentity.cshtml" />
+    <Content Include="Views\Account\SMMELogin.cshtml" />
+    <Content Include="Views\Account\SMMERegistration.cshtml" />
+    <Content Include="Views\Account\SMMESettings_company.cshtml" />
+    <Content Include="Views\Account\SMMESettings_contact.cshtml" />
+    <Content Include="Views\Account\SMMESettings_financial.cshtml" />
+    <Content Include="Views\Account\SMMESettings_legalentity.cshtml" />
+    <Content Include="Views\Account\UserView_Account.cshtml" />
+    <Content Include="Views\Account\UserView_Notification.cshtml" />
+    <Content Include="Views\Account\UserView_Security.cshtml" />
+    <Content Include="Views\Account\UserView_SMME.cshtml" />
+    <Content Include="Views\Assessment\AddQuestionSetup.cshtml" />
+    <Content Include="Views\Assessment\AllAssessmentListForSMME.cshtml" />
+    <Content Include="Views\Assessment\AllAssignAssessmnetByAdmin.cshtml" />
+    <Content Include="Views\Assessment\AllAssignAssessmnetByEnterp.cshtml" />
+    <Content Include="Views\Assessment\AssignSMMEAssessmentForadmin.cshtml" />
+    <Content Include="Views\Assessment\AssignSMMEAssessmentForEnterprise.cshtml" />
+    <Content Include="Views\Assessment\QuestionBuilding.cshtml" />
+    <Content Include="Views\Assessment\QuestionSetupList.cshtml" />
+    <Content Include="Views\Assessment\ShowAssessment.cshtml" />
+    <Content Include="Views\Assessment\ViewAllBuildQuestion.cshtml" />
+    <Content Include="Views\Assessment\ViewAssessment.cshtml" />
+    <Content Include="Views\Assessment\ViewAssessmentForSMME.cshtml" />
+    <Content Include="Views\Assessment\YourAssessment.cshtml" />
+    <Content Include="Views\Customer\AddCustomerDetails.cshtml" />
+    <Content Include="Views\Job\CreateJobs.cshtml" />
+    <Content Include="Views\Job\CreateJobsForEnterprise.cshtml" />
+    <Content Include="Views\Job\CreateJobsForSMME.cshtml" />
+    <Content Include="Views\Customer\EnterpriseWiseCustomer.cshtml" />
+    <Content Include="Views\Customer\SMMEWiseCustomer.cshtml" />
+    <Content Include="Views\Customer\ViewAllCustomerForAdmin.cshtml" />
+    <Content Include="Views\Customer\ViewAllCustomerForEnterprise.cshtml" />
+    <Content Include="Views\Customer\ViewAllCustomerForSMME.cshtml" />
+    <Content Include="Views\Job\ViewAllJobsForAdmin.cshtml" />
+    <Content Include="Views\Job\ViewAllJobsForEnterprise.cshtml" />
+    <Content Include="Views\Job\ViewAllJobsForSMME.cshtml" />
+    <Content Include="Views\Enterprise\AddEnterPriseUser.cshtml" />
+    <Content Include="Views\Enterprise\AssignSMMEToEnterprise.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseDashboard.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseLists.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfieView_Profiles.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfieView_Projects.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfieView_SMME.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfieView_SMMESingle.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfieView_Branches.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseWiseSMME.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseWiseSMMEList.cshtml" />
+    <Content Include="Views\Enterprise\ViewAllSMMEForEnterprise.cshtml" />
+    <Content Include="Views\Enterprise\ViewAllUser.cshtml" />
+    <Content Include="Views\Home\AssessmentCategorySetUp.cshtml" />
+    <Content Include="Views\Home\AssessmentSegmentSetUp.cshtml" />
+    <Content Include="Views\Home\Component.cshtml" />
+    <Content Include="Views\Home\CustomerTypeSetUp.cshtml" />
+    <Content Include="Views\Home\DatatabeSample.cshtml" />
+    <Content Include="Views\Home\DesignationSetUp.cshtml" />
+    <Content Include="Views\Home\EnterpriseDashboard.cshtml" />
+    <Content Include="Views\Home\EnterpriseTypeSetUp.cshtml" />
+    <Content Include="Views\Home\EnterpriseUserForAdmin.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\IncomeTypeSetUp.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ItemSetUp.cshtml" />
+    <Content Include="Views\Home\JobCategoriesSetUp.cshtml" />
+    <Content Include="Views\Home\LegalEntitySetUp.cshtml" />
+    <Content Include="Views\Home\MasterList.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\ProvinceSetUp.cshtml" />
+    <Content Include="Views\Home\RoleSetUp.cshtml" />
+    <Content Include="Views\Home\SectorSetUp.cshtml" />
+    <Content Include="Views\Home\ViewAllEnterpriseUserForAdmin.cshtml" />
+    <Content Include="Views\Project\AllEnterpriseWiseProject.cshtml" />
+    <Content Include="Views\Project\AssignProjectListForSMME.cshtml" />
+    <Content Include="Views\Project\AssignProjectToEnterprise.cshtml" />
+    <Content Include="Views\Project\CreateActivity.cshtml" />
+    <Content Include="Views\Project\CreateActivityList.cshtml" />
+    <Content Include="Views\Project\CreateTask.cshtml" />
+    <Content Include="Views\Project\ProjectDetails.cshtml" />
+    <Content Include="Views\Project\ProjectListForAdmin.cshtml" />
+    <Content Include="Views\Project\ProjectListForEnterprise.cshtml" />
+    <Content Include="Views\Project\ProjectListToAssignSMME.cshtml" />
+    <Content Include="Views\Project\ProjectListToAssignSMMEFromEnterp.cshtml" />
+    <Content Include="Views\Project\TaskList.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_NullLayout.cshtml" />
+    <Content Include="Views\SMME\AddSMMEUser.cshtml" />
+    <Content Include="Views\SMME\SMMEDashboard.cshtml" />
+    <Content Include="Views\SMME\SMMELists.cshtml" />
+    <Content Include="Views\SMME\ViewAllSMMEUser.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Job\JobProgressSMME.cshtml" />
+    <Content Include="Views\Job\ViewAllJobsCardForSMME.cshtml" />
+    <Content Include="Views\Assessment\AssessmnetWiseSMMEByAdmin.cshtml" />
+    <Content Include="Views\Assessment\ViewSMMEWiseAssessment.cshtml" />
+    <Content Include="Views\Job\JobProgressEnterprise.cshtml" />
+    <Content Include="Views\Job\JobCalender.cshtml" />
+    <Content Include="Views\Job\JobProgressAdmin.cshtml" />
+    <Content Include="Views\SMME\TeamBuilding.cshtml" />
+    <Content Include="Views\SMME\TeamBuildingList.cshtml" />
+    <Content Include="Upload\Prescription.pdf" />
+    <Content Include="Views\Assessment\ViewAssessmentForEnterpriseBackUp.cshtml" />
+    <Content Include="Views\Assessment\ViewAllBuildQuestionEnterprise.cshtml" />
+    <Content Include="Views\Project\ActivityListForSMME.cshtml" />
+    <Content Include="Views\Project\TaskListForSMME.cshtml" />
+    <Content Include="Views\Enterprise\AddBranch.cshtml" />
+    <Content Include="Views\Enterprise\ViewAllBranch.cshtml" />
+    <Content Include="Views\Enterprise\EnterpriseProfileComplete.cshtml" />
+    <Content Include="Views\Enterprise\TeamBuildingList.cshtml" />
+    <Content Include="Views\Enterprise\TeamBuilding.cshtml" />
+    <Content Include="Views\Assessment\ViewAssessmentForEnterprise.cshtml" />
+    <Content Include="Views\Project\ProjectDetailsNew.cshtml" />
+    <Content Include="Views\Customer\CustomerDetails.cshtml" />
+    <Content Include="Views\Project\TaskProgressSMME.cshtml" />
+    <Content Include="Views\Project\TaskProgressEnterprise.cshtml" />
+    <Content Include="Views\Project\TaskProgressAdmin.cshtml" />
+    <Content Include="Views\Project\ProjectBudgetDashboard.cshtml" />
+    <Content Include="Views\Project\ProjectWiseDoc.cshtml" />
+    <Content Include="Views\Project\TaskBoard.cshtml" />
+    <Content Include="Views\Home\BudgetTypeSetUp.cshtml" />
+    <Content Include="Views\Enterprise\UserPermission.cshtml" />
+    <Content Include="Views\Account\EnterpriseUserLogin.cshtml" />
+    <Content Include="Views\Enterprise\UserPermissionList.cshtml" />
+    <Content Include="Views\Home\FundTypeSetUp.cshtml" />
+    <Content Include="Views\Home\UserPermissionAllEnterpriseUserForAdmin.cshtml" />
+    <Content Include="Views\Home\UserPermission.cshtml" />
+    <Content Include="Views\Home\ViewAllUser.cshtml" />
+    <Content Include="Views\Home\AddAdminUser.cshtml" />
+    <Content Include="Views\SMME\SMMEProfile.cshtml" />
+    <Content Include="Views\Home\ViewAllUserPermission.cshtml" />
+    <Content Include="Views\SMME\SMMEProfile_Job.cshtml" />
+    <Content Include="Views\SMME\SMMEProfile_Task.cshtml" />
+    <Content Include="Views\Account\AdminUserLogin.cshtml" />
+    <Content Include="Views\SMME\CostManagement.cshtml" />
+    <Content Include="Views\SMME\ViewCostManagement.cshtml" />
+    <Content Include="Views\Job\JobInvoice.cshtml" />
+    <Content Include="Views\Job\JobInvoicePreview.cshtml" />
+    <Content Include="Views\Job\JobInvoicePreviewPrint.cshtml" />
+    <Content Include="Views\Job\JobInvoiceList.cshtml" />
+    <Content Include="Views\Job\JobInvoiceEnterpriseList.cshtml" />
+    <Content Include="Views\Home\AdminDashboard.cshtml" />
+    <Content Include="Views\Home\EnterpriseProfieView_Branches.cshtml" />
+    <Content Include="Views\Home\EnterpriseProfieView_Profiles.cshtml" />
+    <Content Include="Views\Home\EnterpriseProfieView_Projects.cshtml" />
+    <Content Include="Views\Home\EnterpriseProfieView_SMME.cshtml" />
+    <Content Include="Views\Home\UserPermissionForEnterpriseUser.cshtml" />
+    <Content Include="Views\SMME\AddBulkSMMEForAdmin.cshtml" />
+    <Content Include="Upload\Bulk-test-new.xlsx" />
+    <Content Include="Views\SMME\ExcelWrite.cshtml" />
+    <Content Include="Views\SMME\ExportToExcelDynamic.cshtml" />
+    <Content Include="Views\Assessment\ExportToExcelDynamic.cshtml" />
+    <Content Include="Views\Home\CountrySetUp.cshtml" />
+    <Content Include="Views\Enterprise\ChatForEnterprise.cshtml" />
+    <Content Include="Views\Home\ChatForAdmin.cshtml" />
+    <Content Include="Views\Home\ProjectWiseStakeholderForAdmin.cshtml" />
+    <Content Include="Views\Enterprise\ProjectWiseStakeholderForEnterprise.cshtml" />
+    <Content Include="Views\Home\ProjectListAsStakeHolderForAdmin.cshtml" />
+    <Content Include="Views\Enterprise\ProjectListAsStakeHolderEnterprise.cshtml" />
+    <Content Include="Views\Home\ManagePermissionForStakeholder.cshtml" />
+    <Content Include="Views\Home\AllReports.cshtml" />
+    <Content Include="Views\Home\SMMEWiseReport.cshtml" />
+    <Content Include="Views\Home\EnterpriseWiseReport.cshtml" />
+    <Content Include="Views\Home\ProjectWiseReport.cshtml" />
+    <Content Include="Views\SMME\AddBulkSMMEForEnterprise.cshtml" />
+    <Content Include="Upload\MSME-Bulk-Upload.xlsx" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordConfirm.cshtml" />
+    <Content Include="Views\Assessment\AllAssignAssessmnetByAdminForSingleSMME.cshtml" />
+    <Content Include="Views\Enterprise\AssignProjectWiseStakeholderForEnterprise.cshtml" />
+    <Content Include="Views\Enterprise\AssignStakeholderWiseSMME.cshtml" />
+    <Content Include="Views\Enterprise\AssignStakeholderWiseJob.cshtml" />
+    <Content Include="Views\Enterprise\AssignStakeholderWiseAssessment.cshtml" />
+    <Content Include="Views\Enterprise\MyStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\StakeHolderDashboard.cshtml" />
+    <Content Include="Views\Home\MenuForStakeHolder.cshtml" />
+    <Content Include="Views\Enterprise\AssignedStakeholder.cshtml" />
+    <Content Include="Views\Account\EmailVerified.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Project\ProjectFundExpenditure.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Account\UserProfileEnr.cshtml" />
+    <Content Include="Views\Home\AssessmentKPISetUp.cshtml" />
+    <Content Include="Views\Assessment\ViewAllKpiQuestion.cshtml" />
+    <Content Include="Views\Assessment\ViewAssessmentKPI.cshtml" />
+    <Content Include="Views\Account\ESDLogin.cshtml" />
+    <Content Include="Views\Enterprise\FinancialYearSetUp.cshtml" />
+    <Content Include="Views\Home\Loader.cshtml" />
+    <Content Include="Views\Shared\_BudgetLayout.cshtml" />
+    <Content Include="Views\Account\ExiprePasswordLink.cshtml" />
+    <Content Include="Views\Shared\_BudgetLayoutST.cshtml" />
+    <Content Include="Views\Project\ActivityDescription.cshtml" />
+    <Content Include="Views\Home\KPICategorySetUp.cshtml" />
+    <Content Include="Views\Home\KPICategoryGroupSetUp.cshtml" />
+    <Content Include="Views\Assessment\KPIAllocation.cshtml" />
+    <Content Include="Views\Assessment\KPIAllocationList.cshtml" />
+    <Content Include="Views\Project\AssignedUser.cshtml" />
+    <Content Include="Views\Project\AssignedUserForSMME.cshtml" />
+    <Content Include="Views\Enterprise\BranchWiseArea.cshtml" />
+    <Content Include="Views\Enterprise\BranchWiseProject.cshtml" />
+    <Content Include="Views\Enterprise\BranchWiseUser.cshtml" />
+    <Content Include="Views\Home\UserProfileDetails.cshtml" />
+    <Content Include="Views\Home\UserWiseSMME.cshtml" />
+    <Content Include="Views\Home\UserWiseProject.cshtml" />
+    <Content Include="Views\Home\UserWiseArea.cshtml" />
+    <Content Include="Views\Enterprise\BranchDashboard.cshtml" />
+    <None Include="Views\Shared\_MainLayoutST.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllUser.cshtml" />
+    <Content Include="Views\Stakeholder\UserPermissionList.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectDetails.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectListForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\CreateActivityList.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectListToAssignSMMEFromEnterp.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllSMMEForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\SMMESettings_company.cshtml" />
+    <Content Include="Views\Stakeholder\SMMESettings_contact.cshtml" />
+    <Content Include="Views\Stakeholder\SMMESettings_legalentity.cshtml" />
+    <Content Include="Views\Stakeholder\SMMESettings_financial.cshtml" />
+    <Content Include="Views\Stakeholder\AssessmentCategorySetUp.cshtml" />
+    <Content Include="Views\Stakeholder\AssessmentSegmentSetUp.cshtml" />
+    <Content Include="Views\Stakeholder\AddQuestionSetup.cshtml" />
+    <Content Include="Views\Stakeholder\QuestionSetupList.cshtml" />
+    <Content Include="Views\Stakeholder\QuestionBuilding.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllBuildQuestionStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\AssignSMMEAssessmentForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\AllAssignAssessmnetByStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAssessmentForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\CreateActivity.cshtml" />
+    <Content Include="Views\Stakeholder\CreateTask.cshtml" />
+    <Content Include="Views\Stakeholder\TaskList.cshtml" />
+    <Content Include="Views\Stakeholder\AddCustomerDetails.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllCustomerForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\CustomerDetails.cshtml" />
+    <Content Include="Views\Stakeholder\CreateJobsForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllJobsForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\JobInvoiceStakeholderList.cshtml" />
+    <Content Include="Views\Stakeholder\JobInvoice.cshtml" />
+    <Content Include="Views\Stakeholder\JobInvoicePreview.cshtml" />
+    <Content Include="Views\Stakeholder\JobInvoicePreviewPrint.cshtml" />
+    <Content Include="Views\Stakeholder\AssignProjectWiseStakeholderForStakeholder.cshtml" />
+    <Content Include="Views\Stakeholder\AssignStakeholderWiseSMME.cshtml" />
+    <Content Include="Views\Stakeholder\AssignStakeholderWiseAssessment.cshtml" />
+    <Content Include="Views\Stakeholder\AssignStakeholderWiseJob.cshtml" />
+    <Content Include="Views\Stakeholder\SMMEProfile.cshtml" />
+    <Content Include="Views\Stakeholder\SMMEProfile_Job.cshtml" />
+    <Content Include="Views\Stakeholder\SMMEProfile_Task.cshtml" />
+    <Content Include="Views\Stakeholder\ViewAllBranch.cshtml" />
+    <Content Include="Views\Stakeholder\AddBranch.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectDetailsNew.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectBudgetDashboard.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectWiseDoc.cshtml" />
+    <Content Include="Views\SMME\SMMEProfile_Dashboard.cshtml" />
+    <Content Include="Views\Stakeholder\ProjectFundExpenditure.cshtml" />
+    <Content Include="Views\Stakeholder\TaskProgressEnterprise.cshtml" />
+    <Content Include="Views\Stakeholder\SMMEProfile_Dashboard.cshtml" />
+    <Content Include="Views\Stakeholder\AssessmnetWiseSMMEByAdmin.cshtml" />
+    <Content Include="Views\Stakeholder\ViewSMMEWiseAssessment.cshtml" />
+    <Content Include="Views\Stakeholder\EnterpriseProfieView_SMME.cshtml" />
+    <Content Include="Views\Stakeholder\EnterpriseProfieView_Projects.cshtml" />
+    <Content Include="Views\Stakeholder\EnterpriseProfieView_Profiles.cshtml" />
+    <Content Include="Views\Stakeholder\EnterpriseProfieView_Branches.cshtml" />
+    <Content Include="Views\Shared\_NullLayoutAssessment.cshtml" />
+    <Content Include="Views\ViewAllBuildQuestion.cshtml" />
+    <Content Include="Views\Stakeholder\ActivityDescription.cshtml" />
+    <Content Include="Views\Stakeholder\AssignedUser.cshtml" />
+    <Content Include="Views\SMME\UserPermissionList.cshtml" />
+    <Content Include="Views\SMME\UserPermission.cshtml" />
+    <Content Include="Views\Shared\_ProjectWiseSMMEModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="AssessmentUpload\" />
+    <Folder Include="Views\Home\Files\CompanyPic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BODDal\BODDal.csproj">
+      <Project>{b8f181c9-ee81-4549-a928-e5965cd7e23f}</Project>
+      <Name>PrescriptionDal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35145</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:35145/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

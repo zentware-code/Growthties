@@ -1,0 +1,364 @@
+F:\Picture\BusinessOn Demand\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_09_01_24\BOD\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_09_01_24\BOD\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_09_01_24\BOD\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_09_01_24\BOD\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_09_01_24\BOD\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_16_01_2024_evng\BOD_12-01-24_themeChanged\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_17_01_2024_evng\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_06_02_2024\BODNight17_01_2024FirstVersion\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD07_02_2024\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BOD_09_02_2024_evng\BOD07_02_2024\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP10_02_2024\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP_17_02_24_Marged\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD18_02_FirstApp\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BODAPP\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+D:\02_My Work\BODAPP_23_02_2024_night\BODAPP\BODDal\bin\Debug\BODDal.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODAPP\BODDal\bin\Debug\BODDal.pdb
+D:\02_My Work\BODAPP_23_02_2024_night\BODAPP\BODDal\bin\Debug\Owin.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODAPP\BODDal\obj\Debug\BODDal.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODAPP\BODDal\obj\Debug\BODDal.pdb
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\bin\Debug\BODDal.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\bin\Debug\BODDal.pdb
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\bin\Debug\Owin.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\obj\Debug\BODDal.dll
+D:\02_My Work\BODAPP_23_02_2024_night\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP_01_03_2024_night\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP_01_03_2024_night\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP_01_03_2024_night\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BODAPP_01_03_2024_night\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BODAPP_01_03_2024_night\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\BODAPP_04_03_2024\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD06_03_2024\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_14_03_24_evng\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+E:\BODAPP15_03_24\BODDal\bin\Debug\BODDal.dll
+E:\BODAPP15_03_24\BODDal\bin\Debug\BODDal.pdb
+E:\BODAPP15_03_24\BODDal\bin\Debug\Owin.dll
+E:\BODAPP15_03_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+E:\BODAPP15_03_24\BODDal\obj\Debug\BODDal.dll
+E:\BODAPP15_03_24\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP\BODDal\obj\Debug\BODDal.pdb
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\bin\Debug\BODDal.dll
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\bin\Debug\BODDal.pdb
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\bin\Debug\Owin.dll
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\obj\Debug\BODDal.dll
+E:\BODAPP_18_03_2024_afternoon\BODAPP\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BODAPP_evng\BODAPP\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_20_03_2024_mrng\BOD\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_20_03_2024_mrng\BOD\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_20_03_2024_mrng\BOD\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_20_03_2024_mrng\BOD\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_20_03_2024_mrng\BOD\BODDal\obj\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\bin\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\bin\Debug\BODDal.pdb
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\bin\Debug\Owin.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\obj\Debug\BODDal.dll
+F:\OfficeProject\BusinessOnDemand\BOD_Phase1\BOD22_03_2024\BOD\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\bin\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\bin\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\bin\Debug\Owin.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\obj\Debug\BODDal.dll
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\obj\Debug\BODDal.pdb
+F:\Picture\BusinessOn Demand\1StPhase\BODAPP_06_04_2024\BOD\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project\BOD21_08_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project\BOD21_08_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project\BOD21_08_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project\BOD21_08_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project\BOD21_08_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project\BOD21_08_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project\BOD_03_10_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project\BOD_03_10_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project\BOD_03_10_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project\BOD_03_10_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project\BOD_03_10_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project\BOD_03_10_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project\BOD_13_10_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project\BOD_13_10_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project\BOD_13_10_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project\Current Project\BOD_13_10_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project\Current Project\BOD_24_10_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project\Current Project\BOD_24_10_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project\Current Project\BOD_24_10_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project\Current Project\BOD_24_10_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project\Current Project\BOD_24_10_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_31_10_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_11_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_14_11_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_25_11_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_02_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_04_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_06_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\BOD_07_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_09_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_09_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_09_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_09_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_09_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_10_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\BOD_14_12_24\BODDal\obj\Debug\BODDal.pdb
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\bin\Debug\BODDal.dll
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\bin\Debug\BODDal.pdb
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\bin\Debug\Owin.dll
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\obj\Debug\BODDal.dll
+C:\Users\tantu\Downloads\BOD_17_12_24\BOD_17_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\New folder\BOD_17_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_17_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_23_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_26_12_24\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_30_12_24_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_3_01_2025_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\PROJECTS\Current Project\Menu-Merge\Last Update of BOD\BOD_9_01_2025_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_13_01_2025_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_30_01_2025_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Budget\BOD_02_02_2025_themeMarge\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Budget_14_02_2025\BOD_Budget_14_02_2025\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Projects\BOD_Budget_24_02_2025\BODDal\obj\Debug\BODDal.pdb
+J:\gitCloneBOD\BODDal\bin\Debug\BODDal.dll
+J:\gitCloneBOD\BODDal\bin\Debug\BODDal.pdb
+J:\gitCloneBOD\BODDal\bin\Debug\Owin.dll
+J:\gitCloneBOD\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+J:\gitCloneBOD\BODDal\obj\Debug\BODDal.dll
+J:\gitCloneBOD\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_GitManage\BOD\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_11_07_2025\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_12_07_2025_updated\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_12_07_2025_updated\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_12_07_2025_updated\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_12_07_2025_updated\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Zip\BOD_July_Zip\BOD_12_07_2025_updated\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Latest\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\obj\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\1New\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\bin\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\bin\Debug\BODDal.pdb
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\bin\Debug\Owin.dll
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\obj\Debug\BODDal.csprojResolveAssemblyReference.cache
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\obj\Debug\BODDal.dll
+F:\Dreamix\Project_2025\BOD_Latest\Growthties\BODDal\obj\Debug\BODDal.pdb

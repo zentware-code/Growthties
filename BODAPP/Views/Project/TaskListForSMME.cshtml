@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "TaskList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Projects /</span> View All Tasks
+    </h4>
+    <div class="card">
+        <div class="card-datatable table-responsive">
+            <input type="hidden" id="SmmeId" name="SmmeId" value="@ViewBag.SMMEId" />
+            <table class="datatables-products table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th class="text-nowrap">Project</th>
+                        <th class="text-nowrap">Task Name</th>
+                        <th class="text-nowrap">Task Date</th>
+                        <th class="text-nowrap">Status</th>
+                        <th class="text-lg-center">Actions</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="setUPFormPopUp" aria-labelledby="offcanvassetUPLabel">
+                <!-- Offcanvas Header -->
+                <div class="offcanvas-header py-4">
+                    <h5 id="setUPFormPopUpLabel" class="offcanvas-title">Share Task with User/Team</h5>
+                    <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <hr />
+                <div class="offcanvas-header py-4">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Select Type Team/user</label>
+                    </div>
+                    @*<div class="form-check form-switch">Select Type<input class="float-end form-check-input" type="checkbox" id="chkIdType" ></div>*@
+                </div>
+                <!-- Offcanvas Body -->
+                <div class="offcanvas-body border-top">
+                    <ul class="p-0 m-0" id="ulUserList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+
+ 
+    var globalData = {
+        TransactionType: 'SelectListForSMME',
+        Param: 'TD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'TaskDetails_USP'
+    };
+    var search = 'Search Task';
+ 
+    var columnData = [{ data: "PD_ProjectName" },
+                   { data: "TD_TaskName" },
+                   { data: "TD_Date" },
+                   { data: "TD_Status" }]
+
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForSMME.js"></script>
+<script src="~/Scripts/custom/TaskListSMME.js"></script>

@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "CreateActivity";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+    @Html.Partial("~/Views/Shared/_ProjectWiseSMMEModal.cshtml");
+}
+
+<style>
+    .ellipsisWrap-new-ln {
+        display: -webkit-box;
+        max-width: 400px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+/*For toggle btn*/
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 16px;
+        margin-right: 2px;
+        min-height: 15px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #7367f0;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(13px);
+        -ms-transform: translateX(13px);
+        transform: translateX(13px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+
+<!-- Vendors CSS -->
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+
+    <h4 class="py-3 mb-0">
+        <span class="text-muted fw-light">Project /</span><span class="fw-medium"> Activity</span>
+    </h4>
+
+    <div class="app-ecommerce">
+        <form id="formCreateTask" method="post" onsubmit="return false" class="row mt-2">
+            <!-- Add Product -->
+            
+
+            <div class="row">
+                <div class="col-12 col-lg-4" id="snglProjectDiv">
+
+                </div>
+
+                <!-- First column-->
+                <div class="col-12 col-lg-8">
+
+                    <!-- Inventory -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0"> Activity</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3 projectCompleteDiv">
+                                <label class="switch">
+                                    <input type="checkbox" id="completed-toggle" onclick="ActivityCompleted()">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label for="completed-toggle">Mark as Completed</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+
+                                    <label for="txtProjectName" class="form-label">Activity Name</label>
+                                    <input type="text" class="form-control" id="txtActivityName" placeholder="Type Activity here" name="txtActivityName" />
+                                    <input type="hidden" id="hdnCAId" />
+                                 
+                                    <input type="hidden" id="hdnProjectId" />
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="txtDurationDateFrom" class="form-label">Duration From  Date</label>
+                                    <input type="text" class="form-control bs-datepicker-autoclose dtcls" id="txtDurationDateFrom" name="txtDurationDateFrom" placeholder="dd-mm-yyyy" autocomplete="off" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="txtDurationDateTo" class="form-label">Duration To Date</label>
+                                    <input type="text" class="form-control bs-datepicker-autoclose dtcls" id="txtDurationDateTo" name="txtDurationDateTo" placeholder="dd-mm-yyyy" autocomplete="off" />
+                                    <div id="error-message" style="color: red;"></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtDescription" class="form-label">Description</label>
+                                    <textarea type="text" class="form-control" id="txtDescription" placeholder="Type Description here" name="txtDescription"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-end align-items-start align-items-md-center mb-3" style="padding-right: 36px;">
+
+
+                        <div class="d-flex align-content-center flex-wrap gap-3 justify-content-end">
+                            <div class="d-flex gap-3">
+                                <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect">Cancel</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btnCreateTask">Save</button>
+                        </div>
+
+                    </div>
+                    </div>
+
+
+                </div>
+
+                
+
+            </div>
+        </form>
+    </div>
+</div>
+<!-- / Content -->
+
+<script>
+
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        @*GetData: '@Url.Action("GetGlobalList", "ScriptJson")',*@
+        SaveRecord: '@Url.Action("InsertCreateActivity", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        param1: 'CA_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'CreateActivity_USP'
+    };
+</script>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/CreateActivityForStakeholder.js"></script>
+<script src="~/Scripts/utility/ProjectWiseSMMEModal.js"></script>
+
+

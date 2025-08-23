@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "QuestionBuilding";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    .swal2-deny{
+        display:none!important;
+    }
+</style>
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link href="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Assessment /</span> Create Assessment
+    </h4>
+
+    <div class="row">
+        <div class="col-12 col-lg-8">
+
+            <div class="card mb-4">
+                <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+                <div class="card-header justify-content-between align-items-center">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label class="form-label" for="multiStepsMobile">Assessment Name</label>
+                            <select class="select2 form-select ddlCategory" id="ddlCategory" name="ddlCategory"></select>
+                        </div>
+                        <div class="col-md-5">
+                            <label class="form-label" for="multiStepsMobile">Segment</label>
+                            <select class="select2 form-select ddlSegment" id="ddlSegment" name="ddlSegment"></select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div style="height:23px;"></div>
+                            <button type="button" class="btn btn-success btn-shadow-success" id="btnAdd" onclick="appendSegment()">
+                                <span class="ti-xs ti ti-plus me-1"></span>Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-datatable table-responsive">
+                    <table class="datatables-products table" id="tblQuestionBuild">
+                        <thead class="border-top">
+                            <tr>
+
+                                <th></th>
+                                <th>Question</th>
+                                <th>Option Type</th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+
+            <div class="row mb-4">
+                <div class="col-12">
+
+                    <div class="card">
+
+
+                        <h5 class="card-header" style="padding-left:12px;padding-right:12px;">
+                            <div style="height:23px;"></div>
+                            <button type="button" class="dt-button add-new btn btn-primary waves-effect waves-light btn-shadow-primary btnsubmitfinal" id="btnSubmit">
+                                Final Submit
+                            </button>
+
+                            <button type="button" id="btnPreview" class="btn btn-label-primary waves-effect float-end" data-bs-toggle="modal" data-bs-target="#createApp">Final Preview </button>
+                        </h5>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-12 mb-md-0 mb-4">
+                                    <div class="accordion mt-3" id="accordionExample">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- Create App Modal -->
+<div class="modal fade" id="createApp" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-simple modal-upgrade-plan">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body p-2">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center">
+                    <h3 class="mb-2" id="hPrev"> </h3>
+                   
+                </div>
+                @*Code Goes Here*@
+                <div class="accordion mt-5" id="accordionPreview">
+
+                    
+                </div>
+                </div>
+
+            <div class="modal-footer p-2">
+                <div class="my-3 float-end">
+                    <button class="btn btn-label-primary waves-effect btnsubmitfinal" id="btnPrvSubmit">Final Submit</button>
+                </div>
+            </div>
+            </div>
+            
+    </div>
+</div>
+<!--/ Create App Modal -->
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+    //var title = 'Select Category';
+    //var dropId = $(".ddlCategory");
+
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+@*<script src="~/Scripts/utility/dropdowninit.js"></script>*@
+
+@*<script src="~/Content/assets/js/app-ecommerce-product-list.js"></script>*@
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+<script src="~/Scripts/custom/QuestionBuilding.js"></script>
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/sortablejs/sortable.js"></script>
+
+@*<script src="~/Content/assets/js/extended-ui-drag-and-drop.js"></script>*@
+
+
+<!-- Page JS -->
+
+

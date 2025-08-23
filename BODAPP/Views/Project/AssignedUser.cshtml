@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "AssignedUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Project /</span> <span class="fw-medium"> Manage User Access</span>
+    </h4>
+
+    <div class="row gy-6">
+        <input type="hidden" id="EnrId" value="@ViewBag.EntrId"/>
+        <input type="hidden" id="hdnEnterpriseid"/>
+        <input type="hidden" id="hdnSmmeId" />
+        <input type="hidden" id="hdnUserType" value="@ViewBag.UserType" />
+        
+        
+        <!-- Breadcrumb -->
+        @*<div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Basic Breadcrumb -->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">All Projects</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Project</a>
+                            </li>
+                            <li class="breadcrumb-item active">Manage User Access</li>
+                        </ol>
+                    </nav>
+                    <!-- Basic Breadcrumb -->
+                </div>
+            </div>
+        </div>*@
+        <!--/ Breadcrumb -->
+        <div class="col-xl-12 mt-5">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                    <li class="nav-item admUser">
+                        <button type="button" class="nav-link active" id="adminUserCall" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-adminuser" aria-controls="navs-pills-justified-adminuser" aria-selected="true"><i class="tf-icons ti ti-user ti-xs me-1"></i> Admin Users </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" id="enrUserCall" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-enruser" aria-controls="navs-pills-justified-enruser" aria-selected="false"><i class="tf-icons ti ti-user ti-xs me-1"></i> Enterprise Users</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" id="smmeUserCall" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-smmeuser" aria-controls="navs-pills-justified-smmeuser" aria-selected="false"><i class="tf-icons ti ti-user ti-xs me-1"></i> MSME Users</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                  
+                    <div class="tab-pane fade show active admUser" id="navs-pills-justified-adminuser" role="tabpanel">
+                        <div class="assign-user-list col-6 card p-3">
+                            <!-- This will be where the user data is inserted dynamically -->
+                            <div id="userListContainer"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="navs-pills-justified-enruser" role="tabpanel" >
+                        <div class="assign-user-list col-6 card p-3">
+                            <!-- This will be where the user data is inserted dynamically -->
+                            <div id="enruserListContainer"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="navs-pills-justified-smmeuser" role="tabpanel">
+                        <div class="assign-user-list col-6 card p-3">
+                            <!-- This will be where the user data is inserted dynamically -->
+                            <div id="smmeuserListContainer"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-1 mb-0 ms-2 mt-4">
+                        <button id="submitBtn" class="btn btn-primary waves-effect waves-light" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+<script src="~/Scripts/custom/UserManagePermission.js"></script>
+

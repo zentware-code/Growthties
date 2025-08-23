@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "TeamBuildingList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!-- Core CSS -->
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+<h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Enterprise /</span> All Team 
+    </h4>
+
+    <div class="app-ecommerce-category">
+        <!-- Category List Table -->
+        <div class="card">
+            <div class="card-datatable table-responsive">
+                <input type="hidden" id="hdnTeamEnterpriseId" value="@ViewBag.EntrId"/>
+                <table class="datatables-category-list table border-top" id="datatable-example">
+                    <thead>
+                        <tr>
+
+                            <th class="text-nowrap">Team Name</th>
+                            <th class="text-nowrap">Description</th>
+                            <th class="text-lg-center">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+     
+    </div>
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+
+
+    var globalData = {
+        TransactionType: 'SelectEnterpiseTeamList',
+        Param: 'BT_ENR_Id',
+        paramValue: $('#hdnTeamEnterpriseId').val(),
+        StoreProcedure: 'BuildTeam_USP'
+    };
+    var search = 'Search Team';
+    //var popup = "#setUPFormPopUp";
+    var columnData = [{ data: "BT_TeamName" },
+                   { data: "BT_Description" }]
+</script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+
+
+
+<!-- Page JS -->
+@*<script src="~/Content/assets/js/app-ecommerce-category-list.js"></script>*@
+<script src="~/Scripts/custom/TeamBuildingListForEnterprise.js"></script>
+
+
+

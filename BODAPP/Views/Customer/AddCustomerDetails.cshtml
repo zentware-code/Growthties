@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "AddCustomerDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <input type="hidden" id="SMMEId" value="@ViewBag.SMMEId" />
+    <input type="hidden" id="EntrId" value="@ViewBag.EntrId" />
+    <input type="hidden" id="AdminId" value="@ViewBag.Id" />
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Admin /</span> Add Customer
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <form id="formCustDetail"  onsubmit="return false"  class="row mt-2">
+
+                    <div class="col-md-3 mb-3">
+                       
+                            <label for="txtName" class="form-label">First Name</label>
+                            <input type="text" class="form-control alphabets" id="txtName" placeholder="Type Firstname here" name="txtName" />
+                            <input type="hidden" id="Id" />
+                        
+                    </div>
+                <div class="col-md-3 mb-3">
+                    <label for="txtContact" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="txtContact" name="txtContact" placeholder="Type Contact here" oninput="formatPhoneNumber(this)" />
+                    @*<input type="text" class="form-control" id="txtContact" placeholder="Type Contact here" name="txtContact" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />*@
+                </div>
+                <div class="col-md-3 mb-3">
+
+                    <label for="txtContact" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="txtEmail" placeholder="Type Email here" name="txtEmail" />
+
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="ddlType" class="form-label">Type</label>
+                    <select id="ddlType" name="ddlType" class="select2 form-select ddlType" data-allow-clear="true"></select>
+
+                </div>
+              
+                    <div class="col-md-6 mb-3">
+                      
+                            <label for="txtAddressLine1" class="form-label">Address Line 1</label>
+                            <textarea type="text" class="form-control" id="txtAddressLine1" placeholder="Type Address Line 1 here" name="txtAddressLine1"></textarea>
+
+                    </div>
+                <!--
+                <div class="col-md-6 mb-3">
+                    <label for="txtAddressLine2" class="form-label">Address Line 2</label>
+                    <textarea type="text" class="form-control" id="txtAddressLine2" placeholder="Type Address Line 2 here" name="txtAddressLine2"></textarea>
+                </div>
+                    -->
+                <div class="col-md-3 mb-3">
+                    <label for="txtCity" class="form-label">Town/City</label>
+                    <input type="text" class="form-control" id="txtCity" placeholder="Type City here" name="txtCity" />
+                </div>
+                 <!--
+                <div class="col-md-3 mb-3">
+                    <label for="txtLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="txtLocation" placeholder="Type Location here" name="txtLocation" />
+                </div>
+                     -->
+                <div class="col-md-3 mb-3">
+
+                    <label for="txtSuberb" class="form-label">Suburb</label>
+                    <input type="text" class="form-control" id="txtSuberb" placeholder="Type Suberb here" name="txtSuberb" />
+
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="ddlProvince" class="form-label">Province</label>
+                    <select id="ddlProvince" name="ddlProvince" class="select2 form-select ddlProvince" data-allow-clear="true"></select>
+                </div>
+                
+                <div class="col-md-3 mb-3">
+                    <label for="txtSuberb" class="form-label">Postal Code</label>
+                    <input type="text" class="form-control" id="txtPostalCode" placeholder="Type Postal Code here" name="txtPostalCode" />
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="ddlSector" class="form-label">Sector</label>
+                    <select id="ddlSector" name="ddlSector" class="select2 form-select ddlSector" data-allow-clear="true"></select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="txtRegistrationNo" class="form-label">Registration No</label>
+                    <input type="text" id="txtRegistrationNo" name="txtRegistrationNo" class="form-control"
+                           placeholder="Type Registration here" maxlength="14" required />
+                    <div id="error" class="text-danger mt-2" style="display:none;"></div>
+                    @*<input type="text" class="form-control" id="txtRegistrationNo" placeholder="Type Registration here" name="txtRegistrationNo" />*@
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="txtVat" class="form-label">Vat</label>
+                    <input type="text" class="form-control" id="txtVat" placeholder="Type Vat here" name="txtVat" />
+                </div>
+               
+                    <div class="col-md-12 mt-2">
+                        <div class="demo-inline-spacing">
+
+                            <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                                <span class="ti-xs ti ti-plus me-1"></span>Submit
+                            </button>
+                            <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect">
+                                <span class="fa-solid fa-xmark me-1"></span>Cancel
+                            </a>
+                        </div>
+                    </div>
+               
+            </form>
+        </div>
+</div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecordData: '@Url.Action("InsertCustomerDetails", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetCustomerDetailsAdmin", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'SelectEdit',
+        Param: 'CD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'CustomerDetails_USP'
+    };
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/AddCustomerDetails.js"></script>

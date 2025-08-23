@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "EnterpriseWiseSMMEList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="mb-4 ">
+        <span class="text-muted fw-light">MSME /</span> Enterprises Assigned
+    </h4>
+     
+    <div class="row g-4" id="dvEnrList">
+      
+    </div>
+    
+</div>
+<script>
+
+        var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+</script>
+<script src="~/Scripts/custom/EnterPriseWiseSMMEList.js"></script>

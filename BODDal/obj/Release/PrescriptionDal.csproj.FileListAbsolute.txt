@@ -1,0 +1,12 @@
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\bin\Release\PurchaseManagementDal.dll
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\bin\Release\PurchaseManagementDal.pdb
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\bin\Release\Owin.dll
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\obj\Release\PurchaseManagementDal.dll
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\obj\Release\PurchaseManagementDal.pdb
+F:\OfficeProject\PrescriptionApp\Prescription\PrescriptionDal\obj\Release\PrescriptionDal.csprojResolveAssemblyReference.cache
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\bin\Release\Owin.dll
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\obj\Release\PrescriptionDal.csprojResolveAssemblyReference.cache
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\bin\Release\PrescriptionDal.dll
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\bin\Release\PrescriptionDal.pdb
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\obj\Release\PrescriptionDal.dll
+F:\Picture\NewPres\Latest\Prescription_18_12_2023\Prescription_15_12_23\PrescriptionDal\obj\Release\PrescriptionDal.pdb

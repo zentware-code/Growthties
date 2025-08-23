@@ -1,0 +1,205 @@
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\PurchaseMangement\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\PurchaseMangement\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\PurchaseMangement\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\PurchaseMangement\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\PurchaseMangement\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_06122017 - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_06122017 - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_06122017 - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_06122017 - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_06122017 - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\RAJKUMAR\Desktop\Purchase\PurchaseMangement_08122017_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_01012018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_01012018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_01012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_01012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_01012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_07012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07012018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07012018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_07012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07012018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_14012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_14012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_14012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_14012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_14012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_19012018_latest\PurchaseMangement_19012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_19012018_latest\PurchaseMangement_19012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_19012018_latest\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_19012018_latest\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_19012018_latest\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_19012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_19012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_19012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_24012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_24012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_24012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_24012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\PurchaseMangement_03012018_latest\PurchaseMangement_24012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_30012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_30012018_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_30012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_30012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_30012018_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_04022018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_04022018_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_04022018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_04022018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_04022018_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_04022018_08_13_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_04022018_08_13_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_04022018_08_13_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_04022018_08_13_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_04022018_08_13_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_05022018_10_13_AM_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_05022018_10_13_AM_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_05022018_10_13_AM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_05022018_10_13_AM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_05022018_10_13_AM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07022018_10_54_PM_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07022018_10_54_PM_latest - Copy\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_07022018_10_54_PM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\project\Purchase\PurchaseMangement_07022018_10_54_PM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_07022018_10_54_PM_latest - Copy\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\Purchase\PurchaseMangement_17022018_02_44_PM_latest\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\Purchase\PurchaseMangement_17022018_02_44_PM_latest\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\Purchase\PurchaseMangement_17022018_02_44_PM_latest\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\Purchase\PurchaseMangement_17022018_02_44_PM_latest\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\Purchase\PurchaseMangement_17022018_02_44_PM_latest\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseAndStockManagement\PurchaseMangement_17022018_02_44_PM_latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+G:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+G:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+G:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+G:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+G:\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\project\Purchase\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\project\Purchase\PurchaseMangement_02_03_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\Magnox 10\Downloads\PurchaseMangement_24_04_2018latest\PurchaseMangement_24_04_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\Magnox 10\Downloads\PurchaseMangement_24_04_2018latest\PurchaseMangement_24_04_2018latest\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\Magnox 10\Downloads\PurchaseMangement_24_04_2018latest\PurchaseMangement_24_04_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\Magnox 10\Downloads\PurchaseMangement_24_04_2018latest\PurchaseMangement_24_04_2018latest\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\Purchase\PurchaseRepo\PurchaseManagement\Code\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\purchase16062018\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\purchase16062018\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\purchase16062018\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Pendrive\purchase16062018\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Pendrive\purchase16062018\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Pendrive\purchase16062018\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\Pendrive\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Pendrive\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Pendrive\purchase16062018\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\bin\Debug\Owin.dll
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\PurchaseMangement_08122017_latest\purchase21_06_2019\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\Picture\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csproj.CoreCompileInputs.cache
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Retina\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+D:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojAssemblyReference.cache
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csproj.CoreCompileInputs.cache
+C:\Users\Personal\Desktop\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csproj.CopyComplete
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\samar\zmgs\samar sft & pro\Project\Today_03_03_2021\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\bin\Debug\Owin.dll
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\GST_Pos Software\GSTReady\GSTReady\GSTReady\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+E:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+E:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\Owin.dll
+E:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+E:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+E:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+D:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+D:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\Owin.dll
+D:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+D:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+D:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+G:\E\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+G:\E\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+G:\E\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\Owin.dll
+G:\E\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+G:\E\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+G:\E\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\Picture\DreamixERP\PurchaseManagementDal\bin\Debug\Owin.dll
+F:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\Picture\DreamixERP\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.dll
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\bin\Debug\PurchaseManagementDal.pdb
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\bin\Debug\Owin.dll
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.csprojResolveAssemblyReference.cache
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.dll
+F:\Picture\DreamixERP\Dreamix\PurchaseManagementDal\obj\Debug\PurchaseManagementDal.pdb

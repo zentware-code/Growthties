@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "SMMESettings_company";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var role = "";
+
+    if (Enterpriseuser != null)
+    {
+        role = Enterpriseuser.UM_Role;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        role = EnterpriseEmpuser.UM_Role;
+    }
+    else if (SmmeUser != null)
+    {
+        role = SmmeUser.UM_Role;
+    }
+    else if (AdminUser != null)
+    {
+        role = AdminUser.UM_Role;
+    }
+    else
+    {
+        role = user.UM_Role;
+    }
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <input type="hidden" id="hdnEnterId" value="@ViewBag.EntrId" />
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Settings /</span> MSME
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-md-row mb-4">
+                <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="ti-xs ti ti-building"></i> MSME Details</a></li>
+                @*<li class="nav-item"><a class="nav-link" href="SMMESettings_contact?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-users me-1"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_legalentity?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-description me-1"></i> Legal Entity</a></li>
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_financial?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-dollar"></i> Financial</a></li>*@
+
+                @if (ViewBag.Id <= 0 && ViewBag.M == "A")
+                {
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" style="cursor: default;"><i class="ti-xs ti ti-users me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0)" style="cursor: default;"><i class="ti-xs ti ti-file-description me-1"></i> Legal Entity</a></li>
+                    @*<li class="nav-item"><a class="nav-link" href="javascript:void(0)" style="cursor: default;"><i class="ti-xs ti ti-file-dollar"></i> Financial</a></li>*@
+                }
+                else
+                {
+                    <li class="nav-item"><a class="nav-link" href="SMMESettings_contact?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-users me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="SMMESettings_legalentity?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-description me-1"></i> Legal Entity</a></li>
+                    @*<li class="nav-item"><a class="nav-link" href="SMMESettings_financial?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-dollar"></i> Financial</a></li>*@
+                }
+            </ul>
+            <div class="card mb-4">
+                <h5 class="card-header">MSME Details</h5>
+                <input type="hidden" name="" id="hdnuploadComLogo">
+
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div id="dvImageWorkSpaceComLogo">
+                            <img alt="user-avatar" class="d-block w-px-150 h-px-50 rounded" id="prfpicIMGWorkSpaceComLogo" />
+                        </div>
+                        <div id="dvAvatarComLogo"></div>
+                        <input type="hidden" name="..." id="hdnWorkSpceUploadComLogo">
+                        <div class="button-wrapper">
+                            <label for="uploadWorkSpceComLogo" class="btn btn-primary me-2 mb-3" tabindex="0">
+                                <span class="d-none d-sm-block">Upload Company Logo</span>
+                                <i class="ti ti-upload d-block d-sm-none"></i>
+                                <input type="file" id="uploadWorkSpceComLogo" class="account-file-input" data-max-size="300000" hidden accept="image/png, image/jpeg" onchange="ShowPreviewWorkSpaceComLogo(this)" />
+                            </label>
+                            <button id="btnResetWorkSpceUploadComLogo" type="reset" class="btn btn-label-secondary account-image-reset mb-3">
+                                <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Reset</span>
+                            </button>
+
+                            <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 300K</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-0">
+                <div class="card-body">
+                    <form id="formAccountSettings" method="GET" onsubmit="return false">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnMode" value="company" />
+                                <label class="form-label" for="multiStepsFirstName">MSME Name<span class="text-danger">*</span></label>
+                                <input type="text" id="txtCompanyName" name="txtCompanyName" class="form-control" placeholder="MSME Name" />
+                                <input type="hidden" id="hdnId" name="hdnId" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Registration Number (CIPC)<span class="text-danger">*</span></label>
+                                <input type="text" id="txtRegNum" name="txtRegNum" class="form-control"
+                                       placeholder="Registration Number" maxlength="14" required />
+                                <div id="error" class="text-danger mt-2" style="display:none;"></div>
+                                @*<input type="text" id="txtRegNum" name="txtRegNum" class="form-control" placeholder="Enter Registration Number" />*@
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="ddlSector">Industry Sector<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlSector" data-allow-clear="true" id="ddlSector" name="ddlSector"></select>
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Business Type<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlBusinessType" data-allow-clear="true" id="ddlBusinessType" name="ddlBusinessType"></select>
+                            </div>
+                            
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Address<span class="text-danger">*</span></label>
+                                <textarea id="txtBusinessAddress" name="txtBusinessAddress" class="form-control" placeholder="Enter Business Address"></textarea>
+                            </div>
+                            <input type="hidden" id="txtAddress2"/>
+                            @*<div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Address 2</label>
+                                <textarea id="txtAddress2" name="txtAddress2" class="form-control" placeholder="Enter Business Address2"></textarea>
+                            </div>*@
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Suburb<span class="text-danger">*</span></label>
+                                <input type="text" id="txtSuburb" name="txtSuburb" class="form-control" placeholder="Enter Suburb" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">City/Town<span class="text-danger">*</span></label>
+                                <input type="text" id="txtCity" name="txtCity" class="form-control" placeholder="City/Town" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="ddlCountry">Country<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlCountry" data-allow-clear="true" id="ddlCountry" name="ddlCountry"></select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Province/State<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlProvince" data-allow-clear="true" id="ddlProvince" name="ddlProvince"></select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Postal Code<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtPostalCode" name="txtPostalCode" placeholder="Postal Code" maxlength="4" oninput="formatPostalCode(this)" />
+                                @*<input type="text" id="txtPostalCode" name="txtPostalCode" class="form-control" placeholder="Enter Postal Code" />*@
+                            </div>                          
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="ddlBEELevel">BEE Level<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlBEELevel" data-allow-clear="true" id="ddlBEELevel" name="ddlBEELevel"></select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Type<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlProtfolioGrowth" data-allow-clear="true" id="ddlProtfolioGrowth" name="ddlProtfolioGrowth"></select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Black Women(%)<span class="text-danger">*</span></label>
+                                <input type="number" id="txtBlckWomen" name="txtBlckWomen" class="form-control" onkeypress="return isNumberKey(event)" placeholder="Enter Black Women(%)" maxlength="100" min="0"/>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            @*<button type="submit" class="btn btn-primary me-2" id="btnUpdate">Save changes</button>*@
+                            <button type="submit" class="btn btn-info me-2" id="btnUpdateNext">Save & Next</button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+@*<script src="~/Content/assets/js/pages-account-settings-account.js"></script>*@
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+@*<script src="~/Scripts/custom/SMMESettings.js"></script>*@
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/SMMESettingsForStakeholder.js"></script>

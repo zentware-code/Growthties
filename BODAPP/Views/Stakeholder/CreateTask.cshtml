@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "CreateTask";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+    @Html.Partial("~/Views/Shared/_ProjectWiseSMMEModal.cshtml");
+}
+
+<style>
+    .ellipsisWrap-new-ln {
+        display: -webkit-box;
+        max-width: 400px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<!-- Vendors CSS -->
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y" id="pageLoad">
+
+
+
+    <h4 class="py-3 mb-0">
+        <span class="text-muted fw-light">Project /</span><span class="fw-medium"> Task</span>
+    </h4>
+
+    <div class="app-ecommerce">
+        <form id="formCreateTask" method="post" onsubmit="return false" class="row mt-2">
+            <!-- Add Product -->
+            
+
+            <div class="row">
+                <div class="col-12 col-lg-4" id="snglProjectDiv">
+
+                </div>
+
+                <!-- First column-->
+                <div class="col-12 col-lg-8">
+
+                    <!-- Inventory -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Task</h5>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtProjectName" class="form-label">Task Name</label>
+                                    <input type="text" class="form-control" id="txtTaskName" placeholder="Type Task here" name="txtTaskName" />
+                                    <input type="hidden" id="hdnTaskId" />
+                                    <input type="hidden" id="hdnProjectId" />
+                                    <input type="hidden" id="hdnActivityId" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ddlActivity" class="form-label">Select Activity</label>
+                                    <select id="ddlActivity" name="ddlActivity" class="select2 form-select ddlActivity" data-allow-clear="true"></select>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtDurationDateFrom" class="form-label">Duration From  Date</label>
+                                    <input type="text" class="form-control bs-datepicker-autoclose" id="txtDurationDateFrom" name="txtDurationDateFrom" placeholder="Start Date" autocomplete="off" />
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="txtDurationDateTo" class="form-label">Duration To Date</label>
+                                    <input type="text" class="form-control bs-datepicker-autoclose" id="txtDurationDateTo" name="txtDurationDateTo" placeholder="End Date" autocomplete="off" />
+                                    <div id="error-message" style="color: red;"></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="txtDescription" class="form-label">Description</label>
+                                    <textarea type="text" class="form-control" id="txtDescription" placeholder="Type Description here" name="txtDescription"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row justify-content-end align-items-start align-items-md-center mb-3" style="padding-right: 36px;">
+                                <div class="d-flex align-content-center flex-wrap gap-3 justify-content-end">
+                                    <div class="d-flex gap-3">
+                                        <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect">Cancel</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="btnCreateTask">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- / Content -->
+
+<script>
+
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        @*GetData: '@Url.Action("GetGlobalList", "ScriptJson")',*@
+        SaveRecord: '@Url.Action("InsertCreateTask", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'TD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'TaskDetails_USP'
+    };
+</script>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/CreateTaskForStakeholder.js"></script>
+<script src="~/Scripts/utility/ProjectWiseSMMEModal.js"></script>
+
+

@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "ProjectDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 16px;
+        margin-right: 2px;
+        min-height: 15px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #7367f0;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(13px);
+        -ms-transform: translateX(13px);
+        transform: translateX(13px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Enterprise /</span> New Project
+    </h4>
+    <div class="card">
+        <div class="card-body">
+
+            @*<div class="mb-3 projectCompleteDiv">
+                <label class="switch">
+                    <input type="checkbox" id="completed-toggle" onclick="ProjectCompleted()">
+                    <span class="slider round"></span>
+                </label>
+                <label for="completed-toggle">Mark as Completed</label>
+            </div>*@
+
+
+            <form id="formProject" method="post"  onsubmit="return false"  class="row mt-2">
+
+                    <div class="col-md-12 mb-3">
+                        <label for="txtProjectName" class="form-label">Project Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="txtProjectName" placeholder="Project Name" name="txtProjectName"  required/>
+                        <input type="hidden" id="hdnId" name="hdnId" />
+                        <input type="hidden" id="Id" name="Id" />
+                        <input type="hidden" id="EntrId" name="EntrId" value="@ViewBag.EntrId"/>
+                        <input type="hidden" id="EnrEmailId" name="EnrEmailId" />
+                        <input type="hidden" id="UserFirstName" name="UserFirstName" />
+                        <input type="hidden" id="UserLastName" name="UserLastName" />
+                        <input type="hidden" id="CompanyName" name="CompanyName" /> 
+                        <input type="hidden" id="hdnUesrRole" name="hdnUesrRole"  value="@ViewBag.UesrRole"/> 
+
+                        <input type="hidden" value="@ViewBag.UserType" id="hdnUserType" />
+
+                        
+                    </div>
+
+                <div class="mb-3 col-md-3">
+                    <label class="form-label" for="ddlSector">Industry Sector<span class="text-danger">*</span></label>
+                    <select class="select2 form-select ddlSector"  data-allow-clear="true" id="ddlSector" name="ddlSector"></select>
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label class="form-label" for="multiStepsMobile">Business Type<span class="text-danger">*</span></label>
+                    <select class="select2 form-select ddlBusinessType" data-allow-clear="true" id="ddlBusinessType" name="ddlBusinessType"></select>
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label class="form-label" for="multiStepsMobile">Assign Enterprise<span class="text-danger">*</span></label>
+                    <select class="select2 form-select ddlEnterprise" data-allow-clear="true" id="ddlEnterprise" name="ddlEnterprise"></select>
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label class="form-label" for="ddlBranch">Branch</label>
+                    <select class="select2 form-select ddlBranch" data-allow-clear="true" id="ddlBranch" name="ddlBranch"  multiple="multiple"></select>
+                    <input type="hidden" id="hdnBranchId">
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="txtDurationDateFrom" class="form-label">Project Start Date<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control bs-datepicker-autoclose date-from dtcls" id="txtDurationDateFrom" name="txtDurationDateFrom" placeholder="dd/mm/yyyy" autocomplete="off" />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="txtDurationDateTo" class="form-label">Project End Date<span class="text-danger">*</span>`</label>
+                    <input type="text" class="form-control bs-datepicker-autoclose date-to dtcls" id="txtDurationDateTo" name="txtDurationDateTo" placeholder="dd/mm/yyyy" autocomplete="off" />
+                    <div id="error-message" style="color: red;"></div>
+                </div>
+
+                <div class="col-md-3 mb-3" style="display:none;">
+                    <label for="txtBudget" class="form-label">Budget<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text">R</span>
+                        <input type="text" class="form-control" id="txtBudgetFormatted" placeholder="R 000.00" oninput="formatCurrency(this)"/>
+                        <input type="hidden" class="total-budget" id="txtBudget" name="txtBudget" />
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="ddlBudgetType" class="form-label">Budget Period<span class="text-danger">*</span></label>
+                    <select id="ddlBudgetType" name="ddlBudgetType" class="select2 form-select ddlBudgetType" data-allow-clear="true"></select>
+                </div>
+                <br />
+              
+                    <div class="col-md-12 mb-3">
+                        <label for="txtDescription" class="form-label">Project Description</label>
+                        <textarea type="text" class="form-control" id="txtDescription" placeholder="Project Description" name="txtDescription"></textarea>
+                    </div>
+                   
+              
+                <br />
+               
+                    <div class="col-md-12 mt-2">
+                        <div class="demo-inline-spacing">
+
+                            <button type="submit" class="btn btn-primary btn-shadow-primary" id="btnSave" >
+                                <span class="ti-xs ti ti-plus me-1"></span>Submit
+                            </button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect">
+                                <span class="fa-solid fa-xmark me-1"></span>Cancel
+                            </a>
+                        </div>
+                    </div>
+               
+
+            </form>
+        </div>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+
+   
+    var URLList = {
+
+        SaveRecord: '@Url.Action("InsertProjectDetails", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'PD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'ProjectDetails_USP'
+    };
+
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+@*<script src="~/Content/assets/js/forms-selects.js"></script>*@
+@*<script src="~/Content/assets/js/forms-tagify.js"></script>*@
+@*<script src="~/Content/assets/js/forms-typeahead.js"></script>*@
+<script src="~/Scripts/custom/ProjectDetails.js"></script>

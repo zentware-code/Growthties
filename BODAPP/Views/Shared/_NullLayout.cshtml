@@ -1,0 +1,295 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr" data-theme="theme-default" data-assets-path="../Content/assets/" data-template="vertical-menu-template">
+<head>
+
+    <title>Business on Demand</title>
+    <link rel="icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico" />
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;ampdisplay=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/Content/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/pickr/pickr-themes.css" />
+
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/tagify/tagify.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+    <link href="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.css" rel="stylesheet" />
+
+
+    <!-- Page CSS -->
+    <!-- Row Group CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
+    <!-- Form Validation -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/%40form-validation/umd/styles/index.min.css" />
+    <!-- Helpers -->
+    <script src="~/Content/assets/vendor/js/helpers.js"></script>
+
+    <script src="~/Content/assets/js/config.js"></script>
+
+    @*Core Js*@
+
+    <script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/Content/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/Content/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Content/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="~/Content/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+    <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+    <script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="~/Content/assets/vendor/js/menu.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+  
+    @*<script>
+            $(document).ready(function () {
+                $('ul.menu-sub > li.menu-item').click(function (e) {
+                    $('.menu-sub li.active').removeClass('active');
+                    var $this = $(this);
+                    if (!$this.hasClass('active')) {
+                        $this.addClass('active');
+                    }
+                    e.preventDefault();
+                });
+            })
+        </script>*@
+
+</head>
+<body>
+
+
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar  " id="section-block">
+        <div class="layout-container d-block">
+
+
+
+            <!-- Layout container -->
+            <div class="" >
+
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+                    @RenderBody()
+                    <!-- / Content -->
+                    <!-- Theme Custom Setting -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="mt-3">
+                            @*<a id="theme-setting-btn" href="javascript:void(0)" class="fa-solid fa-gear" type="button" data-bs-toggle="offcanvas" data-bs-target="#theme-custom-setting" aria-controls="offcanvasEnd"></a>*@
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-custom-setting" aria-labelledby="offcanvasEndLabel">
+                                <div class="offcanvas-header border-bottom">
+                                    <h5 id="offcanvasEndLabel" class="offcanvas-title text-primary">Theme Settings</h5>
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body mx-0 flex-grow-0">
+                                    <span class="badge bg-primary">Theming</span>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioLightTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/default.svg" alt="lightTheme" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioLightTheme" id="customRadioLightTheme" checked />
+                                            </div>
+                                            <label for="customRadioLightTheme" class="form-label">Light</label>
+                                        </div>
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div style="background:black;opacity:0.75;" class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioDarkTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/border.svg" alt="darkTheme" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioDarkTheme" id="customRadioDarkTheme" />
+                                            </div>
+                                            <label for="customRadioDarkTheme" class="form-label">Dark</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioSemiDarkTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/semi-dark.svg" alt="semi-dark" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioSemiDarkTheme" id="customRadioSemiDarkTheme" />
+                                            </div>
+                                            <label for="customRadioSemiDarkTheme" class="form-label">Semi Dark</label>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <span class="badge bg-warning">Menu Style</span>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioLightTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/expanded.svg" alt="expanded" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioLightTheme" id="customRadioLightTheme" checked />
+                                            </div>
+                                            <label for="customRadioLightTheme" class="form-label">Expanded</label>
+                                        </div>
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioDarkTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/collapsed.svg" alt="collapsed" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioDarkTheme" id="customRadioDarkTheme" />
+                                            </div>
+                                            <label for="customRadioDarkTheme" class="form-label">Collapse</label>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <span class="badge bg-success">Navbar Style</span>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioLightTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/sticky.svg" alt="sticky" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioLightTheme" id="customRadioLightTheme" checked />
+                                            </div>
+                                            <label for="customRadioLightTheme" class="form-label">Sticky</label>
+                                        </div>
+                                        <div class="col-md-4 mb-md-0 mb-2">
+                                            <div class="form-check custom-option custom-option-image custom-option-image-radio">
+                                                <label class="form-check-label custom-option-content" for="customRadioDarkTheme">
+                                                    <span class="custom-option-body">
+                                                        <img src="~/Content/assets/img/customizer/static.svg" alt="static" />
+                                                    </span>
+                                                </label>
+                                                <input name="customRadioImage" class="form-check-input" type="radio" value="customRadioDarkTheme" id="customRadioDarkTheme" />
+                                            </div>
+                                            <label for="customRadioDarkTheme" class="form-label">Static</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    @*<footer class="content-footer footer bg-footer-theme">
+                            <div class="container-xxl">
+                                <div class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                                    <div>
+                                        ©
+                                        <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>, made with
+                                        <img src="/Content/assets/img/favicon.ico" style="height: 17px;width: 17px;"> by <a href="https://GROWTHties.com/" target="_blank" class="fw-medium">GROWTHties</a>
+                                    </div>
+                                    <div class="d-none d-lg-inline-block">
+
+                                        <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+                                        <a href="https://1.envato.market/GROWTHties_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+
+                                        <a href="https://demos.GROWTHties.com/GROWTHties-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
+
+
+                                        <a href="https://GROWTHties.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>*@
+                    <!-- / Footer -->
+
+
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
+        </div>
+
+        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+
+    </div>
+    <!-- Core JS -->
+    @*build:js ~/Content/assets/vendor/js/core.js*@
+
+
+
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <script src="~/Content/assets/vendor/libs/autosize/autosize.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/Content/assets/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
+
+    <!-- Flat Picker -->
+    <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+
+    <!-- Vendors JS -->
+    <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="~/Content/assets/vendor/libs/pickr/pickr.js"></script>
+    <!-- Vendors JS -->
+    <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+    <script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+    <script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+    <script src="~/Content/assets/vendor/libs/block-ui/block-ui.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+    <!-- Form Validation -->
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+
+
+    <script src="~/Content/assets/js/app-ecommerce-dashboard.js"></script>
+    <script src="~/Content/assets/js/dashboards-analytics.js"></script>
+
+</body>
+
+</html>
+<!-- beautify ignore:end -->

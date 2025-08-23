@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "SMMESettings_financial";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var role = "";
+
+    if (Enterpriseuser != null)
+    {
+        role = Enterpriseuser.UM_Role;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        role = EnterpriseEmpuser.UM_Role;
+    }
+    else if (SmmeUser != null)
+    {
+        role = SmmeUser.UM_Role;
+    }
+    else if (AdminUser != null)
+    {
+        role = AdminUser.UM_Role;
+    }
+    else
+    {
+        role = user.UM_Role;
+    }
+}
+
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 16px;
+        margin-right: 2px;
+        min-height: 15px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #7367f0;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(13px);
+        -ms-transform: translateX(13px);
+        transform: translateX(13px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <input type="hidden" id="hdnEnterId" value="@ViewBag.EntrId" />
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Settings /</span> Financial
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-md-row mb-4">
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_company?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-building"></i> MSME Details</a></li>
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_contact?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-users me-1"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_legalentity?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-description me-1"></i> Legal Entity</a></li>
+                <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="ti-xs ti ti-file-dollar"></i> Financial</a></li>
+            </ul>
+            <div class="card mb-4">
+                <h5 class="card-header">Financial Details</h5>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="switch">
+                            <input type="checkbox" onclick="handleCheckboxChange(this, Id)">
+                            <span class="slider round"></span>
+                        </label>
+                        <label>Same As Primary Address</label>
+                    </div>
+                    <form id="formAccountSettings" method="GET" onsubmit="return false">
+                        <div class="row g-3">
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnMode" value="financial" />
+                                <label class="form-label" for="multiStepsUsername">First Name<span class="text-danger">*</span></label>
+                                <input type="text" name="txtBillingFirstName" id="txtBillingFirstName" class="form-control alphabets" placeholder="First Name" />
+                                <input type="hidden" id="hdnId" name="hdnId" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnMode" value="contact" />
+                                <label class="form-label" for="multiStepsUsername">Last Name<span class="text-danger">*</span></label>
+                                <input type="text" name="txtBillingLastName" id="txtBillingLastName" class="form-control alphabets" placeholder="Last Name" /> 
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsEmail">Email Address<span class="text-danger">*</span></label>
+                                <input type="email" name="txtBillingEmail" id="txtBillingEmail" class="form-control" placeholder="Email Address" aria-label="txtBillingEmail" />
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnMode" value="financial" />
+                                <label class="form-label" for="multiStepsFirstName">Billing Contact Number<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">(+27)</span>
+                                    <input type="text" class="form-control" id="txtBillingContactNum" name="txtBillingContactNum" placeholder="Contact Number"  oninput="formatPhoneNumber(this)" />
+                                    <input type="hidden" id="hdnId" name="hdnId" />
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Billing Address<span class="text-danger">*</span></label>
+                                <input type="text" id="txtBillingAddress" name="txtBillingAddress" class="form-control" placeholder="Address" />
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Suburb</label>
+                                <input type="text" id="txtBillingSuburb" name="txtBillingSuburb" class="form-control" placeholder="Suburb" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">City/Town<span class="text-danger">*</span></label>
+                                <input type="text" id="txtBillingCity" name="txtBillingCity" class="form-control" placeholder="City/Town" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Postal Code<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtBillingPostalCode" name="txtBillingPostalCode" placeholder="Postal Code" maxlength="4" oninput="formatPostalCode(this)" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="ddlBookingCountry">Country<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlBookingCountry" data-allow-clear="true" id="ddlBookingCountry" name="ddlBookingCountry"></select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="ddlBookingProvince">Province/State<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlBookingProvince" data-allow-clear="true" id="ddlBookingProvince" name="ddlBookingProvince"></select>
+                            </div>
+                            
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2" id="btnUpdate">Save changes</button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary">Cancel</a>
+                            <a class="btn btn-label-secondary" href="SMMESettings_legalentity?Id=@ViewBag.Id&M=@ViewBag.M">Previous</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /Account -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+@*<script src="~/Content/assets/js/pages-account-settings-account.js"></script>*@
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+@*<script src="~/Scripts/custom/SMMESettings.js"></script>*@
+
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/SMMESettingsForStakeholder.js"></script>

@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "AddAdminUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">User /</span> Add Admin User
+        <span></span>
+    </h4>
+    <div class="card">
+
+        <div class="card-body">
+            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                <div id="dvImage">
+                    <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                </div>
+                <div id="dvAvatar"></div>
+                <input type="hidden" name="..." id="hdnupload">
+                <div class="button-wrapper">
+                    <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
+                        <span class="d-none d-sm-block">Upload Profile Picture</span>
+                        <i class="ti ti-upload d-block d-sm-none"></i>
+                        <input type="file" id="upload" class="account-file-input" data-max-size="3000000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                    </label>
+                    <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset mb-3">
+                        <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Reset</span>
+                    </button>
+
+                    <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-0">
+        <div class="card-body">
+            <form id="formEnterpriseUser" onsubmit="return false" class="row mt-2">
+
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtUserName" class="form-label">User Name</label>
+                    <input type="text" class="form-control alphabets" id="txtUserName" placeholder="Type Username here" name="txtUserName" />
+                    <input type="hidden" id="Id" />
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtUserEmail" class="form-label">User Email</label>
+                    <input type="text" class="form-control" id="txtUserEmail" placeholder="Type Email here" name="txtUserEmail" />
+
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtContact" class="form-label">Contact Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">SA (+27)</span>
+                        <input type="text" class="form-control" id="txtContact" placeholder="Type Contact here" name="txtContact" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                    </div>
+
+                </div>
+
+                <br />
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="ddlRole" class="form-label">Select Role</label>
+                    <select id="ddlRole" name="ddlRole" class="select2 form-select ddlRole" data-allow-clear="true"></select>
+                </div>
+
+                <br />
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtContact" class="form-label">Age</label>
+
+                    <input type="text" class="form-control" id="txtAge" placeholder="Enter Age" name="txtAge" onkeypress="return isNumberKey(event)" />
+
+
+                </div>
+
+
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="ddlGender" class="form-label">Select Gender</label>
+                    <select id="ddlGender" name="ddlGender" class="select2 form-select ddlGender" data-allow-clear="true">
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="demo-inline-spacing">
+
+                        <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                            <span class="ti-xs ti ti-plus me-1"></span>Submit
+                        </button>
+                        <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect">
+                            <span class="fa-solid fa-xmark me-1"></span>Cancel
+                        </a>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecordData: '@Url.Action("InsertAdminUserFromAdmin", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetAdminUser", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'SelectAdminUser',
+        Param: 'UM_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'UserMaster_USP'
+    };
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/AddUserForAdmin.js"></script>

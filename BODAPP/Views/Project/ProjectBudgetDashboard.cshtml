@@ -1,0 +1,856 @@
+﻿@{
+    ViewBag.Title = "ProjectBudgetDashboard";
+    Layout = "~/Views/Shared/_BudgetLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link href="~/Content/assets/css/projectBudget.css" rel="stylesheet" />
+
+<style>
+    #tblSMME td,th{
+        padding:5px 10px;
+    }
+</style>
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <input type="hidden" id="hdnFyId" />
+    <input type="hidden" id="hdnBdgtType" />
+    <div class="row  g-0">
+
+        <div class="col-xl-8 mb-4 col-md-6" style="border-right:1px solid #80808033">
+            <div class="demo-inline-spacing">
+                <button class="btn rounded-pill btn-outline-primary" id="btnBudgetFundAllocation">
+                    <span class="fas fa-tasks-alt me-1"></span>Fund Distribution
+                </button>
+                <button class="btn rounded-pill btn-outline-primary disAble" id="btnBudgetAllocation" disabled>
+                    <span class="fas fa-bell me-1"></span>Budget Allocation
+                </button>
+                <button class="btn rounded-pill btn-outline-primary disAble" id="btnBudgetFundDistribution" disabled>
+                    <span class="fas fa-tasks-alt me-1"></span>Budget Distribution
+                </button>
+                <button class="btn rounded-pill btn-outline-primary allcn disAble" id="btnAsgnAct" disabled>
+                    <span class="fas fa-edit me-1"></span>Budget Allocate To Activity
+                </button>
+                <button class="btn rounded-pill btn-outline-primary allcn disAble" id="btnAsgnTASK" disabled>
+                    <span class="fas fa-file-invoice-dollar me-1"></span>Budget Allocate To Task
+                </button>
+                <button class="btn rounded-pill btn-outline-primary allcn disAble" id="btnAsgnSMME" disabled>
+                    <span class="fas fa-user-plus me-1"></span>Budget Allocate To MSME
+                </button>
+                
+               
+            </div>
+        </div>
+        <div class="mb-3 col-md-4 px-3" style="margin-top:14px">
+    @* <label class="form-label" for="ddlFinancialYearFilter">Financial Year<span class="text-danger">*</span></label>
+    <select class="select2 form-select ddlFinancialYear" data-allow-clear="true" id="ddlFinancialYear" name="ddlFinancialYear"></select>*@
+        <select class="select2 form-select rounded-pill btn rounded-pill allcn ddlFinancialYearFilter" id="ddlFinancialYearFilter" name="ddlFinancialYearFilter"></select>
+        <input type="hidden" id="hdnFyFilterId" value="@ViewBag.FyId"/>
+            <input type="hidden" id="hdnProjctENrId" value="@ViewBag.ENR_Id" />
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="backDropModal" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog">
+            <form class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="backDropModalTitle">Budget Setup</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-2">
+
+                        @*<div class="col-md-6 mb-3">
+                            <label for="txtBudget" class="form-label">Budget</label>
+                            <div class="input-group">
+                                <span class="input-group-text">R</span>
+                                <input type="text" class="form-control" id="txtBudget" placeholder="Type Budget here" name="txtBudget" />
+                                <input type="hidden" id="hdnBudget" />
+                            </div>
+                        </div>*@
+
+                        <div class="col mb-0">
+                            <label for="ddlBudgetType" class="form-label">Select Budget Type</label>
+                            <select id="ddlBudgetType" name="ddlBudgetType" class="select2 form-select ddlBudgetType" data-allow-clear="true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="SaveBudgetForProject()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div id="section-blockBudgetDist">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel4">Budget Distribution</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col mb-12">
+                                <input type="hidden" id="hdnBudgetType" class="hdnBudgetType" />
+                                @*<input type="hidden" id="hdnFyForDistId" />*@
+                                @*<input type="hidden" id="hdnBudgetType" class="hdnBudgetType" />*@
+                                <div class="">
+                                    <table class="table table-bordered tbl" id="tblBudget">
+                                        <div class="d-flex justify-content-between">
+                                            <h2>TOTAL BUDGET: <span class="totalbudgetFormetedForDist" id="totalbudgetFormetedForDist"></span><span style="display:none;" id="totalBdgt"></span></h2>
+
+                                            <div class="mb-3 col-md-4 mt-2">
+                                                <label class="form-label" for="ddlFinancialYear">Financial Year<span class="text-danger">*</span></label>
+                                                <select class="select2 form-select ddlFinancialYear" data-allow-clear="true" id="ddlFinancialYear" name="ddlFinancialYear"></select>
+                                                <input type="hidden" id="hdnFinancialYear" />
+                                            </div>
+                                        </div>
+
+                                        <p>Fund Distribution</p>
+                                        <thead>
+                                            <tr>
+                                                <th>Fund Name</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    @*<div class="mb-3 col-md-4 mt-2">
+                                        <label class="form-label" for="ddlFinancialYear">Financial Year Start Date<span class="text-danger">*</span></label>
+                                        <select class="select2 form-select ddlFinancialYear" data-allow-clear="true" id="ddlFinancialYear" name="ddlFinancialYear"></select>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveBudgetDetailsForProject" onclick="SaveBudgetDetailsForProject()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBudgetAllocation" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div id="section-blockFundDist">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel4">Fund Distribution</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 col-md-4 mt-2">
+                            <label class="form-label" for="ddlFinancialYearFund">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearFund" data-allow-clear="true" id="ddlFinancialYearFund" name="ddlFinancialYearFund"></select>
+                            <input type="hidden" id="hdnFyFundId" class="hdnFyFundId" />
+                        </div>
+                        <div class="row">
+                            <div class="col-2 mb-3">
+                                <label for="ddlFundType" class="form-label">Fund Type<span class="text-danger">*</span></label>
+                                <select id="ddlFundType" name="ddlFundType" class="select2 form-select ddlFundType" data-allow-clear="true"></select>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label class="form-label" for="ddlEnterprise">Funder<span class="text-danger">*</span></label>
+                                <select id="ddlEnterprise" name="ddlEnterprise" class="select2 form-select ddlEnterprise" data-allow-clear="true"></select>
+                            </div>
+                            @*<div class="col-2 mb-4">
+                                <label for="txtDesc" class="form-label">Description</label>
+                                <input type="text" class="form-control txtModal inpEmpt" id="txtDesc" placeholder="Type Description here" name="txtDesc" />
+                            </div>*@
+                            <div class="col-1 mb-1">
+                                <label for="txtQty" class="form-label">Quantity<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal inpEmpt" id="txtQty" placeholder="Quantity " name="txtQty" onkeyup="CalculateAmt()" onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 ) && event.keyCode!=8 && event.keyCode!=46);" />
+
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="txtAmnt" class="form-label">Amount<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal inpEmpt" id="txtAmnt" placeholder="Enter Amount " name="txtAmnt" onkeyup="CalculateAmt()" onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 ) && event.keyCode!=8 && event.keyCode!=46);" />
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="txtTotalAmnt" class="form-label">Total</label>
+                                <input type="text" class="form-control txtModal inpEmpt" id="txtTotalAmnt" placeholder=" " name="txtTotalAmnt" disabled />
+                            </div>
+                            <div class="col-2 mb-2">
+                                <div style="height:20px"></div>
+                                <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect AddBgtAllocaBtn" id="btnAddBudget" onclick="AddBudget();" disabled>
+                                    <i class="tf-icons ti ti-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col mb-12">
+                                <div class="">
+                                    <table class="table table-bordered tbl" id="tblBudgetFund">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:20%;">Fund Type</th>
+                                                <th style="width:30%;">Funder</th>
+                                                <th style="width:10%;">Quantity </th>
+                                                <th>Amount</th>
+                                                <th>Total</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th colspan="4">Total Budget-<label id="totalBudgetFund"></label><input type="hidden" id="hdnBdgt" /></th>
+                                                <th><input type="text" class="form-control" disabled id="sumAllocatedBudgt" /><input type="hidden" id="sumAllocatedBudgtHdn" /></th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveBudgeFundtDetails" onclick="SaveBudgeFundtDetails()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBudgSMME" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document" style=" width: 100%;min-width: 1200px;">
+            <div id="section-blockBudgetSMME">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation For MSME</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 col-md-4 mt-2">
+                            <label class="form-label" for="ddlFinancialYearSMME">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearSMME" data-allow-clear="true" id="ddlFinancialYearSMME" name="ddlFinancialYearSMME"></select>
+                            <input type="hidden" id="hdnFySMMEId" class="hdnFySMMEId" />
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlBudgetDistSMME" class="form-label">Period</label>
+                                <select id="ddlBudgetDistSMME" name="ddlBudgetDistSMME" class="select2 form-select ddlBudgetDistSMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Project Budget</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME" id="txtTotalProjectBudgetSMME" name="txtTotalProjectBudgetSMME" value="" disabled />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Budget for  <span id="txtPeriodSMME" class="txtPeriodSMME txSMMESpan"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME" id="txtTotalBudgetForSpacificFundSMME" name="txtTotalBudgetForSpacificFundSMME" value="" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlTaskActivitySMME" class="form-label">Activity</label>
+                                <select id="ddlTaskActivitySMME" name="ddlTaskActivitySMME" class="select2 form-select ddlTaskActivitySMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Budget for <span id="txtActivityLabelSMME" class="txtActivityLabelSMME txSMMESpan oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME txsmmeCle" id="txtTotalActivityBudgetSMME" name="txtTotalActivityBudgetSMME" disabled />
+                                    <input type="hidden" class="txSMME txsmmeCle" id="hdnTotalActivityBudgetSMME" name="hdnTotalActivityBudgetSMME" />
+                                    <input type="hidden" id="hdnActivityId" name="hdnActivityId" />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Available Budget for <span id="txtActivityLabelSMME" class="txtActivityLabelSMME txSMMESpan oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME txsmmeCle" id="txtTotalAvailableBudgetSMME" name="txtTotalAvailableBudgetSMME" disabled />
+                                    <input type="hidden" id="hdnTotalAvailableBudgetSMME" name="hdnTotalAvailableBudgetSMME" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlTaskSMME" class="form-label">Task</label>
+                                <select id="ddlTaskSMME" name="ddlTaskSMME" class="select2 form-select ddlTaskSMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Budget for <span id="txtTaskLabelSMME2" class="txtTaskLabelSMME txSMMESpan txlblActTaskClr oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME txsmmeCle" id="txtTotalTaskBudgetSMME" name="txtTotalTaskBudgetSMME" value="" disabled />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Available Budget for <span id="txtTaskLabelSMME" class="txtTaskLabelSMME txSMMESpan txlblActTaskClr oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME txsmmeCle" id="txtTotalAvailableBudgetTaskSMME" name="txtTotalAvailableBudgetTaskSMME" disabled />
+                                    <input type="hidden" id="hdnTotalAvailableBudgetTaskSMME" name="hdnTotalAvailableBudgetTaskSMME" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlSMME" class="form-label">MSME<span class="text-danger">*</span></label>
+                                <select id="ddlSMME" name="ddlSMME" class="select2 form-select ddlSMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="txtSMMEDate" class="form-label">Date<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose date-from dtcls txtModal txSMME txsmmeCle" id="txtSMMEDate" name="txtSMMEDate" placeholder="dd-mm-yyyy" autocomplete="off" />
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="txtSMMEDesc" class="form-label">Description</label>
+                                <input type="text" class="form-control txtModal txSMME txsmmeCle" id="txtSMMEDesc" placeholder=" " name="txtSMMEDesc" />
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="txtSMMEAmnt" class="form-label">Amount<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal txSMME txsmmeCle" id="txtSMMEAmnt" placeholder="Enter task Amount " onkeyup="cellAmntForSMMEBudget(this)" name="txtSMMEAmnt" onkeydown="    return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" disabled />
+                            </div>
+                            <div class="col-1 mb-1">
+                                <div style="height:20px"></div>
+                                <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect AddSMMEBtn" id="btnAddSMMEBudget" onclick="AddSMMEBudget();" disabled>
+                                    <i class="tf-icons ti ti-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <table id="tblSMME" class="table table-bordered tbl">
+                                    <thead>
+                                        <tr>
+                                            <th>MSME</th>
+                                            <th style="width:20%;">Date</th>
+                                            <th style="width:20%;">Description</th>
+                                            <th>Amount</th>
+                                            <th hidden>Period</th>
+                                            <th hidden>Activity</th>
+                                            <th hidden>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3"><span id="txtTaskLabelSMME1" class="txtTaskLabelSMME txSMMESpan txlblActTaskClr"></span> TOTAL</th>
+                                            <th>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">R</span><input type="text" class="form-control txtReloadHdn txSMME txsmmeCle" name="txtsumAllocatedBudgtActivitySMME" id="txtsumAllocatedBudgtActivitySMME" disabled />
+                                                </div><input type="hidden" class="txtReloadHdn txSMME txsmmeCle" id="hdnsumAllocatedBudgtHdnActivitySMME" />
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveBtnSMME" onclick="SaveBudgetDetailsForSMME()" disabled>Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBudgTask" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div id="section-blockBudgetTsk">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation For Task</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 col-md-4 mt-2">
+                            <label class="form-label" for="ddlFinancialYearTask">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearTask" data-allow-clear="true" id="ddlFinancialYearTask" name="ddlFinancialYearTask"></select>
+                            <input type="hidden" id="hdnFyTaskId" class="hdnFyTaskId" />
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlBudgetDistTask" class="form-label">Period</label>
+                                <select id="ddlBudgetDistTask" name="ddlBudgetDistTask" class="select2 form-select ddlBudgetDistTask" data-allow-clear="true"></select>
+                            </div>
+                            @*<div class="col-4 mb-4">
+                            <label for="txtAmnt" class="form-label">Total Project Budget</label>
+                            <input type="text" class="form-control txtask" id="txtTotalProjectBudgetTask" name="txtTotalProjectBudgetTask" value="" disabled />
+                        </div>*@
+
+                            <div class="col-md-3 mb-3">
+                                <label for="txtAmnt" class="form-label">Total Project Budget</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtask" id="txtTotalProjectBudgetTask" name="txtTotalProjectBudgetTask" value="" disabled />
+                                </div>
+                            </div>
+
+
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Budget for  <span id="txtPeriodTask" class="txtPeriodTask txtaskSpan"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtask" id="txtTotalBudgetForSpacificFundTask" name="txtTotalBudgetForSpacificFundTask" value="" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlTaskActivity" class="form-label">Activity</label>
+                                <select id="ddlTaskActivity" name="ddlTaskActivity" class="select2 form-select ddlTaskActivity" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Total Budget for <span id="txtActLabelTask" class="txtActLabelTask txtaskSpan txtaskCleSpn oncgeTaskClrSpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtask txtaskCle oncgeTaskClr" id="txtTotalActivityBudget" name="txtTotalActivityBudget" value="" disabled />
+                                    <input type="hidden" class="txtaskCle" id="hdnTotalActivityBudget" name="hdnTotalActivityBudget" />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Available Budget for <span id="txtActLabelTask" class="txtActLabelTask txtaskSpan txtaskCleSpn oncgeTaskClrSpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtask txtaskCle oncgeTaskClr" id="txtTotalAvailableBudgetTask" name="txtTotalAvailableBudgetTask" disabled />
+                                    <input type="hidden" class="form-control txtask" id="hdnTotalAvailableBudgetTask" name="hdnTotalAvailableBudgetTask" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-3 mb-3">
+                                <label for="ddlTask" class="form-label">Task<span class="text-danger">*</span></label>
+                                <select id="ddlTask" name="ddlTask" class="select2 form-select ddlTask" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="txtTaskDate" class="form-label">Date<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose date-from dtcls txtModal txtask oncgeTaskClr" id="txtTaskDate" name="txtTaskDate" placeholder="dd-mm-yyyy" autocomplete="off" />
+                            </div>
+                            <div class="col-3 mb-3">
+                                <label for="txtTaskDesc" class="form-label">Description</label>
+                                <input type="text" class="form-control txtModal txtask oncgeTaskClr" id="txtTaskDesc" placeholder=" " name="txtTaskDesc" />
+                            </div>
+                            <div class="col-2 mb-2">
+                                <label for="txtAmnt" class="form-label">Amount<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal txtask oncgeTaskClr" id="txtTaskAmnt" placeholder="Enter task Amount " onkeyup="cellAmntForTaskBudget(this)" name="txtTaskAmnt" onkeydown="    return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" disabled />
+                            </div>
+                            <div class="col-2 mb-2">
+                                <div style="height:20px"></div>
+                                <button type="button" class="btn btn-icon rounded-pill btn-success waves-effect AddTaskBtn" id="btnTaskBudg" onclick="AddTaskBudget();" disabled>
+                                    <i class="tf-icons ti ti-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="tblTask" class="table table-bordered tbl">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:20%;">Task</th>
+                                            <th style="width:20%;">Date</th>
+                                            <th style="width:20%;">Description</th>
+                                            <th>Amount</th>
+                                            <th hidden>Period</th>
+                                            <th hidden>ActivityId</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3"><span id="txtActLabelTask" class="txtActLabelTask txtaskSpan txtaskCleSpn oncgeTaskClrSpn"></span> Total</th>
+                                            <th>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">R</span><input type="text" class="form-control txtask txtaskCle" name="txtsumAllocatedBudgtActivityTask" id="txtsumAllocatedBudgtActivityTask" disabled />
+                                                </div><input type="hidden" class="txtask txtaskCle" id="hdnsumAllocatedBudgtHdnActivityTask" />
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveBudgetDetailsForTask" onclick="SaveBudgetDetailsForTask()" disabled>Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalBudgAcitivity" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div id="section-blockBudgetAciti">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation For Activity</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <input type="hidden" class="form-control" id="hdnddlBudgetDistActivity" name="hdnddlBudgetDistActivity" />
+
+                    <div class="modal-body">
+                        <input type="hidden" id="hdnTotalProjectBgt" />
+                        <div class="mb-3 col-md-4 mt-2">
+                            <label class="form-label" for="ddlFinancialYearAct">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearAct" data-allow-clear="true" id="ddlFinancialYearAct" name="ddlFinancialYearAct"></select>
+                            <input type="hidden" id="hdnFyActId" class="hdnFyActId" />
+                        </div>
+                        <div class="row">
+                            <div class="col-3 mb-3">
+                                <label for="ddlBudgetDistActivity" class="form-label">Period</label>
+                                <select id="ddlBudgetDistActivity" name="ddlBudgetDistActivity" class="select2 form-select ddlBudgetDistActivity" data-allow-clear="true"></select>
+                            </div>
+                            @*<div class="col-3 mb-3">
+                            <label for="txtAmnt" class="form-label">Total Project Budget</label>
+                            <input type="text" class="form-control txtact" id="txtTotalProjectBudgetAct" name="txtTotalProjectBudgetAct" value="" disabled/>
+                        </div>*@
+
+                            <div class="col-md-3 mb-3">
+                                <label for="txtAmnt" class="form-label">Total Project Budget</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtact" id="txtTotalProjectBudgetAct" name="txtTotalProjectBudgetAct" value="" disabled />
+                                </div>
+                            </div>
+
+
+                            @*<div class="col-3 mb-3">
+                            <label for="txtAmnt" class="form-label">Total Budget for  <span id="txtPeriod" class="txtPeriod txtactSpan"></span></label>
+                            <input type="text" class="form-control txtact" id="txtTotalBudgetForSpacificFund" name="txtTotalBudgetForSpacificFund" value="" disabled/>
+                        </div>*@
+
+                            <div class="col-md-3 mb-3">
+                                <label for="txtAmnt" class="form-label">Total Budget for  <span id="txtPeriod" class="txtPeriod txtactSpan"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtact" id="txtTotalBudgetForSpacificFund" name="txtTotalBudgetForSpacificFund" value="" disabled />
+                                </div>
+                            </div>
+
+                            @*<div class="col-3 mb-3">
+                            <label for="txtAmnt" class="form-label">Available Budget for  <span id="txtPeriod" class="txtPeriod txtactSpan"></span></label>
+                            <input type="text" class="form-control txtact" id="txtTotalAvailableBudgetActivity" name="txtTotalAvailableBudgetActivity"disabled />
+                            <input type="hidden" class="form-control txtact" id="hdnTotalAvailableBudgetActivity" name="hdnTotalAvailableBudgetActivity" />
+                        </div>*@
+
+                            <div class="col-md-3 mb-3">
+                                <label for="txtAmnt" class="form-label">Available Budget for  <span id="txtPeriod" class="txtPeriod txtactSpan"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txtact" id="txtTotalAvailableBudgetActivity" name="txtTotalAvailableBudgetActivity" disabled />
+                                    <input type="hidden" class="form-control txtact" id="hdnTotalAvailableBudgetActivity" name="hdnTotalAvailableBudgetActivity" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-4 mb-3">
+                                    <label for="ddlActivity" class="form-label">Activity<span class="text-danger">*</span></label>
+                                    <select id="ddlActivity" name="ddlActivity" class="select2 form-select ddlActivity" data-allow-clear="true"></select>
+
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="txtActivityDate" class="form-label">Date<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control bs-datepicker-autoclose date-from dtcls txtModal txtact onActiCngClr" id="txtActivityDate" name="txtActivityDate" placeholder="dd-mm-yyyy" autocomplete="off" required />
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="txtActivityDesc" class="form-label">Description</label>
+                                    <input type="text" class="form-control txtact txtModal onActiCngClr" id="txtActivityDesc" placeholder=" " name="txtActivityDesc" />
+                                </div>
+                                <div class="col-2 mb-2">
+                                    <label for="txtAmnt" class="form-label">Amount<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control txtModal txtact onActiCngClr" id="txtAcitivityAmnt" placeholder="Enter Acitivity Amount" onkeyup="cellAmntForActivityBudget(this)" name="txtAcitivityAmnt" onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" disabled />
+                                    <input type="hidden" class="form-control txtModal txtact onActiCngClr" id="hdnAcitivityAmnt" name="hdnAcitivityAmnt" />
+                                </div>
+                                <div class="col-1 mb-2">
+                                    <div style="height:20px"></div>
+                                    <button type="button" id="btnActivityBudg" class="btn btn-icon rounded-pill btn-success  waves-effect AddActBtn" onclick="AddActivityBudget();" disabled>
+                                        <i class="tf-icons ti ti-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <table id="tblActivity" class="table table-bordered tbl">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:30%;">Activity</th>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th hidden>Period</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3"><span id="txtPeriod" class="txtPeriod txtactSpan onActiCngClrSpn"></span> Total</th>
+                                            <th><div class="input-group"><span class="input-group-text">R</span><input type="text" class="form-control txtact onActiCngClr" name="txtsumAllocatedBudgtActivity" id="txtsumAllocatedBudgtActivity" disabled /></div><input type="hidden" id="hdnsumAllocatedBudgtHdnActivity" /></th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveBtnActivity" onclick="SaveBudgetDetailsForActivity()" disabled>Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- View sales -->
+        <div class="col-xl-4 mb-4 col-md-6">
+            <div class="card h-100">
+                <div id="section-blockBgtAmt">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between" style="position: relative;">
+                            <div class="d-flex flex-column">
+                                <div class="card-title mb-auto">
+                                    <h5 class="mb-1 text-nowrap">Fund Allocation</h5>
+                                    @*<small>Report</small>*@
+                                </div>
+                                <div class="chart-statistics">
+                                    <h3><span class="totalbudgetFormeted" id="totalbudgetFormeted"></span><span style="display:none;" class="card-title mb-1" id="totalbudget"></span></h3>
+                                    <small class="text-success text-nowrap fw-medium" id="remaningPerc">@*<i class="ti ti-chevron-up me-1"></i>*@ </small>
+                                </div>
+                            </div>
+                            <div id="generatedLeadsChart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- View sales -->
+        <!-- Statistics -->
+        <div class="col-xl-8 mb-4 col-lg-7 col-12">
+            <div id="section-blockBgtExpendiFunders">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between pb-2 mb-1">
+                        <div class="card-title mb-1">
+                            <h5 class="m-0 me-2">Funds</h5>
+                            <br />
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="salesByCountryTabs" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ti ti-dots-vertical ti-sm text-muted"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="salesByCountryTabs">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="SidePopUpForShowFund();">View All Fund</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-3" id="divfund">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unallocation Budget -->
+        <div class="col-xl-4 mb-4 col-md-6">
+            <div class="card h-100">
+                <div id="section-blockBgtUnAllocatedBudget" class="section-blockBgtUnAllocatedBudget">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between" style="position: relative;">
+                            <div class="d-flex flex-column">
+                                <div class="card-title mb-auto">
+                                    <h5 class="mb-1 text-nowrap">Unallocated Budget</h5>
+
+                                </div>
+                                <div class="chart-statistics">
+                                    <h3 class="card-title mb-1" id="totalUnallocatedBudget"></h3>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Unallocation Budget -->
+
+        <div class="col-xl-8 mb-4 col-lg-7 col-12">
+            <div id="section-blockBgtExpendiFundeibution">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between pb-2 mb-1">
+                        <div class="card-title mb-1">
+                            <h5 class="m-0 me-2">Budget Distribution</h5>
+                            <br />
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-3" id="divfundDistribution">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12">
+            <div class="nav-align-top nav-tabs-shadow mb-4">
+                <ul class="nav nav-tabs nav-fill" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" id="navSMME" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-home" aria-controls="navs-justified-home" aria-selected="true"><i class="tf-icons ti ti-home ti-xs me-1"></i> Allocated Budget For SMME </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" id="navAct" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile" aria-selected="false"><i class="tf-icons ti ti-user ti-xs me-1"></i> Allocated Budget For Activity</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" id="navTask" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-messages" aria-controls="navs-justified-messages" aria-selected="false"><i class="tf-icons ti ti-message-dots ti-xs me-1"></i> Allocated Budget For Task</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
+                        <div id="section-blockSMME">
+                            <table class="datatables-products table table-bordered" id="datatable-smme">
+                             
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
+                        <div id="section-blockAct">
+                            <table class="datatables-products table table-bordered" id="datatable-act">
+
+                            </table>
+                        </div>
+                     </div>
+                    <div class="tab-pane fade" id="navs-justified-messages" role="tabpanel">
+                        <div id="section-blockTask">
+                            <table class="datatables-products table table-bordered" id="datatable-tsk">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="viewFundPopUp" aria-labelledby="offcanvasEndLabel" style="width:33% !important">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasEndLabel" class="offcanvas-title">All Allocated Fund</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onclick="SidePopUpForShowFundClose()"></button>
+            </div>
+
+
+            <div class="offcanvas-body">
+              
+
+                <div class="table-responsive">
+                    <table class="table table-borderless border-top" id="tblFund">
+                        <thead class="border-bottom">
+                            <tr>
+                                <th>Fund</th>
+                                <th class="text-end">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        
+                    </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+</div>
+
+
+        <script type="text/javascript">
+            var URLList = {
+                GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+                SaveRecord: '@Url.Action("InsertProjectDetails", "ScriptJson")',
+                GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+            };
+
+
+            var globalData = {
+                TransactionType: 'SelectProjectDetailsForFilter',
+                param1: 'PD_Id',
+                //paramValue: parseInt(id),
+                StoreProcedure: 'ProjectDetails_USP'
+            };
+            var search_act = 'Search Activity';
+            //var columnDataAct = [{ data: "CA_ActivityName" },
+            //                  { data: "PBD_FundName" },
+            //                  { data: "AWB_Budget" }
+            //                 // { data: "PBD_AvailbleBudget" }
+            //                   ]
+
+
+            var search_tsk = 'Search Task';
+            //var columnDataTsk = [{ data: "TD_TaskName" },
+            //                  { data: "PBD_FundName" },
+            //                  { data: "TWB_Budget" }
+            //                //  { data: "PBD_AvailbleBudget" }
+            //                    ]
+
+
+            var search_smme = 'Search SMME';
+            //var columnDataSMME = [{ data: "SMME_CompanyName" },
+            //                  { data: "PBD_FundName" },
+            //                  { data: "SWB_Budget" }
+            //                  //{ data: "PBD_AvailbleBudget" }
+            //                    ]
+        </script>
+
+        <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+        <script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+        <script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+        <script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+        <script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+        <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+        <script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+        <script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+        <script src="~/Content/assets/js/forms-pickers.js"></script>
+        <!-- Main JS -->
+        @*<script src="~/Content/assets/js/main.js"></script>*@
+
+        <script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+        <!-- Page JS -->
+        <script src="~/Content/assets/js/forms-selects.js"></script>
+        @*<script src="~/Content/assets/js/forms-tagify.js"></script>*@
+        @*<script src="~/Content/assets/js/forms-typeahead.js"></script>*@
+        <script src="~/Scripts/utility/dropdown.js"></script>
+        <script src="~/Scripts/utility/dropdownjoin.js"></script>
+        <script src="~/Scripts/utility/ChildPageMenu.js"></script>
+        <script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+        <script src="~/Scripts/custom/ProjectBudgetDashboard.js"></script>

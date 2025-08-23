@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "ViewAssessmentForSMME";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Assessment /</span> View Assessment Answer
+    </h4>
+    <div class="col-12 mt-4">
+        <div class="row">
+            <div class="col-md-12 mb-4 mb-md-2">
+              <input type="hidden" id="hdnSmmeId" value="@ViewBag.SmmeId" />
+                <div class="accordion mt-3" id="accordionExample">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/pickr/pickr.js"></script>
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForSMME.js"></script>
+<script src="~/Scripts/custom/ViewAssessmentForSMME.js"></script>

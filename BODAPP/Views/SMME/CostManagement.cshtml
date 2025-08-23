@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Cost Management";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <input type="hidden" id="SMMEId" name="SMMEId" value="@ViewBag.SMMEId" />
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Cost /</span> Cost Management
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <form id="formCost" onsubmit="return false" class="row mt-2">
+
+                <div class="col-md-4 mb-3">
+
+                    <label for="txtName" class="form-label">Type</label>
+                    <select class="select2 form-select ddlType" data-allow-clear="true" id="ddlType" name="ddlType">
+                        <option value="">Select</option>
+                        <option value="Item">Item</option>
+                        <option value="LabourCharges">Labour Charges</option>
+                        <option value="AccomodationCharges">Accomodation Charges</option>
+                        <option value="TravelCharges">Travel Charges</option>
+                    </select>
+                    <input type="hidden" id="Id" />
+
+                </div>
+                <div class="col-md-4 mb-3">
+
+                    <label for="txtContact" class="form-label">Cost Name</label>
+                    <input type="text" class="form-control" id="txtCostName" placeholder="Type Cost Name here" name="txtCostName"  />
+
+                </div>
+                <div class="col-md-4 mb-3">
+
+                    <label for="txtContact" class="form-label">Cost</label>
+                    <input type="text" class="form-control" id="txtCost" placeholder="Type Cost here" name="txtCost" />
+
+                </div>
+     
+            
+
+                <div class="col-md-12 mt-2">
+                    <div class="demo-inline-spacing">
+
+                        <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                            <span class="ti-xs ti ti-plus me-1"></span>Submit
+                        </button>
+                        <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect">
+                            <span class="fa-solid fa-xmark me-1"></span>Cancel
+                        </a>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecordData: '@Url.Action("InsertCostManagement", "ScriptJson")',
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'CM_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'CostManagement_USP'
+    };
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/CostManagement.js"></script>
+
+

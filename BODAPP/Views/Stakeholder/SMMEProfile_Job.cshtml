@@ -1,0 +1,176 @@
+﻿@model BODDal.Models.SMMERegistration
+@{
+    ViewBag.Title = "SMMEProfile";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+}
+
+@{
+    var random = new Random();
+    var list = new List<string> { "success", "danger", "warning", "info", "primary", "secondary" };
+    var index = random.Next(list.Count);
+
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Profile</span>
+    </h4>
+    <div class="row">
+        <!-- User Sidebar -->
+        <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
+            <!-- User Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="user-avatar-section">
+                        <div class="d-flex align-items-center flex-column">
+                            @if (Model.SMME_Logo == "NO")
+                            {
+                                <div class="avatar avatar-xl">
+                                    <span class="avatar-initial  bg-@list[index]">@Model.SMME_Prefix</span>
+                                </div>
+                                <br />
+                            }
+                            else
+                            {
+                                <img class="img-fluid rounded mb-3 pt-1 mt-4" src="@Model.SMME_Logo" height="100" width="100" alt="User avatar">
+                            }
+
+                            <div class="user-info text-center">
+                                <h4 class="mb-2">@Model.SMME_CompanyName</h4>
+                                <span class="badge bg-label-secondary mt-1">MSME</span>
+                                <input type="hidden" id="hdnSMMEId" value="@Model.SMME_Id" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom">
+                        <div class="d-flex align-items-start me-4 mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-checkbox ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Tasks Done</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-briefcase ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Projects Done</small>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-4 small text-uppercase text-muted">Details</h5>
+                    <div class="info-container">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <span class="fw-medium me-1">Business Name:</span>
+                                <span>@Model.SMME_CompanyName</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Email:</span>
+                                <span>@Model.SMME_PrimaryContactEmail</span>
+                            </li>
+
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Contact:</span>
+                                <span>@Model.SMME_PrimaryContactNo</span>
+                            </li>
+                            <li class=" mb-2 pt-1">
+                                <span class="fw-medium me-1">Sector Name:</span>
+                                <span>@Model.SM_SectorName</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Address:</span>
+                                <span>@Model.SMME_BillingAddress</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Postal Code:</span>
+                                <span>@Model.SMME_PostalCode</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Subrub:</span>
+                                <span>@Model.SMME_Subarb</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Province:</span>
+                                <span>@Model.PM_Province</span>
+                            </li>
+                            
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Country:</span>
+                                <span>@Model.CM_CountryName</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/ User Sidebar -->
+        <!-- User Content -->
+        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+            <div class="nav-align-top">
+                <ul class="nav nav-pills flex-column flex-md-row flex-wrap mb-6 row-gap-2">
+                    <li class="nav-item"><a class="nav-link" href="/Stakeholder/SMMEProfile_Dashboard?Id=@ViewBag.Id"><i class="ti ti-list-check ti-sm me-1_5"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Stakeholder/SMMEProfile?Id=@ViewBag.Id"><i class="ti ti-list-check ti-sm me-1_5"></i>Project</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/Stakeholder/SMMEProfile_Job?Id=@ViewBag.Id"><i class=" ti ti-briefcase ti-sm me-1_5"></i>Job</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Stakeholder/SMMEProfile_Task?Id=@ViewBag.Id"><i class="ti ti-checkbox  ti-sm me-1_5"></i>Task</a></li>
+                    @*<li class="nav-item"><a class="nav-link" href="#"><i class="ti ti-bell ti-sm me-1_5"></i>Fianace</a></li>*@ 
+                </ul>
+            </div>
+            <!-- Connected Accounts -->
+            
+            <div class="card mb-6">
+                <div class="card-datatable table-responsive">
+                    <table class="datatables-users table" id="datatable-job">
+                        <thead class="border-top">
+                            <tr>
+                                <th></th>
+                                <th>Job Name</th>
+                                <th>Visit Type</th>
+                                <th>Status </th>
+                                <th>Customer Name</th>
+                                <th>MSME </th>
+
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+
+
+   
+    //var search = 'Search Assesment';
+
+
+    //var columnData = [{ data: "AC_Category" },
+    //               { data: "CountQues" }
+    //]
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/SMMEProfile_JobForStakeholder.js"></script>
+@*<script src="~/Scripts/custom/EnterpriseWiseSMME.js"></script>*@
+

@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "ExportToExcelDynamic";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    #file-chosen {
+        margin-left: 0rem;
+        font-family: sans-serif;
+        position: absolute;
+        top: 35px;
+    }
+
+    .ce_ixelgen_progress_bar {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .ce_ixelgen_progress_bar .progress_bar_item {
+            margin-bottom: 2rem;
+        }
+
+        .ce_ixelgen_progress_bar .item_label,
+        .ce_ixelgen_progress_bar .item_value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .ce_ixelgen_progress_bar .item_value {
+            font-weight: 400;
+        }
+
+        .ce_ixelgen_progress_bar .item_bar {
+            position: relative;
+            height: 1.5rem;
+            width: 100%;
+            background-color: #000;
+            border-radius: 4px;
+        }
+
+            .ce_ixelgen_progress_bar .item_bar .progress {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 0;
+                height: 1.5rem;
+                margin: 0;
+                background-color: #f50045;
+                border-radius: 4px;
+                transition: width 100ms ease;
+            }
+
+    .slide-progress-bar {
+        width: 100%;
+        background-color: #e6e6e6;
+        transition: width 100ms ease;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .progress-bar {
+        height: 10px;
+        background-color: rgba(40, 199, 111, 1);
+        width: 0%;
+        position: relative;
+        transition: linear;
+    }
+</style>
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Export Excel File</label>
+
+                <div class="d-flex mt-2">
+                    <a href="@Url.Action("ExportToExcelDynamic", "ScriptJson", new { ide = "26"})" class="ms-2 btn btn-sm btn-secondary waves-effect waves-light">
+                        Export to Excel
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

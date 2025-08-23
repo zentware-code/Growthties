@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.Title = "ViewAllEnterpriseUserForAdmin";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+
+
+<div class="modal fade" id="setUPFormEnterpriseUserForAdminModal" tabindex="-1" aria-labelledby="setUPFormEnterpriseUserForAdminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-end">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="setUPFormEnterpriseUserForAdminModalLabel">Add Enterprise User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body border-top">
+                <div class="card-body">
+                    <div class="d-flex align-items-start  gap-4">
+                        <div id="dvImage" style="margin-top:-6px;">
+                            <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                        </div>
+                        <div id="dvAvatar" style="margin-top:-6px;"></div>
+                        <input type="hidden" name="..." id="hdnupload">
+                        <div class="button-wrapper">
+                            <label for="upload" class="btn btn-primary me-2" tabindex="0">
+                                <span class="d-none d-sm-block">Upload Profile Picture</span>
+                                <i class="ti ti-upload d-block d-sm-none"></i>
+                                <input type="file" id="upload" class="account-file-input" data-max-size="3000000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                            </label>
+                            <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset">
+                                <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Reset</span>
+                            </button>
+
+                            <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                        </div>
+                    </div>
+                </div>
+              
+                <br/>
+                <hr class="my-0">
+                <div class="card-body">
+                    <form id="formEnterpriseUserForAdmin" onsubmit="return false" class="row mt-2">
+                        <div class="col-md-6 mb-3">
+                            <label for="txtFirstName" class="form-label">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control alphabets" id="txtFirstName" placeholder="Type First here" name="txtFirstName" />
+                            <input type="hidden" id="Id" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="txtLastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control alphabets" id="txtLastName" placeholder="Type Last here" name="txtLastName" />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="txtUserEmail" class="form-label">User Email<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtUserEmail" placeholder="Type Email here" name="txtUserEmail" />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="txtContact" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">(+27)</span>
+                                <input type="text" class="form-control" id="txtContact" placeholder="Type Contact here" name="txtContact" oninput="formatPhoneNumber(this)" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="ddlPrimaryIdType" class="form-label">ID Type<span class="text-danger">*</span></label>
+                            <select id="ddlPrimaryIdType" name="ddlPrimaryIdType" class="select2 form-select ddlPrimaryIdType" data-allow-clear="true">
+                                <option value="">Select</option>
+                                <option value="SouthAfricanId">South African ID</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 col-sm-4">
+                            <label class="form-label" for="multiStepsLastName">ID Number<span class="text-danger">*</span></label>
+                            <input type="text" id="txtPrimaryIdNumber" name="txtPrimaryIdNumber" class="form-control" placeholder="Enter Your ID Number" maxlength="13"/>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="ddlEnterprise" class="form-label">Select Enterprise Name<span class="text-danger">*</span></label>
+                            <select id="ddlEnterprise" name="ddlEnterprise" class="select2 form-select ddlEnterprise" data-allow-clear="true"></select>
+                        </div>
+
+                        <br />
+                        <div class="col-md-4 mb-3">
+                            <label for="ddlRole" class="form-label">User Role<span class="text-danger">*</span></label>
+                            <select id="ddlRole" name="ddlRole" class="select2 form-select ddlRole" data-allow-clear="true"></select>
+                        </div>
+
+                        <br />
+                        <br />
+                        <div class="col-md-4 mb-3">
+                            <label for="txtAge" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control bs-datepicker-autoclose" id="txtAge" name="txtAge" placeholder="Date of Birth" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="ddlGender" class="form-label">Gender<span class="text-danger">*</span></label>
+                            <select id="ddlGender" name="ddlGender" class="select2 form-select ddlGender" data-allow-clear="true">
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label class="form-label" for="ddlBranch">Branch</label>
+                            <select class="select2 form-select ddlBranch" data-allow-clear="true" id="ddlBranch" name="ddlBranch"></select>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <div class="demo-inline-spacing">
+                                <button type="submit" class="btn btn-primary btn-shadow-primary" id="btnUpdateNext">
+                                    <span class="ti-xs ti ti-plus me-1"></span>Save
+                                </button>
+                                <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal">
+                                    <span class="fa-solid fa-xmark me-1"></span>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Enterprise /</span> All Enterprise Users
+    </h4>
+    <!-- Users List Table -->
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+            <div class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0">
+                <div class="col-md-4 user_role"></div>
+                <div class="col-md-4 user_plan"></div>
+                <div class="col-md-4 user_status"></div>
+            </div>
+        </div>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>User Name</th>
+                        <th>CONTACT NUMBER</th>
+                        <th> USER ROLE</th>
+                        <th>Enterprise Name</th>
+                        <th>USER EMAIL</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+       
+    </div>
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        SaveRecordData: '@Url.Action("InsertEnterpriseUserAdmin", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetEnterpriseUserAdmin", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'UM_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'UserMaster_USP'
+    };
+    var popup = "#setUPFormEnterpriseUserForAdminModal";
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+
+<script type="text/javascript">
+        var baseUrl = '@System.Configuration.ConfigurationManager.AppSettings["BaseUrl"]';
+</script>
+<script src="~/Scripts/custom/ViewAllEnterpriseUserForAdmin.js"></script>

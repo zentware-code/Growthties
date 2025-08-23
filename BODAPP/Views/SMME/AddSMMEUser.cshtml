@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "AddSMMEUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">SMME /</span> Add SMME User
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <form id="formEnterpriseUser" onsubmit="return false" class="row mt-2">
+
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtUserName" class="form-label">First Name</label>
+                    <input type="text" class="form-control alphabets" id="txtUserName" placeholder="Type Firstname here" name="txtUserName" />
+                    <input type="hidden" id="Id" />
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtUserEmail" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="txtUserEmail" placeholder="Type Email here" name="txtUserEmail" />
+
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtContact" class="form-label">Contact Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">(+27)</span>
+                        <input type="text" class="form-control" id="txtContact" name="txtContact" placeholder="Type Contact here" oninput="formatPhoneNumber(this)" />
+                        @*<span class="input-group-text">SA (+27)</span>
+                        <input type="text" class="form-control" id="txtContact" placeholder="Type Contact here" name="txtContact" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />*@
+                    </div>
+
+                </div>
+
+                <br />
+
+                
+                <div class="col-md-6 mb-3">
+                    <label for="ddlRole" class="form-label">Role</label>
+                    <select id="ddlRole" name="ddlRole" class="select2 form-select ddlRole" data-allow-clear="true"></select>
+                </div>
+
+                <br />
+                <div class="col-md-6 mb-3">
+
+                    <label for="txtContact" class="form-label">Date of Birth</label>
+
+                    <input type="text" class="form-control" id="txtAge" placeholder="Enter Date of Birth" name="txtAge" onkeypress="return isNumberKey(event)" />
+
+
+                </div>
+
+
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="ddlGender" class="form-label">Gender</label>
+                    <select id="ddlGender" name="ddlGender" class="select2 form-select ddlGender" data-allow-clear="true">
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="demo-inline-spacing">
+
+                        <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                            <span class="ti-xs ti ti-plus me-1"></span>Submit
+                        </button>
+                        <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect">
+                            <span class="fa-solid fa-xmark me-1"></span>Cancel
+                        </a>
+                    </div>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecordData: '@Url.Action("InsertSMMEUser", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetSMMEUser", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'SelectSMMEUser',
+        Param: 'UM_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'UserMaster_USP'
+    };
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/AddSMMEUserForAdmin.js"></script>

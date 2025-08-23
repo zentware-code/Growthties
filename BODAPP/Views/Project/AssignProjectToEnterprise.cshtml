@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "AssignProjectToEnterprise";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Project /</span> Assign Enterprise to Project
+    </h4>
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+            <div class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0">
+                <div class="col-md-4 user_role"></div>
+                <div class="col-md-4 user_plan"></div>
+                <div class="col-md-4 user_status"></div>
+            </div>
+        </div>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>Enterprise Name</th>
+                        <th>BUSINESS TYPE</th>
+                        <th>REGISTRATION NUMBER</th>
+                        <th>REGISTRATION DATE</th>
+                        <th>CONTACT NUMBER</th>
+                        <th>Status</th>
+                        <th>Assign</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+    </div>
+    <div class="modal fade" id="shareProject" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered" id="share-project-list">
+            <div class="modal-content p-3 p-md-5" >
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center">
+                        <h3 class="mb-2">Share Project</h3>
+                        <p>Share project with an Enterprise</p>
+                    </div>
+                </div>
+                
+                @*<h4 class="mb-4 pb-2">All Unassigned Projects</h4>*@
+                <ul class="p-0 m-0" id="ulProjectList">
+                    @*<li class="d-flex flex-wrap mb-3">
+                      
+                        <div class="d-flex justify-content-between flex-grow-1">
+                            <div class="me-2">
+                                <h6 class="mb-0">Project Name </h6>
+                        <input type=hidden
+                                <p class="mb-0 text-muted">Duration: Datefrom-DateTo</p>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-end">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input float-end" type="checkbox" >
+                                </div>
+                            </div>
+                        </div>
+                    </li>*@
+                  
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'SelectUnusedProject',
+        Param: 'PD_Enterpriseid',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'ProjectDetails_USP'
+    };
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+<script src="~/Scripts/custom/AssignProjectToEnterprise.js"></script>

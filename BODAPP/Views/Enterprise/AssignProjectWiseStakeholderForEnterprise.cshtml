@@ -1,0 +1,266 @@
+﻿@{
+    ViewBag.Title = "AssignProjectWiseStakeholderForEnterprise";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<style>
+    .ellipsisWrap-new-ln {
+        display: -webkit-box;
+        max-width: 400px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 46px;
+    }
+   
+</style>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://demos.Dreamix.com/GROWTHties-html-admin-template/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;ampdisplay=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    @*<link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/Content/assets/css/demo.css" />*@
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/%40form-validation/umd/styles/index.min.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/typography.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/katex.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/editor.css">
+
+    <!-- Page CSS -->
+
+   <link rel="stylesheet" href="~/Content/assets/vendor/css/pages/page-profile.css" />
+
+ <link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    
+
+    <h4 class="py-3 mb-0">
+        <span class="text-muted fw-light">Enterprise /</span><span class="fw-medium">Assign Stakeholder</span>
+    </h4>
+    <!-- Project Cards -->
+
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+        </div>
+
+
+        <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+        <input type="hidden" id="PDId" />
+        <input type="hidden" id="PDName" />
+        <input type="hidden" id="PDStartDte" />
+        <input type="hidden" id="PDEndDte" />
+        <input type="hidden" id="PDDesc" />
+        <input type="hidden" id="StakeholderUserRole" />
+        
+
+
+        <div class="card-datatable table-responsive">
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>Project Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Budget</th>
+                        <th>MSMEs</th>
+                        <th>Stakeholders</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+
+    </div>
+
+</div>
+     <div class="modal fade" id="shareProject" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row">
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-2">SMME List</h3>
+                        </div>
+                        <br />
+                        <ul class="p-0 m-0" id="ulSmmeList"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiple Lists Draggable -->
+            <!-- /Multiple Lists Draggable ends -->
+        </div>
+    </div>
+</div>    
+
+<!--Asign Stackeholder-->
+
+<div class="modal fade" id="asignShareholder" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body" style="overflow-x: hidden;">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- Stakeholder Type Section -->
+                <!-- Stakeholder Type Section -->
+                
+                <div class="mb-4">
+                    <h5 class="mb-3 fw-bold">Stakeholder Type</h5>
+                    <ul class="list-unstyled border-top">
+                        <li class="d-flex align-items-start justify-content-between py-3 border-bottom">
+                            <div class="d-flex">
+                                <i class="ti ti-building-bank ti-md me-3 mt-1 text-secondary"></i>
+                                <div>
+                                    <div class="fw-semibold">Funders / Investors</div>
+                                    <small class="text-muted">Provide grants, loans, or equity funding to MSMEs</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="1">
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start justify-content-between py-3 border-bottom">
+                            <div class="d-flex">
+                                <i class="ti ti-building-bank ti-md me-3 mt-1 text-secondary"></i>
+                                <div>
+                                    <div class="fw-semibold">ESD Implementing Partners</div>
+                                    <small class="text-muted">Manage programme delivery (incubators, training providers)</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="2">
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start justify-content-between py-3 border-bottom">
+                            <div class="d-flex">
+                                <i class="ti ti-building-bank ti-md me-3 mt-1 text-secondary"></i>
+                                <div>
+                                    <div class="fw-semibold">Mentors / Coaches</div>
+                                    <small class="text-muted">Provide expert support, advice, and coaching</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="3">
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start justify-content-between py-3 border-bottom">
+                            <div class="d-flex">
+                                <i class="ti ti-building-bank ti-md me-3 mt-1 text-secondary"></i>
+                                <div>
+                                    <div class="fw-semibold">Business Support Services</div>
+                                    <small class="text-muted">Offer specialist operational support (e.g., legal, finance, branding, compliance)</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="4">
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start justify-content-between py-3">
+                            <div class="d-flex">
+                                <i class="ti ti-building-bank ti-md me-3 mt-1 text-secondary"></i>
+                                <div>
+                                    <div class="fw-semibold">Enterprise / Corporate Users</div>
+                                    <small class="text-muted">Project owners and sponsors (e.g., CCBSA, AB InBev)</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="5">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- End Stakeholder Type Section -->
+
+                <!-- End Stakeholder Type Section -->
+                <div class="row">
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-2">Enterprise List</h3>
+                        </div>
+                        <br />
+                        <ul class="p-0 m-0" id="ulEnterpriseList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="asignShareholder" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body" style="overflow-x: hidden;">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row">
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-2">Enterprise List</h3>
+                        </div>
+                        <br />
+                        <ul class="p-0 m-0" id="ulEnterpriseList"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
+<script>
+
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")'
+
+};
+</script>
+
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+    <script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+    <!-- Page JS -->
+    <script src="~/Content/assets/js/app-ecommerce-category-list.js"></script>
+    <script src="~/Scripts/utility/dropdown.js"></script>
+    <script src="~/Scripts/custom/AssignProjectWiseStakeholderForEnterprise.js"></script>

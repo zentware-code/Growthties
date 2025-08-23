@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "ManagePermissionForStakeholder";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<style>
+    .ellipsisWrap-new-ln {
+        display: -webkit-box;
+        max-width: 400px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .permissionBtn {
+        color: inherit;
+        transition: color 0.3s; 
+        cursor: pointer; 
+    }
+
+    .permissionBtn:hover {
+        color: #17a2b8;
+    }
+
+</style>
+<!-- Vendors CSS -->
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-0">
+        <span class="text-muted fw-light">Project /</span><span class="fw-medium"> Stakeholder Manage Permission</span>
+    </h4>
+            <div class="row">
+                <div class="col-12 col-lg-12" >
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Enterprise</h5>
+                        </div>
+                        <div class="card-body">
+                           <ul class="p-0 m-0" id="ulEnterpriseList"></ul>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-12 col-lg-4" id="snglProjectDiv">
+
+                </div>*@
+            </div>
+</div>
+
+
+
+<div class="modal" id="stakeHolderPermissionModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Allow Permission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="stakeHolderId" /> 
+                <input type="hidden" id="stakeHolderProjectId" /> 
+                <div class="form-check p-2 ms-3">
+                    <input class="form-check-input permission" type="checkbox" id="checkboxAll">
+                    <label class="form-check-label" for="checkboxAll">
+                        All
+                    </label>
+                </div>
+                <div class="form-check p-2 ms-3">
+                    <input class="form-check-input permission" type="checkbox" id="checkboxTask">
+                    <label class="form-check-label" for="checkboxTask">
+                        Task
+                    </label>
+                </div>
+                <div class="form-check p-2 ms-3">
+                    <input class="form-check-input permission" type="checkbox" id="checkboxActivity">
+                    <label class="form-check-label" for="checkboxActivity">
+                        Act
+                    </label>
+                </div>
+                <div class="form-check p-2 ms-3">
+                    <input class="form-check-input permission" type="checkbox" id="checkboxFile">
+                    <label class="form-check-label" for="checkboxFile">
+                        File
+                    </label>
+                </div>
+                <div class="form-check p-2 ms-3">
+                    <input class="form-check-input permission" type="checkbox" id="checkboxBudget">
+                    <label class="form-check-label" for="checkboxBudget">
+                        Budget
+                    </label>
+                </div>
+                <div class="card-body p-2 ms-3">
+                    <button type="submit" id="btnSave" class="btn btn-primary me-3">Save</button>
+                    @*<button type="reset" class="btn btn-label-secondary">Discard</button>*@
+                </div>
+            </div>
+
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- / Content -->
+
+<script>
+
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        @*GetData: '@Url.Action("GetGlobalList", "ScriptJson")',*@
+        @*SaveRecord: '@Url.Action("InsertCreateTask", "ScriptJson")',*@
+        GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'TD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'ProjectDetails_USP'
+    };
+</script>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/ManagePermissionForStakeholder.js"></script>

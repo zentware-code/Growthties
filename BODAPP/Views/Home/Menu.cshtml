@@ -1,0 +1,619 @@
+﻿@model BODDal.Models.MenuModel
+@{
+    Layout = null;
+}
+@{
+
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var SmmeEmpUser = Session["SMMEUserEmpDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+    var userName = "";
+    var profilePic = "";
+    var prefix = "";
+    var subrole = "";
+    var role = "";
+    var CompanyPic = "";
+    var LogoLink = "";
+    var ThemeStyle = "";
+    var CoreLink = "";
+    var dash = 0;
+    if (Enterpriseuser != null)
+    {
+        userName = Enterpriseuser.UserName;
+        profilePic = Enterpriseuser.UM_ProfilePic;
+        prefix = Enterpriseuser.UM_CmnyPrefix;
+        subrole = Enterpriseuser.UM_SubRole;
+        role = Enterpriseuser.UM_Role;
+        CompanyPic = Enterpriseuser.UM_CompanyPic;
+        LogoLink = "/Enterprise/EnterpriseDashBoard";
+        ThemeStyle = Enterpriseuser.ThemeStyle;
+        CoreLink = Enterpriseuser.CoreLink;
+    }
+    else if (SmmeUser != null)
+    {
+        userName = SmmeUser.UserName;
+        profilePic = SmmeUser.UM_ProfilePic;
+        prefix = SmmeUser.UM_Prefix;
+        subrole = SmmeUser.UM_SubRole;
+        role = SmmeUser.UM_Role;
+        CompanyPic = SmmeUser.UM_CompanyPic;
+        ThemeStyle = SmmeUser.ThemeStyle;
+        CoreLink = SmmeUser.CoreLink;
+    }
+    else if (SmmeEmpUser != null)
+    {
+        userName = SmmeEmpUser.UserName;
+        profilePic = SmmeEmpUser.UM_ProfilePic;
+        prefix = SmmeEmpUser.UM_Prefix;
+        subrole = SmmeEmpUser.UM_SubRole;
+        role = SmmeEmpUser.UM_Role;
+        CompanyPic = SmmeEmpUser.UM_CompanyPic;
+        ThemeStyle = SmmeEmpUser.ThemeStyle;
+        CoreLink = SmmeEmpUser.CoreLink;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        userName = EnterpriseEmpuser.UserName;
+        profilePic = EnterpriseEmpuser.UM_ProfilePic;
+        prefix = EnterpriseEmpuser.UM_Prefix;
+        subrole = EnterpriseEmpuser.UM_SubRole;
+        role = EnterpriseEmpuser.UM_Role;
+        CompanyPic = EnterpriseEmpuser.UM_CompanyPic;
+        LogoLink = "/Enterprise/EnterpriseDashBoard";
+        ThemeStyle = EnterpriseEmpuser.ThemeStyle;
+        CoreLink = EnterpriseEmpuser.CoreLink;
+    }
+    else if (AdminUser != null)
+    {
+        userName = AdminUser.UserName;
+        profilePic = AdminUser.UM_ProfilePic;
+        prefix = AdminUser.UM_Prefix;
+        subrole = AdminUser.UM_SubRole;
+        role = AdminUser.UM_Role;
+        CompanyPic = AdminUser.UM_CompanyPic;
+        LogoLink = "/Home/AdminDashBoard";
+        ThemeStyle = AdminUser.ThemeStyle;
+        CoreLink = AdminUser.CoreLink;
+    }
+    else
+    {
+        userName = user.UserName;
+        profilePic = user.UM_ProfilePic;
+        prefix = user.UM_Prefix;
+        subrole = user.UM_SubRole;
+        role = user.UM_Role;
+        LogoLink = "/Home/AdminDashBoard";
+        ThemeStyle = user.ThemeStyle;
+        CoreLink = user.CoreLink;
+    }
+
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Menu</title>
+    <script src="~/Scripts/custom/JobCalenderForSMME.js"></script>
+    <link href="~/Content/assets/css/newMobileMenu.css" rel="stylesheet" />
+</head>
+<body>
+
+    <input type="hidden" id="hdnSmmeMainId" value="@ViewBag.UmId" />
+    <aside class="m-view vertical-layout">
+        @*<div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <ul class="m-menu-container">
+                    <li class="m-menu-item"><a href="#" class="m-menu-link">Menu1</a></li>
+                    <li class="m-menu-item"><a href="#" class="m-menu-link">Menu2</a></li>
+                </ul>
+            </div>*@
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <div class="m-brand-logo d-flex align-items-center">
+                    <a href="@LogoLink" class="text-nowrap logo-img">
+                        <img src="../Content/assets/img/avatars/default_companyphoto.png" alt="Logo" />
+                    </a>
+                </div>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            @*<div class="offcanvas-body">
+
+
+                @{ string parantMenuId = "";
+                    <ul class="m-menu-container">
+                        @foreach (var MenuItem in Model.MainMenuModel)
+                        {
+                            parantMenuId = Convert.ToString(MenuItem.ID);
+                            var SubMenuItemCount = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+                            if (SubMenuItemCount.Count() > 0)
+                            {
+
+                                var toggle = "";
+                                var SubMenuItemSmall = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+
+                                if (SubMenuItemSmall.Count() > 0)
+                                {
+                                    toggle = "menu-toggle";
+                                }
+                                <li class="mini-nav-item dropdown sbmnu parentnavmenu m-menu-item" id="mini-@MenuItem.ID">
+                                    <a href="javascript:void(0)" class="m-menu-link dropdown-toggle" onclick="getValue('@MenuItem.ID')" data-bs-toggle="dropdown">
+                                        <i class="@MenuItem.MenuIcon"></i> @MenuItem.MainMenuItem
+                                    </a>
+
+
+                                    @if (SubMenuItemSmall.Count() > 0)
+                                    {
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                            @foreach (var SubItem in SubMenuItemSmall)
+                                            {
+                                                <li class="menu-item mini-nav-item normal" id="MenuLi_@parantMenuId">
+                                                    <a href="@SubItem.SubMenuURL" class="menu-link  m-menu-link" onclick="getValue(@parantMenuId)">
+                                                        <div data-i18n="@SubItem.SubMenuItem">@SubItem.SubMenuItem</div>
+                                                    </a>
+                                                </li>
+
+                                            }
+
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="mini-nav-item sbmnu m-menu-item" id="mini-@MenuItem.ID">
+                                    <a href="@MenuItem.MainMenuURL" class="m-menu-link" onclick="getValue('@MenuItem.ID')" id="getParentLink">
+                                        <i class="@MenuItem.MenuIcon"></i> @MenuItem.MainMenuItem
+                                    </a>
+                                </li>
+                            }
+
+                        }
+
+                        
+                    </ul>
+                }
+                
+            </div>*@
+            <div class="offcanvas-body">
+
+
+                @{ string parantMenuId = "";
+                    <ul class="m-menu-container">
+                        @foreach (var MenuItem in Model.MainMenuModel)
+                        {
+                            parantMenuId = Convert.ToString(MenuItem.ID);
+                            var SubMenuItemCount = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+                            if (SubMenuItemCount.Count() > 0)
+                            {
+
+                                var toggle = "";
+                                var SubMenuItemSmall = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+
+                                if (SubMenuItemSmall.Count() > 0)
+                                {
+                                    toggle = "menu-toggle";
+                                }
+                                <li class="m-menu-item m-sub-menu m-navmenu mini-@MenuItem.ID" type="button" data-bs-toggle="collapse" data-bs-target="#mini-@MenuItem.ID" aria-expanded="true" aria-controls="mini-@MenuItem.ID">
+                                    <a href="javascript:void(0)" class="m-menu-link" onclick="getValue('@MenuItem.ID')" data-bs-toggle="dropdown">
+                                        <i class="@MenuItem.MenuIcon"></i> @MenuItem.MainMenuItem
+                                    </a>
+                                   
+                                </li>
+                               if (SubMenuItemSmall.Count() > 0)
+                                {
+                                    
+                                    <ul id="mini-@MenuItem.ID" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#mini-@MenuItem.ID">
+                                       
+                                        @foreach (var SubItem in SubMenuItemSmall)
+                                        {
+                                            if(SubItem.IsDashboard=="Y")
+                                            {
+                                                @*<input type="hidden" id="hdnPArentId"  value="@parantMenuId"/>*@
+                                                dash = Convert.ToInt32(parantMenuId);
+                                            }
+                                            <li class="menu-item mini-nav-item normal m-menu-item m-sub-menu-list" id="MenuLi_@parantMenuId">
+                                                <a href="@SubItem.SubMenuURL" class="menu-link  m-menu-link" onclick="getValue(@parantMenuId)"><div data-i18n="@SubItem.SubMenuItem">@SubItem.SubMenuItem</div>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                @*<ul id="mini-@MenuItem.ID" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <li class="m-menu-item"><a class="dropdown-item m-menu-link active" href="www.google.com">Action</a></li>
+                                    <li class="m-menu-item"><a class="dropdown-item m-menu-link" href="#">Another action</a></li>
+                                    <li class="m-menu-item"><a class="dropdown-item m-menu-link" href="#">Something else here</a></li>
+                                </ul>*@
+                            }
+                            else
+                            {
+                                <li class="mini-nav-item m-menu-item" id="mini-@MenuItem.ID">
+                                    <a href="@MenuItem.MainMenuURL" class="m-menu-link" onclick="getValue('@MenuItem.ID')" id="getParentLink">
+                                        <i class="@MenuItem.MenuIcon"></i> @MenuItem.MainMenuItem
+                                    </a>
+                                </li>
+                            }
+
+                        }
+
+                        @*<li class="m-menu-item"><a href="#" class="m-menu-link active">Menu1</a></li>*@
+                        @*<li class="m-menu-item dropdown"><a href="javascript:void(0)" class="m-menu-link dropdown-toggle" data-bs-toggle="dropdown">Menu 2</a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <li class="m-menu-item"><a class="dropdown-item m-menu-link active" href="www.google.com">Action</a></li>
+                          <li class="m-menu-item"><a class="dropdown-item m-menu-link" href="#">Another action</a></li>
+                          <li class="m-menu-item"><a class="dropdown-item m-menu-link" href="#">Something else here</a></li>
+                      </ul>
+                    </li>*@
+                    </ul>
+                }
+                @*<div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                    Dropdown button
+                </button>
+
+            </div>*@
+            </div>
+        </div>
+    </aside>
+    <aside class="side-mini-panel vertical-layout web-view">
+        <div>
+            <div class="iconBar">
+                <div>
+                    <div class="mini-nav">
+                        <div class="brand-logo d-flex align-items-center justify-content-center">
+                            <a class="nav-link sidebartoggler" id="headerCollapse" href="#" disabled>
+                                <i class="fas fa-bars"></i>
+                            </a>
+                        </div>
+                        <ul class="mini-nav-ul" id="mini-nav-ul-id">
+
+                            @foreach (var MenuItem in Model.MainMenuModel)
+                            {
+                                var SubMenuItemCount = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+                                if (SubMenuItemCount.Count() > 0)
+                                {
+                                    <li class="mini-nav-item sbmnu parentnavmenu menu-right-mini-@MenuItem.ID" id="mini-@MenuItem.ID">
+                                        <a href="javascript:void(0)" data-bs-toggle="tooltip" onclick="getValue('@MenuItem.ID')"
+                                           data-bs-custom-class="custom-tooltip" data-bs-placement="right"
+                                           data-bs-title="@MenuItem.MainMenuItem">
+                                            <i class="@MenuItem.MenuIcon"></i>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="mini-nav-item sbmnu" id="mini-@MenuItem.ID">
+                                        <a href="@MenuItem.MainMenuURL" data-bs-toggle="tooltip" onclick="getValue('@MenuItem.ID')"
+                                           data-bs-custom-class="custom-tooltip" data-bs-placement="right"
+                                           data-bs-title="@MenuItem.MainMenuItem" id="getParentLink">
+                                            <i class="@MenuItem.MenuIcon"></i>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                            @*<li class="mini-nav-item sbmnu" id="mini-2">
+                                    <a href="/Home/ViewAllUser" data-bs-toggle="tooltip" onclick=" getValue('2')"
+                                       data-bs-custom-class="custom-tooltip" data-bs-placement="right"
+                                       data-bs-title="Dashboards" id="getParentLink">
+                                        <i class="fas fa-dashboard"></i>
+                                    </a>
+                                </li>
+                                <li class="mini-nav-item sbmnu" id="mini-3">
+                                    <a href="javascript:void(0)" data-bs-toggle="tooltip" onclick="getValue('3')"
+                                       data-bs-custom-class="custom-tooltip" data-bs-placement="right"
+                                       data-bs-title="Dashboards">
+                                        <i class="fas fa-dashboard"></i>
+                                    </a>
+                                </li>
+                                <li class="mini-nav-item sbmnu" id="mini-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="tooltip" onclick="getValue('4')"
+                                       data-bs-custom-class="custom-tooltip" data-bs-placement="right"
+                                       data-bs-title="Dashboards" id="getParentLink">
+                                        <i class="fas fa-dashboard"></i>
+                                    </a>
+                                </li>*@
+
+                        </ul>
+                    </div>
+                    <div class="sidebarmenu">
+                        <div class="brand-logo d-flex align-items-center nav-logo">
+                            <a href="#" class="text-nowrap logo-img">
+                                @*<img src="~/Content/assets/img/avatars/ESD_LOGO_DARK.png" alt="Logo" class="brand-logo-img"/>*@
+                               @if (Enterpriseuser != null || EnterpriseEmpuser != null)
+                               {
+                                   if (CompanyPic == "No")
+                                   {
+                                        <a href="@LogoLink" class="text-nowrap logo-img">
+                                            <img id="imgMainLayout" style="width:150px;margin:auto;display:block;height:50px" src="../Content/assets/img/avatars/default_companyphoto.png" />
+                                        </a>
+                                   }
+                                   else
+                                   {
+                                        <a href="@LogoLink" class="text-nowrap logo-img">
+                                            <img src="@CompanyPic.Replace("~", "..")" style="width:150px;margin:auto;display:block;height:50px" id="imgMainLayout" />
+                                        </a>
+                                   }
+                               }
+                               else if (SmmeUser != null || SmmeEmpUser != null)
+                               {
+                                   if (CompanyPic == "No")
+                                   {
+                                        <a href="@LogoLink" class="text-nowrap logo-img">
+                                            <img style="width:150px;margin:auto;display:block;height:50px" id="imgMainLayout" src="../Content/assets/img/avatars/default_companyphoto.png" />
+                                        </a>
+                                   }
+                                   else
+                                   {
+                                    <a href="@LogoLink" class="text-nowrap logo-img">
+                                        <img style="width:150px;margin:auto;display:block;height:50px" src="@CompanyPic.Replace("~", "..")" id="imgMainLayout" />
+                                    </a>
+                                   }
+                               }
+                               else
+                               {
+                                <a href="@LogoLink" class="text-nowrap logo-img">
+                                    @*<img style="width:150px;margin:auto;display:block;" src="~/Content/assets/img/avatars/ESD_LOGO_DARK.png" />*@
+                                   
+                                    @if (@ThemeStyle == "light-style" && @CoreLink == "/Content/assets/vendor/css/rtl/core-semi-dark.css")
+                                    {
+                                        <img style="width:150px;margin:auto;display:block;height:50px" src="~/Content/assets/img/ESD_LOGO_LIGHT.png" />
+                                    }
+                                    else if (@ThemeStyle == "dark-style" && @CoreLink == "/Content/assets/vendor/css/rtl/core-dark.css")
+                                    {
+                                        <img style="width:150px;margin:auto;display:block;height:50px" src="~/Content/assets/img/ESD_LOGO_LIGHT.png" />
+                                    }
+                                    else if (@ThemeStyle == "light-style" && @CoreLink == "/Content/assets/vendor/css/rtl/core.css")
+                                    {
+                                        <img style="width:150px;margin:auto;display:block;height:50px" src="~/Content/assets/img/ESD_LOGO_DARK.png" />
+                                    }
+                                   </a>
+                                     }
+                                </a>
+
+                        </div>
+
+                        @{
+                            int? grpId = 0;
+                            int? MenugrpId = 0;
+                            string parantMenuID = "";
+                            var SubMenuItem = Model.SubMenuModel;
+                            foreach (var SubMenu in SubMenuItem)
+
+                            {
+
+                                string MenuGroup = Model.GroupMenuModel.Where(m => m.MenuGrId == SubMenu.MenuGroupId).Select(x => x.MenuGroup).SingleOrDefault();
+                                MenugrpId = Model.GroupMenuModel.Where(m => m.MenuGrId == SubMenu.MenuGroupId).Select(x => x.MenuGrId).SingleOrDefault();
+
+                                parantMenuID = SubMenu.MenuClass;
+                                
+
+                                <nav class="sidebar-nav" id="menu-right-mini-@SubMenu.MainMenuID" data-simplebar>
+                                    <ul class="sidebar-menu" id="sidebarnav">
+                                    
+                                       @{ if (SubMenu.MenuGroupId > 0 && grpId != MenugrpId)
+                                        {
+                                        
+                                        <li class="mb-3 menu-grp-name" style="padding:10px 15px;">@MenuGroup</li>
+                                        grpId = MenugrpId;
+
+
+                                        }
+                                        var SubMenuItemLoop = SubMenuItem.Where(m => m.MainMenuID == SubMenu.MainMenuID);
+                                            int count = SubMenuItemLoop.Count();
+                                            foreach (var SubMenuLoop in SubMenuItemLoop)
+
+                                            {
+                                                <li class="sidebar-item sbmnu navmenu">
+                                                    <a class="sidebar-link" href="@SubMenuLoop.SubMenuURL" aria-expanded="false" onclick="getValue('@SubMenuLoop.MainMenuID')">
+                                                        <i class="@SubMenuLoop.SubMenuIcon"></i>
+                                                        <div class="hide-menu">@SubMenuLoop.SubMenuItem</div>
+                                                    </a>
+                                                </li>
+                                                @*<li class="subMenuItem "><a href="@SubMenuLoop.SubMenuURL"><span><i class="@SubMenuLoop.SubMenuIcon"></i></span> @SubMenuLoop.SubMenuItem</a></li>*@
+                                            }
+                                        }
+                                    </ul>
+                                </nav>
+                                            }
+                        }
+
+                        @*<nav class="sidebar-nav" id="menu-right-mini-3" data-simplebar>
+                                <ul class="sidebar-menu" id="sidebarnav">
+                                    <li class="sidebar-item sbmnu navmenu">
+                                        <a class="sidebar-link" href="/Home/AssessmentCategorySetUp" aria-expanded="false" onclick="getValue('3')">
+                                            <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
+                                            <span class="hide-menu">fgt</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item sbmnu navmenu">
+                                        <a class="sidebar-link" href="/Home/SectorSetUp" aria-expanded="false" onclick="getValue('3')">
+                                            <iconify-icon icon="solar:chart-line-duotone"></iconify-icon>
+                                            <span class="hide-menu">utyj</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="sidebar-item sbmnu navmenu">
+                                        <a class="sidebar-link" href="/Home/DesignationSetUp" aria-expanded="false" onclick="getValue('3')">
+                                            <iconify-icon icon="solar:screencast-2-line-duotone"></iconify-icon>
+                                            <span class="hide-menu">tyj</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    @*<ul class="menu-inner py-1">
+
+
+            @{
+
+                int? grpId = 0;
+                int? MenugrpId = 0;
+                string parantMenuId = "";
+
+                foreach (var MenuItem in Model.MainMenuModel)
+                {
+                    string MenuGroup = Model.GroupMenuModel.Where(m => m.MenuGrId == MenuItem.MenuGroupId).Select(x => x.MenuGroup).SingleOrDefault();
+                    MenugrpId = Model.GroupMenuModel.Where(m => m.MenuGrId == MenuItem.MenuGroupId).Select(x => x.MenuGrId).SingleOrDefault();
+
+
+                    parantMenuId = MenuItem.MenuClass;
+                    if (MenuItem.MenuGroupId > 0 && grpId != MenugrpId)
+                    {
+                        <li class="menu-header small text-uppercase">
+                            <span class="menu-header-text" data-i18n="@MenuGroup.">@MenuGroup</span>
+                        </li>
+                        grpId = MenugrpId;
+
+
+                    }
+
+
+                    var toggle = "";
+                    var SubMenuItem = Model.SubMenuModel.Where(m => m.MainMenuID == MenuItem.ID);
+
+                    if (SubMenuItem.Count() > 0)
+                    {
+                        toggle = "menu-toggle";
+                    }
+
+
+                    <li class="menu-item" id="MenuLi_@parantMenuId">
+                        <a href="@MenuItem.MainMenuURL" class="menu-link @toggle" onclick="getValue(@parantMenuId)">
+                            <i class="@MenuItem.MenuIcon"></i>
+                            <div data-i18n="@MenuItem.MainMenuItem">@MenuItem.MainMenuItem</div>
+                        </a>
+
+                        @if (SubMenuItem.Count() > 0)
+                        {
+                            <ul class="menu-sub">
+                                @foreach (var SubItem in SubMenuItem)
+                                {
+                                    <li class="menu-item normal">
+                                        <a href="@SubItem.SubMenuURL" class="menu-link" onclick="getValue(@parantMenuId)">
+                                            <div data-i18n="@SubItem.SubMenuItem">@SubItem.SubMenuItem</div>
+                                        </a>
+                                    </li>
+
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+
+            }
+        </ul>*@
+
+
+    <script type="text/javascript">
+
+        //function getValue(id) {
+        //    localStorage.setItem('value', id);
+        //    const greetingValue = localStorage.getItem('value');
+
+        //}
+        function retriveCalnData() {
+
+            var _data = JSON.stringify({
+                global: {
+                    TransactionType: 'ShowJobCalender',
+                    param1: 'AJU_UserId',
+                    param1Value: $('#hdnSmmeMainId').val(),
+                    StoreProcedure: 'JobDetails_USP'
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "/ScriptJson/GetGlobalMasterTransaction",
+                contentType: "application/json; charset=utf-8",
+                data: _data,
+                dataType: "json",
+                success: function (data) {
+                    data = JSON.parse(data);
+
+                    arrayJobList = data;
+                    //Cookies.set('calender', arrayJobList);
+                    localStorage.setItem('calender', JSON.stringify(arrayJobList));
+                },
+                error: function (data) {
+                    Swal.fire({
+                        title: "Process Not Complete",
+                        icon: "error",
+                        customClass: { confirmButton: "btn btn-primary waves-effect waves-light" },
+                        buttonsStyling: !1
+                    });
+                }
+            });
+            return false;
+
+        }
+        $(document).ready(function () {
+            //if (typeof (localStorage.getItem("menuId")) == 'undefined') {
+            //    alert('no');
+            //};
+            //if (localStorage.getItem("menuId") === null) {
+            //    getValue('1')
+            //}
+            //var Id = localStorage.getItem('value');
+            //if (Id != null && Id > 1) {
+            //    fnActiveMenu(localStorage.getItem('value'));
+            //    if ($('#hdnSmmeMainId').val() != "") {
+            //        retriveCalnData();
+            //    }
+
+            //}
+            //else {
+            //    fnActiveMenu(1);
+
+            //    ////console.log(arrayJobList);
+
+            //}
+
+        });
+        //function fnActiveMenu(id) {
+
+        //    var path = window.location.pathname;
+        //    path = path.replace(/\/$/, "");
+        //    path = decodeURIComponent(path);
+
+
+
+
+        //    $('#MenuLi_' + id + '.menu-item a').each(function () {
+        //        var href = $(this).attr('href');
+
+        //        href = href.split('?')[0];
+
+        //        if ("#" === href) {
+        //            $(this).closest('li').removeClass('active');
+        //        }
+        //        if (path.substring(0, href.length) === href) {
+        //            $(this).closest('li').addClass('active');
+        //            $(this).closest('li#MenuLi_' + id + '').addClass('open');
+        //        }
+        //    });
+
+
+        //}
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    @*<script src="~/Content/assets/js/appSidebar.js"></script>*@
+    <script src="~/Content/assets/js/newSideNav.js"></script>
+
+</body>
+</html>

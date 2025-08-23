@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "ActivityListForSMME";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+
+<script src="~/Scripts/utility/Loading.js"></script>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+
+        <span class="text-muted fw-light">Project /</span>
+        <span class="fw-medium"> View All Activity</span>
+    </h4>
+    <div class="card">
+        <div class="card-datatable table-responsive">
+            <input type="hidden" id="SMMEId" name="SMMEId" value="@ViewBag.SMMEId" />
+            <input type="hidden" value="@ViewBag.UserType" id="hdnUserType" />
+            <input type="hidden" value="@ViewBag.UserId" id="hdnUserId" />
+
+            <table class="datatables-products table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th class="text-nowrap">Project</th>
+                        <th class="text-nowrap">Activity Name</th>
+                        <th class="text-nowrap">Enterprise</th>
+                        <th class="text-nowrap">Activity Date </th>
+                        <th class="text-nowrap">Status</th>
+                        <th class="text-lg-center">View Task</th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+
+
+    var globalData = {
+        TransactionType: 'SelectActivityListForSMME',
+       
+
+      
+        StoreProcedure: 'CreateActivity_USP'
+    };
+    var search = 'Search Activity';
+
+    var columnData = [{ data: "PD_ProjectName" },
+                     { data: "CA_ActivityName" },
+                     { data: "ENR_CompanyName" },
+                     { data: "CA_Date" },
+                     { data: "IsCompleted" }]
+
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/ActivityListSMME.js"></script>
+

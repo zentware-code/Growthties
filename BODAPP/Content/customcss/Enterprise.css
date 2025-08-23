@@ -1,0 +1,10 @@
+﻿.f-btn-position {
+        bottom: -175px;
+        position: absolute;
+    }
+@media only screen and (max-width: 769px) {
+    .f-btn-position {
+        bottom:0;
+        position: relative;
+    }
+}

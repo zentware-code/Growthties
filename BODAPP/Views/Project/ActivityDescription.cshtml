@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "ActivityDescription";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var LinkJs = "";
+    if (Enterpriseuser != null)
+    {
+        LinkJs = Enterpriseuser.ChildMenuJsLink;
+    }
+    else if (SmmeUser != null)
+    {
+        LinkJs = SmmeUser.ChildMenuJsLink;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        LinkJs = EnterpriseEmpuser.ChildMenuJsLink;
+    }
+    else if (AdminUser != null)
+    {
+        LinkJs = AdminUser.ChildMenuJsLink;
+    }
+    else
+    {
+        LinkJs = user.ChildMenuJsLink;
+    }
+}
+
+
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+<input type="hidden" id="SmmeId" name="SmmeId" value="@ViewBag.SmmeId" />
+
+
+<div class="container-xxl flex-grow-1 container-p-y" id="pageLoader">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Projects /</span> Activity Details
+    </h4>
+    <div class="row">
+        <div class="col-xl-4 col-lg-5 col-md-5 customLoader" id="snglActivityDiv">
+            <!-- About User -->
+            
+        </div>
+
+   
+            <!-- Projects table -->
+            <div class="col-8 col-xl-7 col-sm-12 order-1 order-lg-2 mb-4 mb-lg-0 customLoader">
+                <div class="card">
+                    <div class="card-datatable table-responsive">
+                        <table class="table border-top" id="datatable-example">
+                            <thead class="border-top">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Project</th>
+                                    <th>Team</th>
+                                    <th class="w-px-200">Status</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/ Projects table -->
+   
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+    };
+</script>
+
+    <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="~/Scripts/utility/dropdown.js"></script>
+    <script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="@LinkJs"></script>
+    <script src="~/Scripts/custom/ActivityDescription.js"></script>
+

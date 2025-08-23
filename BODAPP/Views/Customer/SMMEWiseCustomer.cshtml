@@ -1,0 +1,143 @@
+﻿@model BODDal.Models.SMMERegistration
+@{
+    ViewBag.Title = "SMMEWiseCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+}
+@{
+    var random = new Random();
+    var list = new List<string> { "success", "danger", "warning", "info", "primary", "secondary" };
+    var index = random.Next(list.Count);
+
+        }
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Wise Customer</span> 
+    </h4>
+    <div class="row">
+        <!-- User Sidebar -->
+        <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
+            <!-- User Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="user-avatar-section">
+                        <div class="d-flex align-items-center flex-column">
+                            @if (Model.SMME_Logo == "NO")
+        {
+                            <div class="avatar avatar-xl">
+                                <span class="avatar-initial  bg-@list[index]">@Model.SMME_Prefix</span>
+                            </div>
+                            <br />
+                            }
+                            else
+                            {
+                            <img class="img-fluid rounded mb-3 pt-1 mt-4" src="@Model.SMME_Logo" height="100" width="100" alt="User avatar">
+                            }
+
+                            <div class="user-info text-center">
+                                <h4 class="mb-2">@Model.SMME_CompanyName</h4>
+                                <span class="badge bg-label-secondary mt-1">MSME</span>
+                                <input type="hidden" id="hdnsmmeId" value="@Model.SMME_Id" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom">
+                        <div class="d-flex align-items-start me-4 mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-checkbox ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Tasks Done</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-briefcase ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Projects Done</small>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-4 small text-uppercase text-muted">Details</h5>
+                    <div class="info-container">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <span class="fw-medium me-1">MSME Name:</span>
+                                <span>@Model.SMME_CompanyName</span>
+                            </li>
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Email:</span>
+                                <span>@Model.SMME_PrimaryContactEmail</span>
+                            </li>
+
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Contact:</span>
+                                <span>@Model.SMME_PrimaryContactNo</span>
+                            </li>
+                            <li class="pt-1">
+                                <span class="fw-medium me-1">Country:</span>
+                                <span>South Adrica</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/ User Sidebar -->
+        <!-- User Content -->
+        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+
+            <!-- Connected Accounts -->
+            <div class="card mb-4">
+                <h5 class="card-header pb-1">Customer List</h5>
+                <div class="card-body">
+                    <p class="mb-4">Display All Customer</p>
+                    @if (Model.SMME_Id != null)
+                    {
+                        foreach (var row in Model.CustomerDetailsList)
+                        {
+                            var randomSmMe = new Random();
+                            var listSMME = new List<string> {"warning", "info", "primary", "secondary", "success", "danger" };
+                            var indexsmme = randomSmMe.Next(listSMME.Count);
+                            long? CdId = 0;
+                            CdId = row.CD_Id;
+
+
+                    <div class="d-flex mb-3">
+                        <div class="avatar-wrapper"><div class="avatar me-3"><span class="avatar-initial rounded-circle bg-label-@listSMME[indexsmme]">@row.CD_Prefix</span></div></div>
+                      
+
+                        <div class="flex-grow-1 row">
+                            <div class="col-9 mb-sm-0 mb-2">
+                                <h6 class="mb-0">@row.CD_FirstName @row.CD_LastName</h6>
+                                <small class="text-muted">@row.CD_Email</small>
+                                <input type="hidden" id="hdnSmmeId" value="@row.CD_Id" />
+
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-end">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input float-end" type="checkbox" value="@row.chkvalue" @row.Ischecked onclick="Submit(this,@CdId)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+   
+</div>
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+<script src="~/Scripts/custom/SMMEWiseCustomer.js"></script>

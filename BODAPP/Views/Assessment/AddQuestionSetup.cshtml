@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "QuestionSetup";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Assessment /</span> Add Question 
+    </h4>
+    <div class="card">
+       
+            <div class="card-body">
+                <form id="formEnterpriseUser" onsubmit="return false" class="row mt-2">
+                    <div class="row ">
+
+                        <div class="col-md-8 mb-3">
+                            <div>
+                                <label for="defaultFormControlInput" class="form-label">Question</label>
+                                <input type="text" class="form-control" id="txtQuestion" name="txtQuestion" placeholder="Type Question here" aria-describedby="defaultFormControlHelp" />
+                                <input type="hidden" id="Id" />
+                                <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+                            </div>
+                        </div>
+                        <!-- Basic -->
+                        <div class="col-md-2 mb-3">
+                            <label for="select2Basic" class="form-label">Option Type</label>
+                            <select id="ddlQuestionType" name="ddlQuestionType" class="select2 form-select ddlQuestionType" data-allow-clear="true">
+                                <option value="">--Select--</option>
+                                <option value="TextBox">Text Box</option>
+                                <option value="TextArea">Text Area</option>
+                                <option value="Drop-down">Drop-down</option>
+                                <option value="SingleSelect">Single Select</option>
+                                <option value="MultiSelect">Multi Select</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <br />
+                            <label class="switch switch-primary">
+                                <input type="checkbox" class="switch-input" id="rdoIsUpload" onclick="fnUpload(this)" value="0" />
+                                <span class="switch-toggle-slider">
+                                    <span class="switch-on">
+                                        <i class="ti ti-check"></i>
+                                    </span>
+                                    <span class="switch-off">
+                                        <i class="ti ti-x"></i>
+                                    </span>
+                                </span>
+                                <span class="switch-label">File Upload</span>
+                            </label>
+                            </div>
+                            <br />
+                            <!-- Email -->
+                            <div class="row mt-2 mb-3">
+                                <div class="col-md-8 mb-4">
+                                    <label for="TagifyEmailList" class="form-label d-block">Option List</label>
+                                    <input id="QuestionList" name="QuestionList" class="tagify-email-list">
+                                    <button type="button" class="btn btn-sm rounded-pill btn-icon btn-outline-primary mb-1" id="btnOptionlist"> <span class="tf-icons ti ti-plus"></span> </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <div class="demo-inline-spacing">
+                                <button type="submit" class="btn btn-primary btn-shadow-primary" id="btnSubmit">
+                                    <span class="ti-xs ti ti-plus me-1"></span>Submit
+                                </button>
+                                <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect">
+                                    <span class="fa-solid fa-xmark me-1"></span>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+</div>
+        
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecord: '@Url.Action("InsertUpdateQuestionSetup", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetQuestionSetupData", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'QN_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'QuestionSetUp_USP'
+    };
+    
+</script>
+
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+ <!-- Page JS -->
+<script src="~/Content/assets/js/forms-selects.js"></script>
+<script src="~/Content/assets/js/forms-tagify.js"></script>
+<script src="~/Content/assets/js/forms-typeahead.js"></script>
+<script src="~/Scripts/custom/QuestionSetup.js"></script>
+
+

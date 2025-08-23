@@ -1,0 +1,258 @@
+﻿@model BODDal.Models.UserModel
+@{
+    ViewBag.Title = "UserPermissionForEnterpriseUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    var random = new Random();
+    var list = new List<string> { "success", "danger", "warning", "info", "primary", "secondary" };
+    var index = random.Next(list.Count);
+
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+        Enterprise User / <span class="text-muted fw-light">Permission</span>
+    </h4>
+    <div class="row">
+        <!-- User Sidebar -->
+        <div class="col-xl-4 col-lg-5 col-md-5 order-0 order-md-0">
+            <!-- User Card -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="user-avatar-section">
+                        <div class="d-flex align-items-center flex-column">
+                            @if (Model.UM_ProfilePic == "NO")
+                            {
+                                <div class="avatar avatar-xl">
+                                    <span class="avatar-initial  bg-@list[index]">@Model.UM_Prefix</span>
+                                </div>
+                                <br />
+                            }
+                            else
+                            {
+                                <img class="img-fluid rounded mb-3 pt-1 mt-4" src="@Model.UM_ProfilePic" height="100" width="100" alt="User avatar">
+                            }
+
+                            <div class="user-info text-center">
+                                <h4 class="mb-2">@Model.UserName</h4>
+                                <span class="badge bg-label-secondary mt-1">@Model.UserName</span>
+                                <input type="hidden" id="User_ID" value="@Model.UserID" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom">
+                        <div class="d-flex align-items-start me-4 mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-checkbox ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Tasks Done</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mt-3 gap-2">
+                            <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-briefcase ti-sm"></i></span>
+                            <div>
+                                <p class="mb-0 fw-medium">0</p>
+                                <small>Projects Done</small>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-4 small text-uppercase text-muted">Details</h5>
+                    <div class="info-container">
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Email:</span>
+                                <span>@Model.UM_EmailId</span>
+                            </li>
+
+                            <li class="mb-2 pt-1">
+                                <span class="fw-medium me-1">Contact:</span>
+                                <span>@Model.UM_ContactNo</span>
+                            </li>
+                            <li class="pt-1">
+                                <span class="fw-medium me-1">Country:</span>
+                                <span>South Adrica</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/ User Sidebar -->
+        <!-- User Content -->
+        <div class="col-xl-8 col-lg-7 col-md-7 order-1 order-md-1">
+
+            <div class="card mb-6">
+                <!-- Notifications -->
+                <div class="card-header">
+                    <h5 class="mb-0">Permission</h5>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table" id="tblMenu">
+                        <thead class="border-top">
+                            <tr>
+                                <th class="text-nowrap">Menu Permission</th>
+                                <th class="text-nowrap ">Choose Submenu</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int mid = 1;
+                             foreach (var MenuItem in Model.mainmenuLst)
+                             {
+                                 var SubMenuItem = Model.submenuList.Where(m => m.MainMenuID == MenuItem.MenuId);
+                                 var action = (ViewContext.RouteData.Values["action"] ?? "").ToString().ToLower();
+
+                                 var controller = (ViewContext.RouteData.Values["controller"] ?? "").ToString().ToLower();
+                                 string path = "/" + controller + "/" + action;
+                                 string aa = path.Equals(MenuItem.MainMenuURL.ToLower()) ? "active" : "";
+                                 string MenuStatus = "";
+                                 string MenuCollapsibleStatus = "";
+                                <tr>
+                                    <td>
+                                        <div class="form-check d-flex ">
+                                            <input class="form-check-input mainMenu" type="checkbox" id="menu_@MenuItem.MenuId" value="@MenuItem.MenuId" onclick="activateSubMenu(this, @mid)" @MenuItem.Checked />
+
+                                            <label class="form-check-label" for="customCheckPrimary">@MenuItem.MainMenuItem</label>
+                                        </div>
+
+                                        @*<label>
+                                                <input type="checkbox" id="menu_@MenuItem.MenuId" class="mainMenu" value="@MenuItem.MenuId" onclick="activateSubMenu(this, @mid)" @MenuItem.Checked />
+
+                                            </label>*@
+                                    </td>
+                                    <td colspan="100%">
+                                        @if (SubMenuItem.Count() > 0)
+                                        {
+                                            foreach (var SubItem in SubMenuItem)
+                                            {
+                                                <div class="form-check d-flex ">
+                                                    <input class="form-check-input subMenu" type="checkbox" id="submenu_@SubItem.MenuId" name="submenu_@mid" value="@SubItem.MenuId" @SubItem.Checked />
+                                                    @*<span>@SubItem.SubMenuItem</span>*@
+
+                                                    <label class="form-check-label" for="submenu_@SubItem.MenuId">@SubItem.SubMenuItem</label>
+                                                </div>
+
+                                                <br />
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                                        mid++;
+                             }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="card-body">
+                    <button type="submit" id="btnSave" class="btn btn-primary me-3">Save changes</button>
+                    <button type="reset" class="btn btn-label-secondary">Discard</button>
+                </div>
+                <!-- /Notifications -->
+            </div>
+
+
+        </div>
+
+    </div>
+    @*<div class="row">
+            <div class="col-md-12">
+                <h4 class="py-3 mb-4">
+                    <span class="text-muted fw-light">User /</span> Permission
+                </h4>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="formJob" method="post" onsubmit="return false" class="row mt-2">
+                            <input type="hidden" id="User_ID" name="User_ID" value="@ViewBag.userId" />
+                            <div class="col-md-6 mb-3">
+                                 <label for="txtJobName" class="form-label">User Name</label>
+                                <input type="text" id="UserName" name="UserName" class="form-control" value="@Model.UserName" disabled />
+
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="txtDurationDateTo" class="form-label">UserId</label>
+                                <input type="text" id="LoginId" name="LoginId" class="form-control" value="@Model.UserLoginID" disabled />
+                            </div>
+                            <br />
+
+
+
+                            <br />
+
+                            <div class="col-md-12 mt-2">
+                                <div class="table-responsive">
+                                    <table id="active-accounts" class="table table-wrapper">
+                                        <thead>
+                                            <tr>
+                                                <th>Menu Permission</th>
+                                                <th colspan="100%">Choose Submenu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int mid = 1;
+                                             foreach (var MenuItem in Model.mainmenuLst)
+                                             {
+                                                 var SubMenuItem = Model.submenuList.Where(m => m.MainMenuID == MenuItem.MenuId);
+                                                 var action = (ViewContext.RouteData.Values["action"] ?? "").ToString().ToLower();
+
+                                                 var controller = (ViewContext.RouteData.Values["controller"] ?? "").ToString().ToLower();
+                                                 string path = "/" + controller + "/" + action;
+                                                 string aa = path.Equals(MenuItem.MainMenuURL.ToLower()) ? "active" : "";
+                                                 string MenuStatus = "";
+                                                 string MenuCollapsibleStatus = "";
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input type="checkbox" id="menu_@MenuItem.MenuId" class="mainMenu" value="@MenuItem.MenuId" onclick="activateSubMenu(this, @mid)" @MenuItem.Checked />
+                                                            <span>@MenuItem.MainMenuItem</span>
+                                                        </label>
+                                                    </td>
+                                                    <td colspan="100%">
+                                                        @if (SubMenuItem.Count() > 0)
+                                                        {
+                                                            foreach (var SubItem in SubMenuItem)
+                                                            {
+                                                                <label>
+
+                                                                    <input type="checkbox" id="submenu_@SubItem.MenuId" class="subMenu" name="submenu_@mid" value="@SubItem.MenuId" @SubItem.Checked />
+                                                                    <span>@SubItem.SubMenuItem</span>
+                                                                </label><br />
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                        mid++;
+                                             }
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Repeater -->
+
+            <!-- /Form Repeater -->
+
+
+        </div>*@
+
+
+</div>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/custom/User_AdminToEnterprise.js"></script>

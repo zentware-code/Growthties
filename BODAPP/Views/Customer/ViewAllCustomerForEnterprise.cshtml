@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "ViewAllCustomerForEnterprise";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+
+
+<div class="modal fade" id="setUPFormEnterpriseCustomerModal" tabindex="-1" aria-labelledby="setUPFormEnterpriseCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-end">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="setUPFormEnterpriseCustomerModalLabel">Add Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body border-top">
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div id="dvImage" style="margin-top:-6px;">
+                            <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                        </div>
+                        <div id="dvAvatar" style="margin-top:-6px;"></div>
+                        <input type="hidden" name="..." id="hdnupload">
+                        <div class="button-wrapper">
+                            <label for="upload" class="btn btn-primary me-2" tabindex="0">
+                                <span class="d-none d-sm-block">Upload Profile Picture</span>
+                                <i class="ti ti-upload d-block d-sm-none"></i>
+                                <input type="file" id="upload" class="account-file-input" data-max-size="3000000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                            </label>
+                            <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset">
+                                <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Reset</span>
+                            </button>
+
+                            <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <hr class="my-0">
+                <div class="card-body">
+
+                    <form id="formEnterpriseCustomer" onsubmit="return false" class="row mt-2">
+                        <div class="col-md-3 mb-3">
+                            <label for="txtFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control alphabets" id="txtFirstName" placeholder="Type FirstName here" name="txtFirstName" />
+                            <input type="hidden" id="Id" />
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control alphabets" id="txtLastName" placeholder="Type LastName here" name="txtLastName" />
+                            <input type="hidden" id="Id" />
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtContact" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="txtEmail" placeholder="Type Email here" name="txtEmail" />
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtContact" class="form-label">Contact Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text">(+27)</span>
+                                <input type="text" class="form-control" id="txtContact" name="txtContact" placeholder="Type Contact here" oninput="formatPhoneNumber(this)" />
+                                @*<input type="text" class="form-control" id="txtContact" placeholder="Type Contact here" name="txtContact" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />*@
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-3 mb-3">
+                            <label for="ddlType" class="form-label">Type</label>
+                            <select id="ddlType" name="ddlType" class="select2 form-select ddlType" data-allow-clear="true"></select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="txtAddressLine1" class="form-label">Address </label>
+                            <textarea type="text" class="form-control" id="txtAddressLine1" placeholder="Type Address Line 1 here" name="txtAddressLine1"></textarea>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label" for="ddlCountry">Country</label>
+                            <select class="select2 form-select ddlCountry" data-allow-clear="true" id="ddlCountry" name="ddlCountry"></select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="ddlProvince" class="form-label">Province</label>
+                            <select id="ddlProvince" name="ddlProvince" class="select2 form-select ddlProvince" data-allow-clear="true"></select>
+                        </div>
+                        <!--
+                            <div class="col-md-6 mb-3">
+                                <label for="txtAddressLine2" class="form-label">Address Line 2</label>
+                                <textarea type="text" class="form-control" id="txtAddressLine2" placeholder="Type Address Line 2 here" name="txtAddressLine2"></textarea>
+                            </div>
+                        -->
+                        <div class="col-md-3 mb-3">
+                            <label for="txtCity" class="form-label">Township/City</label>
+                            <input type="text" class="form-control" id="txtCity" placeholder="Type City here" name="txtCity" />
+                        </div>
+                        <!--
+                            <div class="col-md-3 mb-3">
+                                <label for="txtLocation" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="txtLocation" placeholder="Type Location here" name="txtLocation" />
+                            </div>
+                         -->
+                        <div class="col-md-3 mb-3">
+                            <label for="txtSuberb" class="form-label">Suburb</label>
+                            <input type="text" class="form-control" id="txtSuberb" placeholder="Type Suberb here" name="txtSuberb" />
+                        </div>
+                        
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtSuberb" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="txtPostalCode" name="txtPostalCode" placeholder="Type Postal Code here" oninput="formatPostalCode(this)" />
+                            @*<input type="text" class="form-control" id="txtPostalCode" placeholder="Type Postal Code here" name="txtPostalCode" />*@
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtRegistrationNo" class="form-label">Registration No</label>
+                            <input type="text" id="txtRegistrationNo" name="txtRegistrationNo" class="form-control"
+                                   placeholder="Type Registration here" maxlength="14" required />
+                            <div id="error" class="text-danger mt-2" style="display:none;"></div>
+                            @*<input type="text" class="form-control" id="txtRegistrationNo" placeholder="Type Registration here" name="txtRegistrationNo" />*@
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="ddlSector" class="form-label">Sector</label>
+                            <select id="ddlSector" name="ddlSector" class="select2 form-select ddlSector" data-allow-clear="true"></select>
+                        </div>
+                        <div class="mb-3 col-md-3">
+                            <label class="form-label" for="multiStepsMobile">Business Type</label>
+                            <select class="select2 form-select ddlBusinessType" data-allow-clear="true" id="ddlBusinessType" name="ddlBusinessType"></select>
+                        </div>
+                        
+                        <div class="col-md-3 mb-3">
+                            <label for="txtVat" class="form-label">Tax</label>
+                            <input type="text" class="form-control" id="txtTax" name="txtTax" placeholder="Type Tax Number" maxlength="10" oninput="formatTenDigit(this)" /> 
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtVat" class="form-label">Vat</label>
+                            <input type="text" class="form-control" id="txtVat" name="txtVat" placeholder="Type Vat here" oninput="formatTenDigit(this)" />
+                            @*<input type="text" class="form-control" id="txtVat" placeholder="Type Vat here" name="txtVat" />*@
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <div class="demo-inline-spacing">
+                                <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                                    <span class="ti-xs ti ti-plus me-1"></span>Submit
+                                </button>
+                                <a class="btn btn-label-secondary waves-effect" id="btnCancelRedirect" data-bs-dismiss="modal">
+                                    <span class="fa-solid fa-xmark me-1"></span>Cancel
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Enterprise /</span> All Customer
+    </h4>
+    <!-- Users List Table -->
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+            <div class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0">
+                <div class="col-md-4 user_role"></div>
+                <div class="col-md-4 user_plan"></div>
+                <div class="col-md-4 user_status"></div>
+            </div>
+        </div>
+        <div class="card-datatable table-responsive">
+            <input type="hidden" id="hdnEntId" value="@ViewBag.EntrId"/>
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>Customer Name</th>
+                        <th>Contact No</th>
+                        <th>Type</th>
+                        <th>Reg No</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+        
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+        SaveRecordData: '@Url.Action("InsertCustomerDetails", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetCustomerDetailsAdmin", "ScriptJson")'
+       
+    };
+    var globalData = {
+        TransactionType: 'SelectEdit',
+        Param: 'CD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'CustomerDetails_USP'
+    };
+    var popup = "#setUPFormEnterpriseCustomerModal";
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/ViewAllCustomerForEnterprise.js"></script>

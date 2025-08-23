@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "ProjectListToAssignSMMEFromEnterp";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+<style>
+    .modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+</style>
+
+<div class="container-xxl flex-grow-1 container-p-y" >
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Enterprise /</span>Assign Project To MSME
+    </h4>
+    <div class="card" id="dtList">
+
+        <div class="card-datatable table-responsive" >
+            <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+            <input type="hidden" id="hdnUesrRole" name="hdnUesrRole" value="@ViewBag.UesrRole" />
+            
+            <input type="hidden" id="PDId"/>
+            <input type="hidden" id="PDName"/>
+            <input type="hidden" id="PDStartDte"/>
+            <input type="hidden" id="PDEndDte" />
+            <input type="hidden" id="PDDesc" />
+            <table class="datatables-products table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th class="">Project Name</th>
+                        <th class="">Enterprise</th>
+                        <th class="">Email</th>
+                        <th class="text-lg-center">Assign</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="shareProject" tabindex="-1" aria-hidden="true" >
+        <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content p-3 p-md-5">
+                <div class="modal-body" id="ModalLoad">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="row" >
+                        <div class="col-md-12 col-12 mb-md-0 mb-4">
+                            <div class="text-center">
+                                <h3 class="mb-2">MSME List</h3>
+                            </div>
+                            <br />
+                            <ul class="p-0 m-0" id="ulSmmeList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiple Lists Draggable -->
+                <!-- /Multiple Lists Draggable ends -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")'
+
+    };
+
+
+    var globalData = {
+        TransactionType: 'SelectAssignProjectForSMMEFromEntrp',
+        Param: 'EnterpriseId',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'ProjectDetails_USP'
+    };
+    var search = 'Search Project';
+
+    var columnData = [{ data: "PD_ProjectName" },
+                   { data: "ENR_CompanyName" },
+    { data: "ENR_PrimaryContactEmail" }]
+
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/custom/ProjectListToAssignSMMEFromEnterp.js"></script>

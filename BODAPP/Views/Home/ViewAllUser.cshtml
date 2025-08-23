@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "ViewAllUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+
+
+
+<div class="modal fade" id="setUPFormAdminUserManageModal" tabindex="-1" aria-labelledby="setUPFormUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-end">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body border-top">
+                <div class="card-body">
+                    <div class="d-flex align-items-start  gap-4">
+                        <div id="dvImage" style="margin-top:-6px;">
+                            <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                        </div>
+                        <div id="dvAvatar" style="margin-top:-6px;"></div>
+                        <input type="hidden" name="..." id="hdnupload">
+                        <div class="button-wrapper">
+                            <label for="upload" class="btn btn-primary me-2" tabindex="0">
+                                <span class="d-none d-sm-block">Upload Profile Picture</span>
+                                <i class="ti ti-upload d-block d-sm-none"></i>
+                                <input type="file" id="upload" class="account-file-input" data-max-size="3000000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                            </label>
+                            <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset">
+                                <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Reset</span>
+                            </button>
+
+                            <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
+                    <form id="formAdminUserManage" onsubmit="return false" class="row mt-2">
+                        <div class="col-md-6 mb-3">
+                            <label for="txtFirstName" class="form-label">First Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control alphabets" id="txtFirstName" placeholder="First Name" name="txtFirstName" />
+                            <input type="hidden" id="Id" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="txtLastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control alphabets" id="txtLastName" placeholder="Last Name" name="txtLastName" />
+                            <input type="hidden" id="Id" />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="txtUserEmail" class="form-label">Email Address<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txtUserEmail" placeholder="Email Address" name="txtUserEmail" />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="txtContact" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group">
+                                    <span class="input-group-text">(+27)</span>
+                                    <input type="text" class="form-control" id="txtContact" placeholder="71 555 6666" name="txtContact" oninput="formatPhoneNumber(this)" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-md-4 mb-3">
+                            <label for="ddlRole" class="form-label">User Role<span class="text-danger">*</span></label>
+                            <select id="ddlRole" name="ddlRole" class="select2 form-select ddlRole" data-allow-clear="true"></select>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-md-4 mb-3">
+                            <label for="txtAge" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control bs-datepicker-autoclose" id="txtAge" name="txtAge" placeholder="dd/mm/yyyy" autocomplete="off" />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="ddlGender" class="form-label">Gender<span class="text-danger">*</span></label>
+                            <select id="ddlGender" name="ddlGender" class="select2 form-select ddlGender" data-allow-clear="true">
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                      
+
+                        <div class="col-md-12 mt-2">
+                            <div class="demo-inline-spacing">
+                                <button type="submit" class="btn btn-primary  btn-shadow-primary" id="btnUpdateNext">
+                                    <span class="ti-xs ti ti-plus me-1"></span>Save
+                                </button>
+                                <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal">
+                                    <span class="fa-solid fa-xmark me-1"></span>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Admin /</span> Manage User
+    </h4>
+    <!-- Users List Table -->
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+            <div class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0">
+                <div class="col-md-4 user_role"></div>
+                <div class="col-md-4 user_plan"></div>
+                <div class="col-md-4 user_status"></div>
+            </div>
+        </div>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>CONTACT NUMBER</th>
+                        <th>ROLE</th>
+                        @*<th>Company Name</th>
+                        <th>Company Email</th>*@
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+        SaveRecordData: '@Url.Action("InsertAdminUserFromAdmin", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetAdminUser", "ScriptJson")',
+
+    };
+
+    var popup = "#setUPFormAdminUserManageModal";                          
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/DeleteRecord.js"></script>
+<script type="text/javascript">
+        var baseUrl = '@System.Configuration.ConfigurationManager.AppSettings["BaseUrl"]';
+</script>
+<script src="~/Scripts/custom/ViewAllUserForAdmin.js"></script>

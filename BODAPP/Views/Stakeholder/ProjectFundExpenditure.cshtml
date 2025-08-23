@@ -1,0 +1,461 @@
+﻿@{
+    ViewBag.Title = "ProjectFundExpenditure";
+    Layout = "~/Views/Shared/_BudgetLayoutST.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+@*<link href="~/Content/loader.css" rel="stylesheet" />*@
+
+
+<style>
+    #tblSMMEExpendi th, td {
+        border: 1px solid #0000001f;
+        padding: 8px 20px;
+        text-align: left;
+        vertical-align: middle;
+        /* text-align: center; */
+    }
+</style>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <input type="hidden" id="hdnBdgtType" />
+    <div class="row  g-0">
+
+        <div class="col-xl-6 mb-4 col-md-6" style="border-right:1px solid #80808033">
+            <div class="demo-inline-spacing">
+                <button class="btn rounded-pill btn-outline-primary allcn disAble" id="btnAllocateExpenses" disabled>
+                    <span class="fas fa-user-plus me-1"></span>Allocate Expenses
+                </button>
+            </div>
+        </div>
+        <div class="col-xl-6 mb-4 col-md-6 px-3" style="margin-top:14px">
+            <select class="select2 form-select rounded-pill btn rounded-pill allcn ddlFinancialYearFilter" id="ddlFinancialYearFilter" name="ddlFinancialYearFilter"></select>
+            <input type="hidden" id="hdnFyFilterId" value="@ViewBag.FyId" />
+            <input type="hidden" id="hdnProjctENrId" value="@ViewBag.ENR_Id" />
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalExpenditure" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document" style=" width: 100%;min-width: 1200px;">
+            <div id="section-blockBudgetExpenditure">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalBudgDistribution4">Expenditure for MSME</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 col-md-4 mt-2">
+                            <label class="form-label" for="ddlFinancialYearExpenditure">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearExpenditure" data-allow-clear="true" id="ddlFinancialYearExpenditure" name="ddlFinancialYearExpenditure"></select>
+                            <input type="hidden" id="hdnFyExpenditureId" class="hdnFyExpenditureId" />
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlBudgetDistSMME" class="form-label">Period</label>
+                                <select id="ddlBudgetDistSMME" name="ddlBudgetDistSMME" class="select2 form-select ddlBudgetDistSMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Projected Project Budget</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME" id="txtTotalProjectBudgetSMME" name="txtTotalProjectBudgetSMME" value="" disabled />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Actual Budget for  <span id="txtPeriodSMME" class="txtPeriodSMME txSMMESpan"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME" id="txtTotalBudgetForSpacificFundSMME" name="txtTotalBudgetForSpacificFundSMME" value="" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlTaskActivitySMME" class="form-label">Activity</label>
+                                <select id="ddlTaskActivitySMME" name="ddlTaskActivitySMME" class="select2 form-select ddlTaskActivitySMME txSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Projected Budget for <span id="txtActivityLabelSMME" class="txtActivityLabelSMME txSMMESpan oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME onchngClr" id="txtTotalActivityBudgetSMME" name="txtTotalActivityBudgetSMME" disabled />
+                                    <input type="hidden" class="txSMME onchngClr" id="hdnTotalActivityBudgetSMME" name="hdnTotalActivityBudgetSMME" />
+                                    <input type="hidden" id="hdnActivityId" name="hdnActivityId" />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Actual Expenditure for <span id="txtActivityLabelSMME" class="txtActivityLabelSMME txSMMESpan oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME onchngClr" id="txtTotalAvailableBudgetSMME" name="txtTotalAvailableBudgetSMME" disabled />
+                                    <input type="hidden" id="hdnTotalAvailableBudgetSMME" name="hdnTotalAvailableBudgetSMME" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 mb-4">
+                                <label for="ddlTaskSMME" class="form-label">Task</label>
+                                <select id="ddlTaskSMME" name="ddlTaskSMME" class="select2 form-select ddlTaskSMME txSMME onchngClr" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Projected Budget for <span id="txtTaskLabelSMME2" class="txtTaskLabelSMME txSMMESpan txlblActTaskClr oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME onchngClr" id="txtTotalTaskBudgetSMME" name="txtTotalTaskBudgetSMME" value="" disabled />
+                                </div>
+                            </div>
+                            <div class="col-4 mb-4">
+                                <label for="txtAmnt" class="form-label">Actual Expenditure for <span id="txtTaskLabelSMME" class="txtTaskLabelSMME txSMMESpan txlblActTaskClr oncngClrSMMESpn"></span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R</span>
+                                    <input type="text" class="form-control txSMME onchngClr" id="txtTotalAvailableBudgetTaskSMME" name="txtTotalAvailableBudgetTaskSMME" disabled />
+                                    <input type="hidden" id="hdnTotalAvailableBudgetTaskSMME" name="hdnTotalAvailableBudgetTaskSMME" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 mb-3">
+                                <label for="ddlSMME" class="form-label">MSME<span class="text-danger">*</span></label>
+                                <select id="ddlSMME" name="ddlSMME" class="select2 form-select ddlSMME" data-allow-clear="true"></select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="txtSMMEDate" class="form-label">Date<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose date-from dtcls txtModal txSMME onchngClr" id="txtSMMEDate" name="txtSMMEDate" placeholder="dd-mm-yyyy" autocomplete="off" />
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="txtSMMEDesc" class="form-label">Description</label>
+                                <input type="text" class="form-control txtModal txSMME onchngClr" id="txtSMMEDesc" placeholder=" " name="txtSMMEDesc" />
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="txtSMMEAmnt" class="form-label">Projected Amount<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal txSMME onchngClr text-" id="txtSMMEAmnt" placeholder="Enter MSME Amount" name="txtSMMEAmnt" disabled />
+                                <input type="hidden" class="form-control txtModal txSMME onchngClr" id="hdnSMMEAmnt" name="hdnSMMEAmnt" disabled />
+                            </div>
+                            <div class="col-2 mb-3">
+                                <label for="txtExpensesAmnt" class="form-label">Expenditure Amount<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control txtModal txSMME onchngClr" id="txtExpensesAmnt" placeholder="Enter Expenses Amount " onkeyup="cellAmntFortxtExpensesAmntBudget(this)" name="txtExpensesAmnt"
+                                       onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" />
+                            </div>
+
+                            <div class="col-1 mb-1">
+                                <div style="height:20px"></div>
+                                <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect AddSMMEBtn" id="btnAddSMMEBudget" onclick="AddSMMEBudgetExpenses();" disabled>
+                                    <i class="tf-icons ti ti-plus"></i>
+                                </button>
+                            </div>
+                            @*<div class="col-2 mt-4">
+                                    <button type="button" class="btn btn-warning waves-effect waves-light" id="btnAllocateFund">
+                                        ALLOCATE FUNDS
+                                    </button>
+                                </div>*@
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <table id="tblSMME" class="table table-bordered tbl">
+                                    <thead>
+                                        <tr>
+                                            <th>MSME</th>
+                                            <th style="width:20%;">Date</th>
+                                            <th style="width:20%;">Description</th>
+                                            <th>Projected Amount</th>
+                                            <th>Expenditure Amount</th>
+                                            <th hidden>Period</th>
+                                            <th hidden>Activity</th>
+                                            <th hidden>Task</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3">TOTAL EXPENDITURE</th>
+                                            <th>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">R</span><input type="text" class="form-control txtReloadHdn txSMME onchngClr" name="txtsumAllocatedBudgtActivitySMME" id="txtsumAllocatedBudgtActivitySMME" disabled />
+                                                </div><input type="hidden" class="txtReloadHdn txSMME onchngClr" id="hdnsumAllocatedBudgtHdnActivitySMME" />
+                                            </th>
+                                            <th>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">R</span><input type="text" class="form-control txtReloadHdn txSMME onchngClr" name="txtsumAllocatedBudgtActivitySMMEExpenses" id="txtsumAllocatedBudgtActivitySMMEExpenses" disabled />
+                                                </div><input type="hidden" class="txtReloadHdn txSMME onchngClr" id="hdnsumAllocatedBudgtHdnActivitySMMEExpenses" />
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                @*<div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-warning waves-effect waves-light" id="btnSaveExpenditure" onclick="SaveBudgetDetailsForSMME()">Save</button>
+                                        <button type="button" class="btn btn-warning waves-effect" data-bs-dismiss="modal">Close</button>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveBtnSMME" onclick="SaveBudgetDetailsForSMME()">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        <!-- View sales -->
+        <div class="col-xl-4 mb-4 col-md-6">
+            <div class="card h-100">
+                <div id="section-blockBgtAmt">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between" style="position: relative;">
+                            <div class="d-flex flex-column">
+                                <div class="card-title mb-auto">
+                                    <h5 class="mb-1 text-nowrap">Fund Allocation</h5>
+                                    @*<small>Report</small>*@
+                                </div>
+                                <div class="chart-statistics">
+                                    <h3><span class="totalbudgetFormeted" id="totalbudgetFormeted"></span><span style="display:none;" class="card-title mb-1" id="totalbudget"></span></h3>
+                                    <small class="text-success text-nowrap fw-medium" id="remaningPerc">@*<i class="ti ti-chevron-up me-1"></i>*@ </small>
+                                </div>
+                            </div>
+                            <div id="generatedLeadsChart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- View sales -->
+        <!-- Statistics -->
+        <div class="col-xl-8 mb-4 col-lg-7 col-12">
+            <div id="section-blockBgtExpendiFunders">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between pb-2 mb-1">
+                        <div class="card-title mb-1">
+                            <h5 class="m-0 me-2">Funds</h5>
+                            <br />
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="salesByCountryTabs" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ti ti-dots-vertical ti-sm text-muted"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="salesByCountryTabs">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="SidePopUpForShowFund();">View All Fund</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-3" id="divfund">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unallocation Budget -->
+        <div class="col-xl-4 mb-4 col-md-6">
+            <div class="card h-100">
+                <div id="section-blockBgtUnAllocatedBudget" class="section-blockBgtUnAllocatedBudget">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between" style="position: relative;">
+                            <div class="d-flex flex-column">
+                                <div class="card-title mb-auto">
+                                    <h5 class="mb-1 text-nowrap">Unallocated Budget</h5>
+
+                                </div>
+                                <div class="chart-statistics">
+                                    <h3 class="card-title mb-1" id="totalUnallocatedBudget"></h3>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Unallocation Budget -->
+
+
+        <div class="col-xl-8 mb-4 col-lg-7 col-12">
+            <div id="section-blockBgtExpendiFundeibution">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between pb-2 mb-1">
+                        <div class="card-title mb-1">
+                            <h5 class="m-0 me-2">Budget Distribution</h5>
+                            <br />
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-3" id="divfundDistribution">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12 mb-4 col-lg-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row gy-3">
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input type="radio" name="sessionType" id="rdoCurrentSession" class="form-check-input p-2 mt-1 ">
+                                <label class="form-check-label fs-5" for="rdoCurrentSession">Current Session</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input type="radio" name="sessionType" id="rdoCustomSession" class="form-check-input p-2 mt-1 chkFilter">
+                                <label class="form-check-label fs-5" for="rdoCustomSession">Custom</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gy-3" id="customSessionRow" style="display: none;">
+                        <div class="col-6 mb-4">
+                            <label class="form-label" for="ddlFinancialYearExpenCustom">Financial Year<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlFinancialYearExpenCustom chkFilter" data-allow-clear="true" id="ddlFinancialYearExpenCustom" name="ddlFinancialYearExpenCustom"></select>
+                            <input type="hidden" id="hdnFyExpenditureId" class="hdnFyExpenditureId" />
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label for="ddlBudgetDistSMMECustom" class="form-label">Period</label>
+                            <select id="ddlBudgetDistSMMECustom" name="ddlBudgetDistSMMECustom" class="select2 form-select ddlBudgetDistSMMECustom txSMME chkFilter" data-allow-clear="true"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="viewFundPopUp" aria-labelledby="offcanvasEndLabel" style="width:33% !important">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasEndLabel" class="offcanvas-title">All Allocated Fund</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onclick="SidePopUpForShowFundClose()"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <div class="table-responsive">
+                <table class="table table-borderless border-top" id="tblFund">
+                    <thead class="border-bottom">
+                        <tr>
+                            <th>Fund</th>
+                            <th class="text-end">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                </table>
+                <div id="reportDuration" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    @*<div id="loader" style="display:none;">
+            <span class="loader">Loading</span>
+        </div>*@
+
+
+
+    <div class="col-xl-12" id="section-blockBgtExpendiReport">
+        <div class="nav-align-top nav-tabs-shadow mb-4" style="min-height:300px">
+            <ul class="nav nav-tabs nav-fill" role="tablist">
+                <li class="nav-item">
+                    <button type="button" id="retriveReportBtn" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-justified-home" aria-controls="navs-justified-home" aria-selected="true">
+                        <i class="tf-icons ti ti-home ti-xs me-1"></i> Allocated Expenditure For SMME
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane fade show active" id="navs-justified-home" role="tabpanel">
+                    <table class="datatables-products table" id="tblSMMEExpendi">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">Date</th>
+                                <th rowspan="2">Description</th>
+                                <!-- Dynamic Fund columns with Budget and Expenditure -->
+                            </tr>
+                            <tr>
+                                <!-- The Subheader row for Budget and Expenditure will be generated here -->
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- Data rows will be populated here by jQuery -->
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+<script type="text/javascript">
+            var URLList = {
+
+                GetList: '@Url.Action("GetGlobalMasterTransactionForBudget", "ScriptJson")',
+                SaveRecord: '@Url.Action("InsertProjectDetails", "ScriptJson")',
+                GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+            };
+
+
+            var globalData = {
+                TransactionType: 'SelectProjectDetailsForFilter',                  ///'SelectProjectDetails',
+                param1: 'PD_Id',
+                //paramValue: parseInt(id),
+                StoreProcedure: 'ProjectDetails_USP'
+            };
+
+            var search_smme = 'Search SMME';
+
+</script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<!-- Main JS -->
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+<script src="~/Content/assets/js/forms-selects.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/dropdownjoin.js"></script>
+<script src="~/Scripts/utility/Loading.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Scripts/custom/ProjectFundExpenditureForStakeholder.js"></script>

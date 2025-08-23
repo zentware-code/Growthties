@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "SMMESettings_legalentity";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var role = "";
+
+    if (Enterpriseuser != null)
+    {
+        role = Enterpriseuser.UM_Role;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        role = EnterpriseEmpuser.UM_Role;
+    }
+    else if (SmmeUser != null)
+    {
+        role = SmmeUser.UM_Role;
+    }
+    else if (AdminUser != null)
+    {
+        role = AdminUser.UM_Role;
+    }
+    else
+    {
+        role = user.UM_Role;
+    }
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/pickr/pickr-themes.css" />
+<div class="container-xxl flex-grow-1 container-p-y">
+    <input type="hidden" id="hdnEnterId" value="@ViewBag.EntrId" />
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Settings /</span> Legal Entity
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-md-row mb-4">
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_company?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-building"></i> MSME Details</a></li>
+                <li class="nav-item"><a class="nav-link" href="SMMESettings_contact?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-users me-1"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="ti-xs ti ti-file-description me-1"></i> Legal Entity</a></li>
+                @*<li class="nav-item"><a class="nav-link" href="SMMESettings_financial?Id=@ViewBag.Id&M=@ViewBag.M"><i class="ti-xs ti ti-file-dollar"></i> Financial</a></li>*@
+            </ul>
+            <div class="card mb-4">
+                <h5 class="card-header">Legal Entity Details</h5>
+                <div class="card-body">
+                    <form id="formAccountSettings" method="GET" onsubmit="return false">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnModeForm" value="legal_entity" />
+                                <label class="form-label" for="multiStepsFirstName">Legal Entity Type<span class="text-danger">*</span></label>
+                                <select class="select2 form-select ddlLegalEntity" data-allow-clear="true" id="ddlLegalEntity" name="ddlLegalEntity"></select>
+                                <input type="hidden" id="hdnId" name="hdnId" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">Tax Number</label>
+                                <input type="text" class="form-control" id="txtTaxNumber" name="txtTaxNumber" placeholder="Tax Number" maxlength="10" oninput="formatTenDigit(this)" />
+                                @*<input type="text" id="txtTaxNumber" name="txtTaxNumber" class="form-control" placeholder="Enter Tax Number" />*@
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">VAT Number</label>
+                                <input type="text" class="form-control" id="txtVatNumber" name="txtVatNumber" placeholder="VAT Number" maxlength="10" oninput="formatTenDigit(this)" />
+                                @*<input type="text" id="txtVatNumber" name="txtVatNumber" class="form-control" placeholder="Enter Vat Number" />*@
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsMobile">Resgistration Date<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose dtcls" id="txtIncorporationDate" placeholder="dd/mm/yyyy" />
+                                <div id="error-message" style="color: red;"></div>
+                            </div>
+                            @*<div class="mb-3 col-md-6">*@
+                                @*<label class="form-label" for="multiStepsMobile">Registration Number</label>*@
+                                <input type="hidden" id="txtRegNum2" name="txtRegNum2" />
+                            @*</div>*@
+                        </div>
+                        <div class="mt-2">
+                            @*<button type="submit" class="btn btn-primary me-2" id="btnUpdate">Save changes</button>*@
+                            <button type="submit" class="btn btn-info me-2" id="btnUpdateNext">Save & Next</button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary">Cancel</a>
+                            <a class="btn btn-label-secondary" href="SMMESettings_contact?Id=@ViewBag.Id&M=@ViewBag.M">Previous</a>
+
+                        </div>
+                    </form>
+                </div>
+                <!-- /Account -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+<script src="~/Content/assets/js/pages-account-settings-account.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+<script src="~/Scripts/custom/SMMESettings.js"></script>

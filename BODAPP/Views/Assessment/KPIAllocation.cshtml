@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "KPIAllocation";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    .swal2-deny{
+        display:none!important;
+    }
+</style>
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link href="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Assessment /</span> KPI Allocation
+    </h4>
+
+    <div class="row">
+        <div class="col-12 col-lg-12" id="pageLoader">
+
+            <div class="card mb-4">
+                <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />
+                <div class="card-header justify-content-between align-items-center">
+                    <div class="row">
+                        <div class="col-md-5 CategoryName">
+                            <label class="form-label" for="multiStepsMobile">KPI Category Name<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlCategoryName" id="ddlCategoryName" name="ddlCategoryName"></select>
+                        </div>
+                        <div class="col-md-5 GroupName">
+                            <label class="form-label" for="multiStepsMobile">KPI Category Group Name<span class="text-danger">*</span></label>
+                            <select class="select2 form-select ddlCategoryGroupName" id="ddlCategoryGroupName" name="ddlCategoryGroupName"></select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div style="height:23px;"></div>
+                            <button type="button" class="btn btn-primary btn-shadow-success" id="btnAdd">
+                                <span class="ti-xs ti ti-plus me-1"></span>Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-datatable table-responsive">
+                    <table class="datatables-products table" id="tblQuestionBuild">
+                        <thead class="border-top">
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="form-check-input p-2" id="selectAll" /> Select KPI
+                                </th>
+                                <th>KPI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data rows will be injected here -->
+                        </tbody>
+                    </table>
+                    <div class="p-1 ms-3 mt-2">
+                        <button id="submitBtn" class="btn btn-primary" type="button">Submit</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- Offcanvas to add new sector -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="setUPFormPopUp" aria-labelledby="offcanvassetUPLabel">
+            <!-- Offcanvas Header -->
+            <div class="offcanvas-header py-4">
+                <h5 id="setUPFormPopUpLabel" class="offcanvas-title">Add KPI CategoryGroup</h5>
+                <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Offcanvas Body -->
+            <div class="offcanvas-body border-top">
+                <form class="pt-0" id="setUPForm" novalidate="novalidate">
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label" for="country-name">KPI CategoryGroup Name</label>
+                        <input type="text" class="form-control" id="CategoryGroupName" placeholder="Enter KPI CategoryGroup" name="CategoryGroupName" aria-label="categoryName-name">
+                        <input type="hidden" id="Id" name="Id" class="form-control" />
+                    </div>
+                    <!-- Slug -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea type="text" id="Description" class="form-control" placeholder="Enter Description" aria-label="description" name="Description"></textarea>
+                    </div>
+                    <!-- Submit and reset -->
+                    <div class="mb-3 position-absolute bottom-2">
+
+                        <button id="btnSave" type="submit" class="btn btn-primary me-sm-3 me-1 data-submit btn-shadow-primary">Submit</button>
+                        <button type="reset" class="btn btn-label-secondary waves-effect close" data-bs-dismiss="offcanvas">Discard</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+      
+
+    </div>
+</div>
+<!-- Create App Modal -->
+<div class="modal fade" id="createApp" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-simple modal-upgrade-plan">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body p-2">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center">
+                    <h3 class="mb-2" id="hPrev"> </h3>
+                   
+                </div>
+                @*Code Goes Here*@
+                    <div class="accordion mt-5" id="accordionPreview">
+
+                    
+                    </div>
+                </div>
+
+            <div class="modal-footer p-2">
+                <div class="my-3 float-end">
+                    <button class="btn btn-label-primary waves-effect btnsubmitfinal" id="btnPrvSubmit">Final Submit</button>
+                </div>
+            </div>
+            </div>
+            
+    </div>
+</div>
+<!--/ Create App Modal -->
+<script type="text/javascript">
+    var URLList = {
+        SaveRecord: '@Url.Action("KPICategoryGroupSetUp", "ScriptJson")',
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+    //var title = 'Select Category';
+    //var dropId = $(".ddlCategory");
+    var popup = "#setUPFormPopUp";
+
+</script>
+
+<script src="~/Scripts/utility/Loading.js"></script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+@*<script src="~/Scripts/utility/dropdowninit.js"></script>*@
+
+@*<script src="~/Content/assets/js/app-ecommerce-product-list.js"></script>*@
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+<script src="~/Scripts/custom/KPIAllocation.js"></script>
+@*<script src="~/Scripts/custom/KPICategoryGroupSetUp.js"></script>*@
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/sortablejs/sortable.js"></script>
+
+@*<script src="~/Content/assets/js/extended-ui-drag-and-drop.js"></script>*@
+
+
+<!-- Page JS -->
+
+

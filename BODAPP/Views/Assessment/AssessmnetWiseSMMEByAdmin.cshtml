@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "AssessmnetWiseSMME";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@{
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var LinkJs = "";
+    if (Enterpriseuser != null)
+    {
+        LinkJs = Enterpriseuser.ChildMenuJsLink;
+    }
+    else if (SmmeUser != null)
+    {
+        LinkJs = SmmeUser.ChildMenuJsLink;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        LinkJs = EnterpriseEmpuser.ChildMenuJsLink;
+    }
+    else if (AdminUser != null)
+    {
+        LinkJs = AdminUser.ChildMenuJsLink;
+    }
+    else
+    {
+        LinkJs = user.ChildMenuJsLink;
+    }
+}
+
+
+<style type="text/css">
+    a.disabled {
+  pointer-events: none;
+  cursor: default;
+  border:none !important
+}
+</style>
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Asessment /</span> View All Assesment Responses
+    </h4>
+
+
+    <!-- Users List Table -->
+    <div class="card">
+        <div class="card-header border-bottom d-none">
+            <h5 class="card-title mb-3">Search Filter</h5>
+            <div class="d-flex justify-content-between align-items-center row pb-2 gap-3 gap-md-0">
+                <div class="col-md-4 user_role"></div>
+                <div class="col-md-4 user_plan"></div>
+                <div class="col-md-4 user_status"></div>
+            </div>
+        </div>
+        <div class="card-datatable table-responsive">
+            <table class="datatables-users table" id="datatable-example">
+                <thead class="border-top">
+                    <tr>
+                        <th></th>
+                        <th>MSME</th>
+                        <th>DATE ADDED</th>
+                        @*<th>REGISTRATION NUMBER</th>*@
+                        <th>STATUS</th>
+                        <th>CONTACT NUMBER</th>
+                        <th>VIEW RESPONSES</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+        <!-- Offcanvas to add new user -->
+
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+
+    };
+
+</script>
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="@LinkJs"></script>
+<script src="~/Scripts/custom/AsssemnetWiseSMME.js"></script>

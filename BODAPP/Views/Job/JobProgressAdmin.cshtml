@@ -1,0 +1,103 @@
+﻿@model BODDal.Models.JobDetails
+@{
+    ViewBag.Title = "JobProgressEnterprise";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Admin /</span> Job Progress
+    </h4>
+    <div class="row">
+        <!-- Timeline Basic-->
+        <div class="col-xl-4">
+            <!-- About User -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <small class="card-text text-uppercase">Job Details</small>
+                    <ul class="list-unstyled mb-4 mt-3">
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-user text-heading"></i><span class="fw-medium mx-2 text-heading">Job Name:</span> <span>@Model.JD_JobName</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-check text-heading"></i><span class="fw-medium mx-2 text-heading">Visit Type:</span> <span>@Model.JD_VistType</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-crown text-heading"></i><span class="fw-medium mx-2 text-heading">Start Date:</span> <span>@Model.JD_JobStartDate</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-flag text-heading"></i><span class="fw-medium mx-2 text-heading">End Date:</span> <span>@Model.JD_JobEndDate</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-file-description text-heading"></i><span class="fw-medium mx-2 text-heading">Job Category:</span> <span>@Model.JC_JobCategories</span></li>
+                    </ul>
+                    <input type="hidden" id="hdnJobTitle" value="@Model.Title" />
+                    <small class="card-text text-uppercase">Customer Details</small>
+                    <ul class="list-unstyled mb-4 mt-3">
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-phone-call"></i><span class="fw-medium mx-2 text-heading">Customer Name:</span> <span>@Model.CD_Name</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-phone-call"></i><span class="fw-medium mx-2 text-heading">Contact:</span> <span>@Model.CD_ContactNumber</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-brand-skype"></i><span class="fw-medium mx-2 text-heading">Address:</span> <span>@Model.CD_AddressLine1</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-mail"></i><span class="fw-medium mx-2 text-heading">Postal Code:</span> <span>@Model.CD_PostalCode</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-mail"></i><span class="fw-medium mx-2 text-heading">Email:</span> <span>@Model.CD_Email</span></li>
+                    </ul>
+                    <small class="card-text text-uppercase">Teams</small>
+                    <ul class="list-unstyled mb-0 mt-3">
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="ti ti-brand-angular text-danger me-2"></i>
+                            <div class="d-flex flex-wrap"><span class="fw-medium me-2 text-heading">Backend Developer</span><span>(126 Members)</span></div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="ti ti-brand-react-native text-info me-2"></i>
+                            <div class="d-flex flex-wrap"><span class="fw-medium me-2 text-heading">React Developer</span><span>(98 Members)</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/ About User -->
+            <!-- Profile Overview -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-text text-uppercase">Overview</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-check"></i><span class="fw-medium mx-2">Task Compiled:</span> <span>13.5k</span></li>
+                        <li class="d-flex align-items-center mb-3"><i class="ti ti-layout-grid"></i><span class="fw-medium mx-2">Projects Compiled:</span> <span>146</span></li>
+                        <li class="d-flex align-items-center"><i class="ti ti-users"></i><span class="fw-medium mx-2">Connections:</span> <span>897</span></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/ Profile Overview -->
+        </div>
+        <!-- /Timeline Basic -->
+        <!-- Timeline Advanced-->
+        <div class="col-xl-8">
+            <div class="card">
+                <h5 class="card-header">Progress Line</h5>
+                <div class="card-body pb-0">
+                    <ul class="timeline pt-3" id="ulProgress">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Timeline Advanced-->
+    </div>
+
+</div>
+<script>
+
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+       
+
+    };
+</script>
+
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+
+<!-- Page JS -->
+<script src="~/Content/assets/js/app-ecommerce-category-list.js"></script>
+<script src="~/Scripts/custom/JobProgressEnterprise.js"></script>

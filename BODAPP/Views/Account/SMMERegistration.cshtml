@@ -1,0 +1,795 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-wide  customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../Content/assets/" data-template="vertical-menu-template">
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MSME Registration</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
+    <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+    <!-- Canonical SEO -->
+    <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, GROWTHties: GTM-5J3LMKC) -->
+    <!-- End Google Tag Manager -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;ampdisplay=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/flag-icons.css" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/Content/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <!-- Vendor -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/%40form-validation/umd/styles/index.min.css" />
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/pages/page-auth.css">
+    <link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/pickr/pickr-themes.css" />
+    <!-- Helpers -->
+    <script src="~/Content/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="~/Content/assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/Content/assets/js/config.js"></script>
+
+    <script src="~/Scripts/utility/Loading.js"></script>
+
+    <style>
+        .auth-cover-bg-color {
+            /*background: url('../Content/assets/img/illustrations/auth-register-multisteps-illustration.png');*/
+            background: url('../Content/assets/img/illustrations/index_img_msme.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .app-brand {
+    display: flex
+;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    line-height: 1;
+}
+        .auth-cover-brand {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: 1.5rem;
+    inset-inline-start: 1.5rem;
+}
+        .coke{
+            display:none;
+        }
+        .cokelogo{
+            display:none;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkwC9JR92Fwi9EQgnQ2ILWaUr88JxchUw&libraries=places"></script>
+
+
+    <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, GROWTHties: GTM-5J3LMKC) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Content -->
+    <div class="authentication-wrapper authentication-cover authentication-bg">
+        <a href="index.html" class="app-brand auth-cover-brand coke">
+            <img src="~/Upload/Coce%20Logo.jpg" style="width:100px"  class="cokelogo"/>
+        </a>
+        <div class="authentication-inner row" id="msmeRegPageLoader">
+            <!-- Left Text -->
+            <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-center p-2 auth-cover-bg-color position-relative auth-multisteps-bg-height">
+                @*<img src="~/Content/assets/img/illustrations/auth-register-multisteps-illustration.png" alt="auth-register-multisteps" class="img-fluid" width="280">
+                <img src="~/Content/assets/img/illustrations/bg-shape-image-light.png" alt="auth-register-multisteps" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.html">*@
+            
+            </div>
+            <!-- /Left Text -->
+            <!--  Multi Steps Registration -->
+            <div class="d-flex col-lg-8 align-items-center justify-content-center p-lg-2 mpt-80">
+                <div class="w-px-700">
+                    <div id="multiStepsValidation" class="bs-stepper shadow-none">
+                        <div class="bs-stepper-header border-bottom-0 p-0">
+                            <div class="step" data-target="#contactDetailsValidation">
+                                <button type="button" class="step-trigger">
+                                    <span class="bs-stepper-circle"><i class="ti-xs ti ti-users me-1"></i></span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Contact</span>
+                                        <span class="bs-stepper-subtitle">Contact Information</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line">
+                                <i class="ti ti-chevron-right"></i>
+                            </div>
+                            <div class="step" data-target="#companyInfoValidation">
+                                <button type="button" class="step-trigger">
+                                    <span class="bs-stepper-circle"><i class="ti-xs ti ti-building"></i></span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Business</span>
+                                        <span class="bs-stepper-subtitle">Business Information</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="line">
+                                <i class="ti ti-chevron-right"></i>
+                            </div>
+                            @*<div class="step" data-target="#legalEntityValidation">
+                                <button type="button" class="step-trigger">
+                                    <span class="bs-stepper-circle"><i class="ti ti-file-text ti-sm"></i></span>
+                                    <span class="bs-stepper-label">
+                                        <span class="bs-stepper-title">Legal Entity</span>
+                                        <span class="bs-stepper-subtitle">Legal Entity Information</span>
+                                    </span>
+                                </button>
+                            </div>*@
+                          
+                        </div>
+                        <div class="bs-stepper-content">
+                            <form id="multiStepsForm" onsubmit="return false">
+                                <!-- Contact Details -->
+                                <div id="contactDetailsValidation" class="content">
+                                    <div class="content-header mb-4">
+                                        <h3 class="mb-1">Contact Information</h3>
+                                        <p>Enter Your Contact Details</p>
+                                    </div>
+                                    <div class="row g-3">
+                                        @*<div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsUsername"> Name</label>
+                                            <input type="text" name="txtContactName" id="txtContactName" class="form-control alphabets" placeholder="Enter Your Name" />
+                                            <input type="hidden" id="hdnId" name="hdnId" />
+                                        </div>*@
+
+                                        <div class="col-sm-6">
+                                            <input type="hidden" id="hdnMode" value="contact" />
+                                            <label class="form-label" for="multiStepsUsername">First Name<span class="text-danger">*</span></label>
+                                            <input type="text" name="txtContactFirstName" id="txtContactFirstName" class="form-control alphabets" placeholder="Enter Contact FirstName" />
+                                            <input type="hidden" id="hdnId" name="hdnId" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsUsername">Last Name<span class="text-danger">*</span></label>
+                                            <input type="text" name="txtContactLastName" id="txtContactLastName" class="form-control alphabets" placeholder="Enter Contact LastName" />
+                                            @*<input type="hidden" id="hdnId" name="hdnId" />*@
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsEmail"> Email</label>
+                                            <input type="email" name="txtContactEmail" id="txtContactEmail" class="form-control" placeholder="Enter Your Email" aria-label="john.doe" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsUsername">Cell Number<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">SA (+27)</span>
+                                                <input type="text" name="PrimaryContactNumber" id="PrimaryContactNumber" class="form-control" placeholder="Enter Cell Number" oninput="formatPhoneNumber(this)" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="multiStepsMobile" class="form-label">ID Type<span class="text-danger">*</span></label>
+                                            <select id="ddlPrimaryIdType" name="ddlPrimaryIdType" class="select2 form-select ddlPrimaryIdType" >
+                                                <option value="">Select</option>
+                                                <option value="SouthAfricanId">South African ID</option>
+                                            </select>
+                                        </div>
+                                        @*<div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Business Type<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlBusinessType" id="ddlBusinessType" name="ddlBusinessType"></select>
+                                        </div>*@
+
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsLastName">ID Number<span class="text-danger">*</span></label>
+                                            <input type="text" id="txtPrimaryIdNumber" name="txtPrimaryIdNumber" class="form-control" placeholder="Enter Your ID Number" maxlength="13"/>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="txtAge" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bs-datepicker-autoclose" id="txtAge" name="txtAge" placeholder="dd/mm/yyyy" autocomplete="off" />
+                                            <p id="error-message" style="color: #e95354;"></p>
+                                        </div>
+
+                                        @*<div class="col-sm-6 custom-checkbox-radio">
+                                            <label>Gender<span class="text-danger">*</span></label>
+                                            <div class="gender-group">
+                                                <label class="gender-option">
+                                                    <input type="radio" name="gender" value="Male" id="genderMale">
+                                                    <span>Male</span>
+                                                </label>
+
+                                                <label class="gender-option">
+                                                    <input type="radio" name="gender" value="Female" id="genderFemale">
+                                                    <span>Female</span>
+                                                </label>
+                                            </div>
+                                        </div>*@
+
+                                        <div class="col-sm-6 custom-checkbox-radio">
+                                            <label>Gender<span class="text-danger">*</span></label>
+                                            <div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="gender" id="genderMale" value="Male">
+                                                    <label class="form-check-label" for="genderMale">Male</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="gender" id="genderFemale" value="Female">
+                                                    <label class="form-check-label" for="genderFemale">Female</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                            <div class="col-sm-6 form-password-toggle">
+                                                <label class="form-label" for="multiStepsPass">Password<span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" />
+                                                    <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="ti ti-eye-off"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 form-password-toggle">
+                                                <label class="form-label" for="multiStepsConfirmPass">Confirm Password<span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" id="txtConfirmPass" name="txtConfirmPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" />
+                                                    <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="ti ti-eye-off"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                @*<div class="form-check">
+                    <input name="default-radio-1" class="form-check-input" type="radio" value="" id="" checked>
+                </div>*@
+                                                <div class="form-check">
+                                                    <input name="default-checkbox-1" class="form-check-input" type="checkbox" id="agreeCheckbox">
+                                                    <label class="form-check-label" for="agreeCheckbox">
+                                                        I Agree<span class="text-danger">*</span>
+                                                    </label>
+                                                </div>
+                                                <p id="dynamic-declare">
+                                                    By signing up on this website, you consent to Coca Cola Beverages South Africa collecting and
+                                                    processing your personal information in accordance with the Protection of Personal Information
+                                                    Act (POPIA). We will use your details to communicate with you regarding our services, updates, and
+                                                    occasional promotions via email, WhatsApp, or SMS. Your information will be kept secure and will
+                                                    not be shared with third parties without your explicit consent
+                                                </p>
+                                            </div>
+
+                                            <div class="col-12 d-flex justify-content-between mt-4">
+                                                @*<button class="btn btn-label-secondary btn-prev" disabled>
+                    <i class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
+                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                </button>*@
+                                                <p>For more information, please review our <b class="text-primary" id="privacyPolicyLink" style="cursor: pointer;">Privacy Policy.</b></p>
+                                                @*<button class="btn btn-primary btn-next red-btn" > <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="ti ti-arrow-right ti-xs"></i></button>*@
+                                                <button id="nextButton" class="btn btn-primary btn-next red-btn" disabled>
+                                                    <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span>
+                                                    <i class="ti ti-arrow-right ti-xs"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                </div>
+                                <!-- Company Info -->
+                                <div id="companyInfoValidation" class="content">
+                                    <div class="content-header mb-4">
+                                        <h3 class="mb-1">Business Information</h3>
+                                        <p>Enter Your Business Information</p>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-12">
+                                            <div class="d-flex">
+                                                <div class="form-check me-3">
+                                                    <input name="defaultRadio1" class="form-check-input" type="radio" value="" id="rdoEntityRegistration" checked>
+                                                    <label class="form-check-label" for="defaultRadio1"> Register as a Business </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input name="defaultRadio1" class="form-check-input" type="radio" value="" id="rdoSoletraderRegistration">
+                                                    <label class="form-check-label" for="defaultRadio1"> Register as an Individual </label>
+                                                </div>
+                                            </div>
+                                            @*<div class="d-flex">
+                                                <button id="rdoEntityRegistration" class="btn btn-primary checked">Register as a Business</button>
+                                                <button id="rdoSoletraderRegistration" class="btn btn-label-secondary ms-2">Register as an Individual</button>
+                                            </div>*@
+                                            <p class="mt-3" id="detPara">
+                                                If you're a formal business, spaza shop, or retailer that stocks and sells Coca-Cola
+                                                products. <b class="text-primary">Examples</b>: Spaza shop, Tuckshop, Superette, General Dealer, Cash & Carry
+                                            </p>
+                                                @*<div class="form-check">
+                                                    <input name="default-radio-1" class="form-check-input" type="radio" value="" id="rdoSoletraderRegistration">
+                                                    <label class="form-check-label" for="defaultRadio1"> Soletrader Registration </label>
+                                                </div>*@
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsFirstName" id="lblCompanyName">Business Name<span class="text-danger">*</span></label>
+                                            <input type="text" id="txtCompanyName" name="txtCompanyName" class="form-control alphabets" placeholder="Business Name" />
+                                        </div>
+                                        <div class="col-sm-6 divHide">
+                                            <label class="form-label" for="multiStepsLastName" id="lblRegNo">Registration Number<span class="text-danger">*</span></label>
+                                            <input type="text" id="txtRegNum" name="txtRegNum" class="form-control" placeholder="Enter Your Registration No." />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Industry Sector<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlSector" id="ddlSector" name="ddlSector"></select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Business Type<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlBusinessType" id="ddlBusinessType" name="ddlBusinessType"></select>
+                                        </div>
+                                        @*<div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Country<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlCountry" id="ddlCountry" name="ddlCountry"></select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Province<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlProvince" id="ddlProvince" name="ddlProvince"></select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">CityTown<span class="text-danger">*</span></label>
+                                            <input type="text" id="txtBusinessAddress" name="txtBusinessAddress" class="form-control" placeholder="Enter City/Town Address" />
+                                        </div>
+                                        <div class="col-sm-6 divHide">
+                                            <label class="form-label" for="multiStepsMobile">Business Address</label>
+                                            <input type="text" id="txtBusinessAddress" name="txtBusinessAddress" class="form-control" placeholder="Enter Business Address" />
+                                        </div>*@
+
+
+                                        @*<div class="row">
+                                            <!-- Country -->
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Country <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="ddlCountryInput" name="ddlCountry" placeholder="Start typing country" />
+                                            </div>
+
+                                            <!-- Province / State -->
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Province <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="ddlProvinceInput" name="ddlProvince" placeholder="Start typing province" />
+                                            </div>
+
+                                            <!-- City / Town -->
+                                            <div class="col-sm-6">
+                                                <label class="form-label">City/Town <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="txtCityTown" name="txtCityTown" placeholder="Start typing city or town" />
+                                            </div>
+
+                                            <!-- Optional Business Address -->
+                                            <div class="col-sm-6 divHide">
+                                                <label class="form-label">Business Address</label>
+                                                <input type="text" class="form-control" id="txtBusinessAddress" name="txtBusinessAddress" placeholder="Enter Business Address" />
+                                            </div>
+                                        </div>*@
+
+                                        @*<div class="row">*@
+                                            <!-- Street / Business Address -->
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Business Address <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="txtBusinessAddress" name="txtBusinessAddress" placeholder="Start typing address..." />
+                                            </div>
+                                            <!-- City / Town -->
+                                            <div class="col-sm-6">
+                                                <label class="form-label">City/Town</label>
+                                                <input type="text" class="form-control" id="txtCityTown" name="txtCityTown"/>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label" for="multiStepsMobile">Country<span class="text-danger">*</span></label>
+                                                <select class="select2 form-select ddlCountry" id="ddlCountry" name="ddlCountry"></select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label" for="multiStepsMobile">Province<span class="text-danger">*</span></label>
+                                                <select class="select2 form-select ddlProvince" id="ddlProvince" name="ddlProvince"></select>
+                                            </div>
+                                            <!-- Province / State -->
+                                            @*<div class="col-sm-6">
+                                                <label class="form-label">Province/State</label>
+                                                <input type="text" class="form-control" id="ddlProvinceInput" name="ddlProvince" readonly />
+                                            </div>*@
+                                            <!-- Country -->
+                                            @*<div class="col-sm-6">
+                                                <label class="form-label">Country</label>
+                                                <input type="text" class="form-control" id="ddlCountryInput" name="ddlCountry" readonly />
+                                            </div>*@
+                                        @*</div>*@
+
+                                        
+
+
+                                        <div class="col-sm-6 divHide">
+                                            <label class="form-label" for="multiStepsFirstName">Legal Entity Type<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlLegalEntity" id="ddlLegalEntity" name="ddlLegalEntity"></select>
+                                            <input type="hidden" id="txtTaxNumber" name="txtTaxNumber" />
+                                            <input type="hidden" id="txtRegNum2" name="txtRegNum2" />
+                                        </div>
+
+                                        <div class="col-sm-6 divHide">
+                                            <label class="form-label" for="multiStepsMobile">VAT Number</label>
+                                            <input type="text" id="txtVatNumber" name="txtVatNumber" class="form-control" placeholder="Enter VAT Number" maxlength="10" oninput="formatTenDigit(this)" />
+                                        </div>
+                                        <div class="col-sm-6 divHide">
+                                            <label class="form-label" for="multiStepsMobile">Business Registration Date<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bs-datepicker-autoclose" id="txtIncorporationDate" placeholder="dd/MM/yyyy" />
+                                            <div id="error-message" style="color: red;"></div>
+
+                                        </div>
+                                        @*<div class="col-12 d-flex justify-content-between mt-4">
+                                            <button class="btn btn-label-secondary btn-prev">
+                                                <i class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
+                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            </button>
+                                            <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="ti ti-arrow-right ti-xs"></i></button>
+                                        </div>*@
+                                        <div class="col-12 d-flex justify-content-between mt-4">
+                                            <button class="btn btn-label-secondary btn-prev">
+                                                <i class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
+                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            </button>
+                                            <button id="btnSave" type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Legal Entity Info -->
+                                @*<div id="legalEntityValidation" class="content">
+                                    <div class="content-header mb-4">
+                                        <h3 class="mb-1">Legal Entity</h3>
+                                        <p>Enter Legal Entity Information</p>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsFirstName">Legal Entity Type<span class="text-danger">*</span></label>
+                                            <select class="select2 form-select ddlLegalEntity" id="ddlLegalEntity" name="ddlLegalEntity"></select>
+                                            <input type="hidden" id="txtTaxNumber" name="txtTaxNumber" />
+                                            <input type="hidden" id="txtRegNum2" name="txtRegNum2" />
+                                        </div>
+                                      
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Vat Number</label>
+                                            <input type="text" id="txtVatNumber" name="txtVatNumber" class="form-control" placeholder="Enter Vat Number"  maxlength="10" oninput="formatTenDigit(this)" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="multiStepsMobile">Registration Date<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bs-datepicker-autoclose" id="txtIncorporationDate" placeholder="dd/MM/yyyy" />
+                                            <div id="error-message" style="color: red;"></div>
+                                          
+                                        </div>
+                                   
+                                        <div class="col-12 d-flex justify-content-between mt-4">
+                                            <button class="btn btn-label-secondary btn-prev">
+                                                <i class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
+                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                            </button>
+                                            <button id="btnSave" type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <!-- Financial Info -->
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Multi Steps Registration -->
+        </div>
+    </div>
+    <script>
+        // Check selected custom option
+        window.Helpers.initCustomOptionCheck();
+
+    </script>
+    <!-- / Content -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+  
+
+    <script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="https://malsup.github.io/jquery.blockUI.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/Content/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Content/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="~/Content/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="~/Content/assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+    <script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+    <!-- Main JS -->
+    <script src="~/Content/assets/js/main.js"></script>
+    <script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    @*<script src="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>*@
+    <script src="~/Content/assets/js/forms-pickers.js"></script>
+    <!-- Page JS -->
+
+    <script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+
+    @*<script src="~/Content/assets/js/pages-auth-multisteps.js"></script>*@
+    <script src="~/Content/assets/js/pages-auth-multisteps-smme.js"></script>
+    <script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="~/Scripts/utility/dropdown.js"></script>
+
+    <script type="text/javascript">
+        var baseUrl = '@System.Configuration.ConfigurationManager.AppSettings["BaseUrl"]';
+    </script>
+
+    <script src="~/Scripts/custom/SMMERegistration.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#rdoEntityRegistration").click(function () {
+                if ($(this).is(":checked")) {
+                    $('#lblCompanyName').html("Business Name");
+                    $('#lblRegNo').html("Registration Number");
+                    $('#detPara').html("If you're a formal business, spaza shop, or retailer that stocks and sells Coca-Cola products. <b class='text-primary'>Examples</b>: Spaza shop, Tuckshop, Superette, General Dealer, Cash & Carry");
+
+                    $('#txtCompanyName').attr('placeholder', 'Business Name');
+                    $('#txtRegNum').attr('placeholder', 'Enter Your Registration Number');
+                    //$(this).addClass('bg-primary');
+                    //$("#rdoSoletraderRegistration").removeClass('bg-primary').addClass('btn-label-secondary');
+                    $('.divHide').css('display', 'block');
+                };
+            });
+            $("#rdoSoletraderRegistration").click(function () {
+                if ($(this).is(":checked")) {
+                    $('#lblCompanyName').html("Business Name");
+                    //$('#lblRegNo').html("Id Number");
+                    $('#detPara').html("If you're an individual who sells Coca-Cola products informally like from home, on the street, or at events. <b class='text-primary'>Examples</b>: Street vendor, Door-to-door seller, Side hustle from home");
+                    $('#txtCompanyName').attr('placeholder', ' Business Name');
+                   //$('#txtRegNum').attr('placeholder', 'Enter Your Id Number');
+                   $('.divHide').css('display', 'none');
+                   //$(this).addClass('bg-primary');
+                   //$("#rdoEntityRegistration").removeClass('bg-primary').addClass('btn-label-secondary');
+                };
+            });
+           if( $('#rdoEntityRegistration').hasClass("checked")){
+               $('#lblCompanyName').html("Business Name");
+               $('#lblRegNo').html("Registration Number");
+               //$(this).addClass('bg-primary');
+           }
+        })
+
+
+    </script>
+    <!-- JavaScript to handle Autocompletion -->
+    @*<script>
+        let autocompleteCity, autocompleteProvince, autocompleteCountry;
+
+        function initLocationAutocompletes() {
+            const inputCity = document.getElementById("txtCityTown");
+            autocompleteCity = new google.maps.places.Autocomplete(inputCity, { types: ["(cities)"] });
+            autocompleteCity.addListener("place_changed", function () {
+                const place = autocompleteCity.getPlace();
+                console.log("City Selected:", place.formatted_address);
+
+                // Ensure it's editable
+                inputCity.removeAttribute("readonly");
+                inputCity.removeAttribute("disabled");
+            });
+
+            const inputProvince = document.getElementById("ddlProvinceInput");
+            autocompleteProvince = new google.maps.places.Autocomplete(inputProvince, { types: ["(regions)"] });
+            autocompleteProvince.addListener("place_changed", function () {
+                const place = autocompleteProvince.getPlace();
+                console.log("Province Selected:", place.formatted_address);
+
+                inputProvince.removeAttribute("readonly");
+                inputProvince.removeAttribute("disabled");
+            });
+
+            const inputCountry = document.getElementById("ddlCountryInput");
+            autocompleteCountry = new google.maps.places.Autocomplete(inputCountry, { types: ["(regions)"] });
+            autocompleteCountry.addListener("place_changed", function () {
+                const place = autocompleteCountry.getPlace();
+                console.log("Country Selected:", place.formatted_address);
+
+                inputCountry.removeAttribute("readonly");
+                inputCountry.removeAttribute("disabled");
+            });
+        }
+
+
+        // Initialize on page load
+        google.maps.event.addDomListener(window, 'load', initLocationAutocompletes);
+    </script>*@
+
+    <script>
+    //let autocomplete;
+
+    //function initAutocomplete() {
+    //    const input = document.getElementById("txtBusinessAddress");
+    //    autocomplete = new google.maps.places.Autocomplete(input, {
+    //        types: ["geocode"],
+    //        fields: ["address_components", "formatted_address"]
+    //    });
+
+    //    autocomplete.addListener("place_changed", function () {
+    //        const place = autocomplete.getPlace();
+    //        console.log("Full Address:", place.formatted_address);
+
+    //        // Extract address components
+    //        const components = place.address_components;
+
+    //        // Helper function to get specific component
+    //        const getComponent = (type) => {
+    //            const comp = components.find(c => c.types.includes(type));
+    //            return comp ? comp.long_name : "";
+    //        };
+
+    //        // Fill other fields
+    //        document.getElementById("txtCityTown").value = getComponent("locality") || getComponent("administrative_area_level_2");
+    //        document.getElementById("ddlProvinceInput").value = getComponent("administrative_area_level_1");
+    //        document.getElementById("ddlCountryInput").value = getComponent("country");
+
+    //        // Optionally fill full formatted address
+    //        document.getElementById("txtBusinessAddress").value = place.formatted_address;
+    //    });
+    //}
+
+    //// Load autocomplete on window load
+        //google.maps.event.addDomListener(window, "load", initAutocomplete);
+
+
+
+
+
+
+
+        //function initializeAutocomplete() {
+        //    var input = document.getElementById('txtBusinessAddress');
+        //    var autocomplete = new google.maps.places.Autocomplete(input);
+
+        //    autocomplete.addListener('place_changed', function () {
+        //        var place = autocomplete.getPlace();
+
+        //        var addressComponents = place.address_components;
+        //        let city = '', country = '', province = '';
+
+        //        addressComponents.forEach(function (component) {
+        //            var types = component.types;
+
+        //            if (types.includes('locality')) city = component.long_name;
+        //            if (types.includes('administrative_area_level_1')) province = component.long_name;
+        //            if (types.includes('country')) country = component.long_name;
+        //        });
+
+        //        $('#txtCityTown').val(city);
+
+        //        // Match and select country
+        //        let matchedCountry = $("#ddlCountry option").filter(function () {
+        //            return $(this).text().trim().toLowerCase() === country.toLowerCase();
+        //        });
+
+        //        if (matchedCountry.length > 0) {
+        //            $('#ddlCountry').val(matchedCountry.val()).trigger('change');
+
+        //            // After province dropdown is loaded
+        //            setTimeout(function () {
+        //                let matchedProvince = $("#ddlProvince option").filter(function () {
+        //                    return $(this).text().trim().toLowerCase() === province.toLowerCase();
+        //                });
+
+        //                if (matchedProvince.length > 0) {
+        //                    $('#ddlProvince').val(matchedProvince.val()).trigger('change');
+        //                }
+        //            }, 800); // Wait to ensure provinces are populated
+        //        }
+        //    });
+        //}
+
+        //google.maps.event.addDomListener(window, 'load', initializeAutocomplete);
+
+    </script>
+    <script>
+    function initializeAutocomplete() {
+        const input = document.getElementById('txtBusinessAddress');
+        const autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.addListener('place_changed', function () {
+            const place = autocomplete.getPlace();
+            if (!place.address_components) return;
+
+            let city = '', country = '', province = '';
+
+            place.address_components.forEach(component => {
+                const types = component.types;
+                if (types.includes('locality')) city = component.long_name;
+                if (types.includes('administrative_area_level_1')) province = component.long_name;
+                if (types.includes('country')) country = component.long_name;
+            });
+
+            // Fill City field
+            //$('#txtCityTown').val(city);
+            $('#txtCityTown').val(city).prop('disabled', true);
+            $('#ddlCountry').val(country).prop('disabled', true);
+           
+
+            // Match and set Country dropdown
+            const countryOption = $('#ddlCountry option').filter(function () {
+                return $(this).text().trim().toLowerCase() == country.toLowerCase();
+            });
+
+            if (countryOption.length > 0) {
+                const countryValue = countryOption.val();
+                $('#ddlCountry').val(countryValue).trigger('change');
+
+                // Delay needed to ensure provinces are populated
+                setTimeout(() => {
+                    const provinceOption = $('#ddlProvince option').filter(function () {
+                        return $(this).text().trim().toLowerCase() === province.toLowerCase();
+                    });
+
+                    if (provinceOption.length > 0) {
+                        $('#ddlProvince').val(provinceOption.val()).trigger('change');
+                        $('#ddlProvince').val(provinceOption.val()).prop('disabled', true);
+                    }
+                }, 800);
+            }
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initializeAutocomplete);
+
+    $("#ddlCountry").change(function () {
+        const countryId = $(this).val();
+
+        $(".ddlProvince").html('').trigger('change'); // Clear and reset
+
+        DropdownBinder.DDLData = {
+            tableName: "ProvinceSetUp_PM",
+            Text: 'PM_Province',
+            Value: 'PM_Id',
+            PId: countryId,
+            ColumnName: 'PM_CountryId'
+        };
+
+        DropdownBinder.DDLElem = $("#ddlProvince");
+        DropdownBinder.Execute(() => {
+            // Re-initialize select2 if needed
+            $(".ddlProvince").select2({
+                placeholder: "Select A Province",
+                dropdownParent: $(".ddlProvince").parent()
+            });
+        });
+    });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "ViewSMMEWiseAssessment";
+    Layout = "~/Views/Shared/_MainLayoutST.cshtml";
+}
+@{
+
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var LinkJs = "";
+    if (Enterpriseuser != null)
+    {
+        LinkJs = Enterpriseuser.ChildMenuJsLink;
+    }
+    else if (SmmeUser != null)
+    {
+        LinkJs = SmmeUser.ChildMenuJsLink;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        LinkJs = EnterpriseEmpuser.ChildMenuJsLink;
+    }
+    else if (AdminUser != null)
+    {
+        LinkJs = AdminUser.ChildMenuJsLink;
+    }
+    else
+    {
+        LinkJs = user.ChildMenuJsLink;
+    }
+}
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Assessment /</span> View All Assesment Responses
+    </h4>
+    <div class="col-12 mt-4">
+        <div class="row">
+            <div class="col-md-12 mb-4 mb-md-2" id="responses-div">
+                <input type="hidden" id="hdnSmmeId" value="@ViewBag.SmmeId" />
+                <div class="accordion mt-3" id="accordionExample">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+<script src="~/Content/assets/vendor/libs/pickr/pickr.js"></script>
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>
+
+<script src="~/Scripts/utility/ChildPageMenuForStakeholder.js"></script>
+<script src="~/Scripts/custom/ViewAssessmentForSMMEForStakeholder.js"></script>
+

@@ -1,0 +1,180 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+
+<html lang="en"
+      class=" layout-wide  customizer-hide"
+      dir="ltr"
+      data-skin="default"
+      data-assets-path="~/Content/assets/"
+      data-template="vertical-menu-template"
+      data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>ESD Platform EmailVerified</title>
+
+
+   
+    <link rel="icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico" />
+
+ 
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/iconify-icons.css" />
+
+    <!-- Core CSS -->
+    <!-- build:css assets/vendor/css/theme.css  -->
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/pickr/pickr-themes.css" />
+    <link href="~/Content/assets/vendor/css/rtl/core.css" rel="stylesheet" />
+    <link href="~/Content/assets/vendor/css/rtl/theme-default-primary.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core.css" class="template-customizer-core-css core-link" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default-primary.css" class="template-customizer-theme-css theam-link" />
+    <link rel="stylesheet" href="~/Content/assets/css/demo.css" class="customCSS-link" />
+
+
+    <!-- Vendors CSS -->
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- endbuild -->
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- Helpers -->
+    <script src="~/Content/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="~/Content/assets/vendor/js/template-customizer.js"></script>
+
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+
+    <script src="~/Content/assets/js/config.js"></script>
+
+    <style>
+        body {
+            background-image: url("../Content/assets/img/illustrations/images-07-min.jpg");
+            background-size: 100vw auto;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J3LMKC" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Content -->
+
+    <div class="authentication-wrapper authentication-basic px-6">
+        <div class="authentication-inner py-6">
+            <!-- Verify Email -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center mb-6">
+                        <a href="index.html" class="app-brand-link">
+                            <span class="app-brand-logo demo">
+                                <span class="text-primary">
+                                    
+                                </span>
+                            </span>
+                            <div class="app-brand mb-3 me-5">
+                                <a href="#" class="app-brand-link gap-2">
+                                    <img style="width:150px;margin:auto;display:block;" src="/Content/assets/img/ESD_LOGO_DARK.png">
+                                </a>
+                            </div>
+                            @*<span class="app-brand-text demo text-heading fw-bold" id="companyName">@ViewBag.CompanyName</span>*@
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-3 text-center">Verified your email </h4>
+                    <p class="text-start mb-3">Your email has been verified and your account is now active. <strong>Welcome to ESD Platform</strong></p>
+                    <a class="btn btn-primary w-100 my-6" href="@ViewBag.Link">Login </a>
+                    
+                </div>
+            </div>
+            <!-- /Verify Email -->
+        </div>
+    </div>
+
+    <!-- / Content -->
+
+
+
+    @*<script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get email and company name from URL
+       // const email = getQueryParam('email');
+        const companyName = getQueryParam('companyName');
+
+        // Display the values
+       // document.getElementById('email').textContent = 'Email: ' + (email ? decodeURIComponent(atob(email)) : 'Not Provided');
+        document.getElementById('companyName').textContent = 'Company: ' + (companyName ? decodeURIComponent(atob(companyName)) : 'Not Provided');
+       // document.getElementById('companyName').textContent = 'Company: ' + (companyName ? companyName : 'Unknown');
+    </script>*@
+
+
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/theme.js -->
+
+
+    <script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/Content/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/libs/node-waves/node-waves.js"></script>
+
+
+    @*<script src="~/Content/assets/vendor/libs/algolia/autocomplete-js.js"></script>*@
+
+
+
+    <script src="~/Content/assets/vendor/libs/pickr/pickr.js"></script>
+
+
+
+    <script src="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+
+    <script src="~/Content/assets/vendor/libs/hammer/hammer.js"></script>
+
+    <script src="~/Content/assets/vendor/libs/i18n/i18n.js"></script>
+
+
+    <script src="~/Content/assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Main JS -->
+
+    <script src="~/Content/assets/js/main.js"></script>
+
+
+    <!-- Page JS -->
+
+
+
+</body>
+</html>
+
+<!-- beautify ignore:end -->
+

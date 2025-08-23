@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "CreateJobsForSMME";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">SMME /</span> Job Details
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <form id="formJob" method="post"  onsubmit="return false"  class="row mt-2">
+
+                    <div class="col-md-12 mb-3">
+                       
+                            <label for="txtJobName" class="form-label">Job Name</label>
+                            <input type="text" class="form-control" id="txtJobName" placeholder="Type Job here" name="txtJobName" />
+                            <input type="hidden" id="Id" name="Id" />
+                            <input type="hidden" id="SmmeId" name="SmmeId" value="@ViewBag.SmmeId"/>
+                        
+                    </div>
+              
+                    <div class="col-md-4 mb-3">
+                      
+                            <label for="txtDurationDateFrom" class="form-label">Start  Date</label>
+                        <input type="text" class="form-control bs-datepicker-autoclose" id="txtStartDate" name="txtStartDate" placeholder="dd/MM/yyyy" autocomplete="off"/>
+
+                     
+                    </div>
+                    <div class="col-md-4 mb-3">
+                       
+                            <label for="txtDurationDateTo" class="form-label">End Date</label>
+                        <input type="text" class="form-control bs-datepicker-autoclose" id="txtEndDate" name="txtEndDate" placeholder="dd/MM/yyyy" autocomplete="off"/>
+
+                    </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="ddlCustomer">Customer</label>
+                    <select class="select2 form-select ddlCustomer" data-allow-clear="true" id="ddlCustomer" name="ddlCustomer"></select>
+                </div>
+             
+                <br />
+              
+                    <div class="col-md-12 mb-3">
+                        <label for="txtDescription" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" id="txtDescription" placeholder="Type Description here" name="txtDescription"></textarea>
+                    </div>
+                   
+              
+                <br />
+               
+                    <div class="col-md-12 mt-2">
+                        <div class="demo-inline-spacing">
+
+                            <button type="submit" class="btn btn-primary btn-shadow-primary" id="btnSave">
+                                <span class="ti-xs ti ti-plus me-1"></span>Submit
+                            </button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary waves-effect">
+                                <span class="fa-solid fa-xmark me-1"></span>Cancel
+                            </a>
+                        </div>
+                    </div>
+               
+
+            </form>
+        </div>
+</div>
+
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecord: '@Url.Action("InsertJobDetails", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetJobDetailsForAdmin", "ScriptJson")'
+    };
+    var globalData = {
+        TransactionType: 'Select',
+        Param: 'JD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'JobDetails_USP'
+    };
+
+</script>
+
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+
+
+@*<script src="~/Content/assets/js/forms-selects.js"></script>*@
+@*<script src="~/Content/assets/js/forms-tagify.js"></script>*@
+@*<script src="~/Content/assets/js/forms-typeahead.js"></script>*@
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForSMME.js"></script>
+<script src="~/Scripts/custom/CreateJobsForSMME.js"></script>

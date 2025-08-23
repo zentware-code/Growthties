@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "BranchWiseUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@{
+    var random = new Random();
+    var list = new List<string> { "success", "danger", "warning", "info", "primary", "secondary" };
+    var x = random.Next(list.Count);
+
+}
+
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/css/pages/page-profile.css" />
+
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="mb-4 ">
+        <span class="text-muted fw-light">Enterprise /</span> Branch Details
+    </h4>
+
+    @*<input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId" />*@
+    <!-- Header -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="user-profile-header-banner">
+                    <img id="picture" alt="Banner image" class="rounded-top">
+                    @*<img src="~/Content/assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top">*@
+                </div>
+                <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
+                    @*@if (Model.ENR_Logo == "NO")
+                        {*@
+                            <div class="avatar avatar-xl d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                                <span class="avatar-initial  bg-@list[x]" id="spnanAvtar"></span>
+                            </div>
+                                @*<br />
+                        }
+                        else
+                        {
+                    <img class="d-block h-auto img-fluid ms-0 ms-sm-4 rounded user-profile-img object-fit-cover" style="max-height:120px" src="@Model.ENR_Logo" height="100" width="100" alt="User avatar">
+                    }*@
+                    <div class="flex-grow-1 mt-3 mt-sm-5">
+                        <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
+                            <div class="user-profile-info">
+                                <h4><span id="spnHeadName"></span></h4>
+                                <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-map-pin'></i> <span id="spnCity"></span>
+                                    </li>
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-mail'></i> <span id="spnHeadEmail"></span>
+                                    </li>
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-phone'></i><span id="spnHeadPhone"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Header -->
+    <!-- Navbar pills -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                <li class="nav-item"><a class="nav-link curser-point" href="javascript:void(0);" onclick="getValue(63)"><i class='ti-xs ti ti-map-pin me-1'></i> Areas</a></li>
+                <li class="nav-item"><a class="nav-link curser-point" href="javascript:void(0);" onclick="getValue(63)"><i class="ti-xs ti ti-mist me-1"></i> Projects</a></li>
+                <li class="nav-item"><a class="nav-link curser-point active" href="javascript:void(0);"><i class='ti-xs ti ti-user-cog me-1'></i> User Lists</a></li>
+                <li class="nav-item"><a class="nav-link curser-point" href="javascript:void(0);" onclick="getValue(63)"><i class='ti-xs ti ti-layout-dashboard me-1'></i> Dashboard</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <!--/ Navbar pills -->
+
+
+    <div class="row g-4" id="ulUserList">
+
+    </div>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="setUPFormPopUp" aria-labelledby="offcanvassetUPLabel">
+        <!-- Offcanvas Header -->
+        <div class="offcanvas-header py-4">
+            <h5 id="setUPFormPopUpLabel" class="offcanvas-title">View Users</h5>
+            <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <!-- Offcanvas Body -->
+        <div class="offcanvas-body border-top">
+            <ul class="p-0 m-0" id="ulUserList"></ul>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="setUPFormPopUpMSME" aria-labelledby="offcanvassetUPLabel1">
+        <!-- Offcanvas Header -->
+        <div class="offcanvas-header py-4">
+            <h5 id="setUPFormPopUpLabel" class="offcanvas-title">View MSMEs</h5>
+            <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <!-- Offcanvas Body -->
+        <div class="offcanvas-body border-top">
+            <ul class="p-0 m-0" id="ulMSMEList"></ul>
+        </div>
+    </div>
+
+
+</div>
+
+<!--Project Tagging to User-->
+<div class="modal fade" id="asignAreaUser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body" style="overflow-x:hidden">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row">
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-2">User List</h3>
+                        </div>
+                        <br />
+                        <ul class="p-0 m-0" id="ulSTUserList"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiple Lists Draggable -->
+            <!-- /Multiple Lists Draggable ends -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var URLList = {
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        SaveRecordData: '@Url.Action("InsertBranchWiseAreaEnrUser", "ScriptJson")',
+    };
+</script>
+
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+@*<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>*@
+
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="~/Scripts/utility/ChildPageMenuForEnterprise.js"></script>
+<script src="~/Scripts/custom/DynamicBanner.js"></script>
+<script src="~/Scripts/custom/BranchWiseUser.js"></script>

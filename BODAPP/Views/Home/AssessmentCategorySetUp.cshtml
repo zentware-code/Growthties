@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "AssessmentCategorySetUp";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<!-- Core CSS -->
+@*<link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+<link rel="stylesheet" href="~/Content/assets/css/demo.css" />*@
+
+<!-- Vendors CSS -->
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/%40form-validation/umd/styles/index.min.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/typography.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/katex.css">
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/quill/editor.css">
+
+<!-- Page CSS -->
+
+<link rel="stylesheet" href="~/Content/assets/vendor/css/pages/app-ecommerce.css">
+
+<!-- Helpers -->
+<script src="~/Content/assets/vendor/js/helpers.js"></script>
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+<script src="~/Content/assets/vendor/js/template-customizer.js"></script>
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script src="~/Content/assets/js/config.js"></script>
+
+<!-- Content -->
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+
+    <h4 class="py-3 mb-2">
+        <span class="text-muted fw-light">Assessment /</span> Assessment Name
+    </h4>
+
+    <div class="app-ecommerce-category">
+        <!-- Category List Table -->
+        <div class="card">
+            <div class="card-datatable table-responsive">
+                <table class="datatables-category-list table border-top" id="datatable-example">
+                    <thead>
+                        <tr>
+
+                            <th class="text-nowrap">Assessment Name</th>
+                            <th class="text-nowrap">Description</th>
+                            <th class="text-lg-center">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- Offcanvas to add new sector -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="setUPFormPopUp" aria-labelledby="offcanvassetUPLabel">
+            <!-- Offcanvas Header -->
+            <div class="offcanvas-header py-4">
+                <h5 id="setUPFormPopUpLabel" class="offcanvas-title">Add Assessment Name</h5>
+                <button type="button" class="btn-close bg-label-secondary text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Offcanvas Body -->
+            <div class="offcanvas-body border-top">
+                <form class="pt-0" id="setUPForm" novalidate="novalidate">
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label" for="sector-name">Assessment Name</label>
+                        <input type="text" class="form-control" id="Category" placeholder="Enter Assessment" name="Category" aria-label="sector-name">
+                        <input type="hidden" id="Id" name="Id" class="form-control" />
+                        <input type="hidden" id="EnterpriseId" name="EnterpriseId" value="@ViewBag.EntrId"/>
+                    </div>
+                    <!-- Slug -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea type="text" id="Description" class="form-control" placeholder="Enter Description" aria-label="description" name="Description"></textarea>
+                    </div>
+                    <!-- Submit and reset -->
+                    <div class="mb-3 position-absolute bottom-2">
+
+                        <button id="btnSave" type="submit" class="btn btn-primary me-sm-3 me-1 data-submit btn-shadow-primary">Submit</button>
+                        <button type="reset" class="btn btn-label-secondary waves-effect close" data-bs-dismiss="offcanvas">Discard</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var URLList = {
+
+        SaveRecord: '@Url.Action("AssessmentCategorySetUp", "ScriptJson")',
+        GetList: '@Url.Action("AssessmentCategorySetUpList", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetGlobalMaster", "ScriptJson")'
+    };
+    if ($('#EnterpriseId').val() != "") {
+        var entr = $('#EnterpriseId').val();
+    } else {
+        var entr = null;
+    }
+    
+    var globalData = {
+        TransactionType: 'SelectList',
+        Param: 'AC_EnterpriseId',
+        paramValue: entr,
+        TransactionTypeById: 'Select',
+        ParamById: 'AC_Id',
+
+        StoreProcedure: 'AssessmentCategorySetUp_USP'
+    };
+    var dtTable = 'dtAssmnt'
+    var search = 'Search Category';
+    var popup = "#setUPFormPopUp";
+    var columnData = [{ data: "Category" },
+                   { data: "Description" }]
+</script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+<script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+<!-- Page JS -->
+@*<script src="~/Content/assets/js/app-ecommerce-category-list.js"></script>*@
+<script src="~/Scripts/custom/listmaster.js"></script>
+<script src="~/Scripts/custom/AssessmentCategorySetUp.js"></script>

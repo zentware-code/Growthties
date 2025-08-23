@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+  
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+<div class="container-xxl flex-grow-1 container-p-y">
+   @* <input type="hidden" id="hdnEnterId" value="@role" />*@
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">User Management /</span> User Profile
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="card mb-4">
+                <h5 class="card-header">User Details</h5>
+        
+                <div class="card-body">
+                  
+                        <div class="d-flex align-items-start  gap-4">
+                            <div id="dvImage" style="margin-top:-6px;">
+                                <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                            </div>
+                            <div id="dvAvatar" style="margin-top:-6px;"></div>
+                            <input type="hidden" name="..." id="hdnupload">
+                            <div class="button-wrapper">
+                                <label for="upload" class="btn btn-primary me-2" tabindex="0">
+                                    <span class="d-none d-sm-block">Upload Profile Picture</span>
+                                    <i class="ti ti-upload d-block d-sm-none"></i>
+                                    <input type="file" id="upload" class="account-file-input" data-max-size="3000000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                                </label>
+                                <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset">
+                                    <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                                    <span class="d-none d-sm-block">Reset</span>
+                                </button>
+
+                                <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                            </div>
+                        </div>
+                    </div>
+
+          
+
+                <hr class="my-0">
+                <div class="card-body">
+                    <form id="formAdminUserManage" onsubmit="return false" class="row mt-2">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+
+                                <label for="txtFirstName" class="form-label">First Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control alphabets" id="txtFirstName" placeholder="First Name" name="txtFirstName" />
+                                <input type="hidden" id="Id" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="txtLastName" class="form-label">Last Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control alphabets" id="txtLastName" placeholder="Last Name" name="txtLastName" />
+                                <input type="hidden" id="Id" />
+
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txtUserEmail" class="form-label">Email Address<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="txtUserEmail" placeholder="Email Address" name="txtUserEmail" disabled/>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txtContact" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group">
+                                        <span class="input-group-text">(+27)</span>
+                                        <input type="text" class="form-control" id="txtContact" placeholder="71 555 6666" name="txtContact" oninput="formatPhoneNumber(this)" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="ddlRole" class="form-label">User Role<span class="text-danger">*</span></label>
+                                <select id="ddlRole" name="ddlRole" class="select2 form-select ddlRole" data-allow-clear="true"></select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="txtAge" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose" id="txtAge" name="txtAge" placeholder="dd/mm/yyyy" autocomplete="off" />
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="ddlGender" class="form-label">Gender<span class="text-danger">*</span></label>
+                                <select id="ddlGender" name="ddlGender" class="select2 form-select ddlGender" data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label" for="ddlBranch">Branch</label>
+                                <select class="select2 form-select ddlBranch" data-allow-clear="true" id="ddlBranch" name="ddlBranch"></select>
+                            </div>
+
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2" id="btnUpdate">Save changes</button>
+
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/katex.js"></script>
+<script src="~/Content/assets/vendor/libs/quill/quill.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+@*<script src="~/Content/assets/js/pages-account-settings-account.js"></script>*@
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/custom/UserProfileSettingsEnr.js"></script>
+
+

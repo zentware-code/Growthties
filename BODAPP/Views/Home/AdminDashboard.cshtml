@@ -1,0 +1,2301 @@
+﻿@model BODDal.Models.AdminDashBoard
+
+@{
+    Layout = null;
+}
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+@{
+
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+    var userName = "";
+    var profilePic = "";
+    var prefix = "";
+    var subrole = "";
+    var role = "";
+    var CompanyPic = "";
+    var ThemeStyle = "";
+    var ThemeColor = "";
+    var TheamLink = "";
+    var CoreLink = "";
+    var CustomCSSLink = "";
+    var Title = "";
+
+    if (Enterpriseuser != null)
+    {
+        userName = Enterpriseuser.UserName;
+        profilePic = Enterpriseuser.UM_ProfilePic;
+        prefix = Enterpriseuser.UM_Prefix;
+        subrole = Enterpriseuser.UM_SubRole;
+        role = Enterpriseuser.UM_Role;
+        CompanyPic = Enterpriseuser.UM_CompanyPic;
+        ThemeStyle = Enterpriseuser.ThemeStyle;
+        TheamLink = Enterpriseuser.TheamLink;
+        CoreLink = Enterpriseuser.CoreLink;
+        CustomCSSLink = Enterpriseuser.CustomCSSLink;
+        Title = "ESD Platform - " + Enterpriseuser.UserName;
+        ThemeColor = Enterpriseuser.ThemeColor;
+        
+
+    }
+
+    else if (SmmeUser != null)
+    {
+        userName = SmmeUser.UserName;
+        profilePic = SmmeUser.UM_ProfilePic;
+        prefix = SmmeUser.UM_CmnyPrefix;
+        subrole = SmmeUser.UM_SubRole;
+        role = SmmeUser.UM_Role;
+        CompanyPic = SmmeUser.UM_CompanyPic;
+        ThemeStyle = SmmeUser.ThemeStyle;
+        TheamLink = SmmeUser.TheamLink;
+        CoreLink = SmmeUser.CoreLink;
+        CustomCSSLink = SmmeUser.CustomCSSLink;
+        Title = "ESD Platform - " + SmmeUser.UserName;
+        ThemeColor = SmmeUser.ThemeColor;
+
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        userName = EnterpriseEmpuser.UserName;
+        profilePic = EnterpriseEmpuser.UM_ProfilePic;
+        prefix = EnterpriseEmpuser.UM_Prefix;
+        subrole = EnterpriseEmpuser.UM_SubRole;
+        role = EnterpriseEmpuser.UM_Role;
+        CompanyPic = EnterpriseEmpuser.UM_CompanyPic;
+        ThemeStyle = EnterpriseEmpuser.ThemeStyle;
+        TheamLink = EnterpriseEmpuser.TheamLink;
+        CoreLink = EnterpriseEmpuser.CoreLink;
+        CustomCSSLink = EnterpriseEmpuser.CustomCSSLink;
+        Title = "ESD Platform - " + EnterpriseEmpuser.UserName;
+        ThemeColor = EnterpriseEmpuser.ThemeColor;
+    }
+    else if (AdminUser != null)
+    {
+        userName = AdminUser.UserName;
+        profilePic = AdminUser.UM_ProfilePic;
+        prefix = AdminUser.UM_Prefix;
+        subrole = AdminUser.UM_SubRole;
+        role = AdminUser.UM_Role;
+        CompanyPic = AdminUser.UM_CompanyPic;
+        ThemeStyle = AdminUser.ThemeStyle;
+        TheamLink = AdminUser.TheamLink;
+        CoreLink = AdminUser.CoreLink;
+        CustomCSSLink = AdminUser.CustomCSSLink;
+        Title = "ESD Platform - Admin"+ AdminUser.UserName;
+        ThemeColor = AdminUser.ThemeColor;
+    }
+    else
+    {
+        userName = user.UserName;
+        profilePic = user.UM_ProfilePic;
+        prefix = user.UM_Prefix;
+        subrole = user.UM_SubRole;
+        role = user.UM_Role;
+        ThemeStyle = user.ThemeStyle;
+        TheamLink = user.TheamLink;
+        CoreLink = user.CoreLink;
+        CustomCSSLink = user.CustomCSSLink;
+        Title = "ESD Platform - Admin";
+        ThemeColor = user.ThemeColor;
+    }
+
+
+}
+<html lang="en" class="@ThemeStyle layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr" data-theme="theme-default" data-assets-path="../Content/assets/" data-template="vertical-menu-template" data-layout="vertical">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>@Title</title>
+
+    <script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/Scripts/custom/AdminDashboard.js"></script>
+    <link rel="icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="@CoreLink" class="template-customizer-core-css core-link" id="themeModeLink" />
+    <link rel="stylesheet" href="@TheamLink" class="template-customizer-theme-css theam-link" id="themeStyleLink" />
+
+    @*<link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/core-dark.css" class="template-customizer-core-css" />*@
+    @*<link rel="stylesheet" href="~/Content/assets/vendor/css/rtl/theme-default-dark.css" class="template-customizer-theme-css" />*@
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/pickr/pickr-themes.css" />
+
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/tagify/tagify.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+
+    <link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <!-- Page CSS -->
+    <!-- Row Group CSS -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
+    <!-- Form Validation -->
+    <link rel="stylesheet" href="~/Content/assets/vendor/libs/%40form-validation/umd/styles/index.min.css" />
+    <!-- Helpers -->
+    <script src="~/Content/assets/vendor/js/helpers.js"></script>
+
+    <script src="~/Content/assets/js/config.js"></script>
+
+    @*Core Js*@
+    <script src="~/Content/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/Content/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Content/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="~/Content/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="~/Content/assets/vendor/js/menu.js"></script>
+    <script src="~/Content/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="~/Content/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="~/Content/assets/vendor/libs/block-ui/block-ui.js"></script>
+    <script src="~/Scripts/custom/SaveThemeStyle.js"></script>
+    <script src="~/Scripts/custom/customThemeSwitcher.js"></script>
+    <style>
+        :root {
+    --default-primary-rgb:@ThemeColor;
+    --default-primary-hex:@CustomCSSLink;
+}
+
+    </style>
+
+</head>
+<body data-sidebartype="mini-sidebar">
+    <input id="hdnThemeColor" value="@ThemeColor" hidden="hidden" />
+    <input id="hdncolorHex" value="@CustomCSSLink" hidden="hidden" />
+    <input id="hdnCoreLink" value="@CoreLink" hidden="hidden" />
+    <input id="hdnTheamLink" value="@TheamLink" hidden="hidden" />
+
+    <div class="layout-wrapper layout-content-navbar">
+        <div id="main-wrapper" class="layout-container show-sidebar">
+
+            <input type="hidden" value="@userName" id="hdnuserName" />
+            <!-- Menu -->
+            @*<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+                    <div class="app-brand demo ">
+                        <a href="#" class="app-brand-link">
+                            @if (Enterpriseuser != null)
+                            {
+                                if (CompanyPic == "No")
+                                {
+                                    <img id="imgMainLayout" style="width:150px;margin:auto;display:block;" src="~/Content/assets/img/avatars/default_companyphoto.png" />
+                                }
+                                else
+                                {
+                                    <img src="@CompanyPic" style="width:150px;margin:auto;display:block;" id="imgMainLayout" />
+                                }
+
+                            }
+                            else if (SmmeUser != null)
+                            {
+                                if (CompanyPic == "No")
+                                {
+                                    <img style="width:150px;margin:auto;display:block;" id="imgMainLayout" src="~/Content/assets/img/avatars/default_companyphoto.png" />
+                                }
+                                else
+                                {
+                                    <img style="width:150px;margin:auto;display:block;" src="@CompanyPic" id="imgMainLayout" />
+                                }
+
+                            }
+                            else
+                            {
+                                <img style="width:150px;margin:auto;display:block;" src="~/Content/assets/img/avatars/Consulting_PNG.png" />
+                            }
+
+                        </a>
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+                            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+                        </a>
+                    </div>
+                    <div class="menu-inner-shadow"></div>
+
+                    @Html.Action("Menu", "Home")
+
+                </aside>*@
+
+            @Html.Action("Menu", "Home")
+            <!-- / Menu -->
+            <!-- Layout container -->
+            <div class="layout-page">
+
+
+                @*start : mobile Nav*@
+
+                <nav class="navbar navbar-light m-nav container-fluid layout-navbar">
+                    <div class="">
+                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        @*<a class="navbar-brand" href="javascript:void(0)" onclick="openNav()">
+                               <i class="fa fa-bars"></i>
+                            </a>*@
+                    </div>
+                    @*<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+                            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                                <i class="ti ti-menu-2 ti-md"></i>
+                            </a>
+                        </div>*@
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <!-- Search -->
+                        <div class="navbar-nav align-items-center">
+                            <div class="nav-item navbar-search-wrapper mb-0">
+                                <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                                    <i class="ti ti-search ti-md me-2 me-lg-4 ti-lg"></i>
+                                    <span class="d-none d-md-inline-block text-muted fw-normal">Search (Ctrl+/)</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /Search -->
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                            <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                                @if (SmmeUser != null)
+                                {
+                                    <a class="nav-link hide-arrow" href="/Job/JobCalender">
+                                        <i class='ti ti-calendar fs-4'></i>
+                                    </a>
+                                }
+                                else if (Enterpriseuser != null)
+                                {
+                                    <a class="nav-link hide-arrow" href="/Enterprise/ViewAllBranch">
+                                        <i class='ti ti-building-bank ti-md'></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        <i class='ti ti-layout-grid-add ti-md'></i>
+                                    </a>
+                                }
+
+                                <div class="dropdown-menu dropdown-menu-end py-0">
+                                    <div class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
+                                            <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="ti ti-sm ti-apps"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-shortcuts-list scrollable-container">
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-calendar fs-4"></i>
+                                                </span>
+                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                                <small class="text-muted mb-0">Appointments</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-file-invoice fs-4"></i>
+                                                </span>
+                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                                <small class="text-muted mb-0">Manage Accounts</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-users fs-4"></i>
+                                                </span>
+                                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                                <small class="text-muted mb-0">Manage Users</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-lock fs-4"></i>
+                                                </span>
+                                                <a href="app-access-roles.html" class="stretched-link">Role Management</a>
+                                                <small class="text-muted mb-0">Permission</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-chart-bar fs-4"></i>
+                                                </span>
+                                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                                <small class="text-muted mb-0">User Profile</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-settings fs-4"></i>
+                                                </span>
+                                                <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
+                                                <small class="text-muted mb-0">Account Settings</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-help fs-4"></i>
+                                                </span>
+                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                                <small class="text-muted mb-0">FAQs & Articles</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-square fs-4"></i>
+                                                </span>
+                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                                <small class="text-muted mb-0">Useful Popups</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Quick links -->
+                            <!-- Notification -->
+                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                                @*<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        <i class="ti ti-bell ti-md"></i>
+                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+                                    </a>*@
+                                <ul class="dropdown-menu dropdown-menu-end py-0">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Notification</h5>
+                                            <a href="javascript:void(0)" class="dropdown-notifications-all text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="ti ti-mail-opened fs-4"></i></a>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/1.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Congratulation Lettie 🎉</h6>
+                                                        <p class="mb-0">Won the monthly best seller gold badge</p>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Charles Franklin</h6>
+                                                        <p class="mb-0">Accepted your connection</p>
+                                                        <small class="text-muted">12hr ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/2.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">New Message ✉️</h6>
+                                                        <p class="mb-0">You have new message from Natalie</p>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-shopping-cart"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Whoo! You have new order 🛒 </h6>
+                                                        <p class="mb-0">ACME Inc. made new order $1,154</p>
+                                                        <small class="text-muted">1 day ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/9.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Application has been approved 🚀 </h6>
+                                                        <p class="mb-0">Your ABC project application has been approved.</p>
+                                                        <small class="text-muted">2 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-chart-pie"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Monthly report is generated</h6>
+                                                        <p class="mb-0">July monthly financial report is generated </p>
+                                                        <small class="text-muted">3 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/5.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Send connection request</h6>
+                                                        <p class="mb-0">Peter sent you connection request</p>
+                                                        <small class="text-muted">4 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/6.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">New message from Jane</h6>
+                                                        <p class="mb-0">Your have new message from Jane</p>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-warning"><i class="ti ti-alert-triangle"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">CPU is running high</h6>
+                                                        <p class="mb-0">CPU Utilization Percent is currently at 88.63%,</p>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-menu-footer border-top">
+                                        <a href="javascript:void(0);" class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                                            View all notifications
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ Notification -->
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+
+
+
+                                        @if (profilePic == "NO")
+                                        {
+                                            <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                        }
+                                        else
+                                        {
+                                            <img src="@profilePic" alt class="h-auto rounded-circle">
+                                        }
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        @if (role == "E" && subrole == "SuperAdmin")
+                                        {
+                                            <a class="dropdown-item" href="/Enterprise/EnterpriseProfieView_Profiles?Id=@Enterpriseuser.UM_MainID">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar avatar-online">
+                                                            @if (profilePic == "NO")
+                                                            {
+                                                                <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <span class="fw-medium d-block">@userName</span>
+                                                        <small class="text-muted">@subrole</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                        else if (role == "E" && subrole != "SuperAdmin")
+                                        {
+                                            if (EnterpriseEmpuser != null && EnterpriseEmpuser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@EnterpriseEmpuser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else if (role == "S" && subrole == "SuperAdmin")
+                                        {
+                                            if (SmmeUser != null && SmmeUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/SMME/SMMEProfile_Dashboard?Id=@SmmeUser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else if (role == "A" && subrole != "Admin")
+                                        {
+                                            if (AdminUser != null && AdminUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@AdminUser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="#">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar avatar-online">
+                                                            @if (profilePic == "NO")
+                                                            {
+                                                                <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <span class="fw-medium d-block">@userName</span>
+                                                        <small class="text-muted">@subrole</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    @if (role == "E" && subrole == "SuperAdmin")
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" href="/Enterprise/EnterpriseProfieView_Profiles">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">Enterprise Profile</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="dropdown-item" href="/Account/EnterpriseSettings_company?M=E&Id=@Enterpriseuser.UM_MainID">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class="ti ti-settings me-2 ti-sm"></i>
+                                                <span class="align-middle">Enterprise Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/Enterprise/ViewAllBranch">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class='ti ti-building me-2 ti-sm'></i>
+                                                <span class="align-middle">Branch</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                        </li>
+                                    }
+                                    
+                             @* User Profile Settings *@
+                                    <li>
+                                        @if (role == "S" && subrole == "SuperAdmin")
+                                        {
+                                            if (SmmeUser != null && SmmeUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/SMME/SMMEProfile?Id=@SmmeUser.UserID">
+                                                    <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                    <span class="align-middle">User Profile</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                @*<span class="text-muted">User Profile not available</span>*@
+                                            }
+                                        }
+                                        else if (role == "S" && subrole != "SuperAdmin")
+                                        {
+                                            if (SmmeUser != null && SmmeUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="#">
+                                                    <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                    <span class="align-middle">User Profile</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                @*<span class="text-muted">User Profile not available</span>*@
+                                            }
+                                        }
+                                        else if (role == "E" && subrole != "SuperAdmin")
+                                        {
+                                            if (EnterpriseEmpuser != null && EnterpriseEmpuser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@EnterpriseEmpuser.UserID">
+                                                    <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                    <span class="align-middle">User Profile</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                @*<span class="text-muted">User Profile not available</span>*@
+                                            }
+                                        }
+                                        else if (role == "A" && subrole != "SuperAdmin")
+                                        {
+                                            if (AdminUser != null && AdminUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@AdminUser.UserID">
+                                                    <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                    <span class="align-middle">User Profile</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                @*<span class="text-muted">User Profile not available</span>*@
+                                            }
+                                        }
+                                        else if (role == "A" && subrole == "Admin")
+                                        {
+                                            <a class="dropdown-item">
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">User Profile</span>
+                                            </a>
+                                        }
+                                        else { }
+                                    </li>
+
+                                    @* /User Profile Settings *@
+
+                                    @*<li>
+                                            <a class="dropdown-item" href="pages-account-settings-account.html">
+                                                <i class="ti ti-settings me-2 ti-sm"></i>
+                                                <span class="align-middle">User Settings</span>
+                                            </a>
+                                        </li>*@
+
+                                    <li>
+                                        @if (role == "E")
+                                        {
+                                            <a class="dropdown-item" href="/Account/EnterpriseLogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                        else if (role == "S")
+                                        {
+                                            <a class="dropdown-item" href="/Account/SMMELogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="/Account/AdminLogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <!-- Search Small Screens -->
+                    <div class="navbar-search-wrapper search-input-wrapper  d-none">
+                        <input type="text" class="form-control search-input container-fluid border-0" placeholder="Search..." aria-label="Search...">
+                        <i class="ti ti-x search-toggler cursor-pointer"></i>
+                    </div>
+                </nav>
+                @*end : mobile Nav*@
+                <!-- Navbar -->
+
+                <nav class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme mt-3 web-nav" id="layout-navbar">
+
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="ti ti-menu-2 ti-md"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <!-- Search -->
+                        <div class="navbar-nav align-items-center">
+                            <div class="nav-item navbar-search-wrapper mb-0">
+                                <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                                    <i class="ti ti-search ti-md me-2 me-lg-4 ti-lg"></i>
+                                    <span class="d-none d-md-inline-block text-muted fw-normal">Search (Ctrl+/)</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /Search -->
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                            <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                                @if (SmmeUser != null)
+                                {
+                                    <a class="nav-link hide-arrow" href="/Job/JobCalender">
+                                        <i class='ti ti-calendar fs-4'></i>
+                                    </a>
+                                }
+                                else if (Enterpriseuser != null)
+                                {
+                                    <a class="nav-link hide-arrow" href="/Enterprise/ViewAllBranch">
+                                        <i class='ti ti-building-bank ti-md'></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        <i class='ti ti-layout-grid-add ti-md'></i>
+                                    </a>
+                                }
+
+                                <div class="dropdown-menu dropdown-menu-end py-0">
+                                    <div class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
+                                            <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts"><i class="ti ti-sm ti-apps"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-shortcuts-list scrollable-container">
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-calendar fs-4"></i>
+                                                </span>
+                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                                <small class="text-muted mb-0">Appointments</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-file-invoice fs-4"></i>
+                                                </span>
+                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                                <small class="text-muted mb-0">Manage Accounts</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-users fs-4"></i>
+                                                </span>
+                                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                                <small class="text-muted mb-0">Manage Users</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-lock fs-4"></i>
+                                                </span>
+                                                <a href="app-access-roles.html" class="stretched-link">Role Management</a>
+                                                <small class="text-muted mb-0">Permission</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-chart-bar fs-4"></i>
+                                                </span>
+                                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                                <small class="text-muted mb-0">User Profile</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-settings fs-4"></i>
+                                                </span>
+                                                <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
+                                                <small class="text-muted mb-0">Account Settings</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-help fs-4"></i>
+                                                </span>
+                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                                <small class="text-muted mb-0">FAQs & Articles</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                                                    <i class="ti ti-square fs-4"></i>
+                                                </span>
+                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                                <small class="text-muted mb-0">Useful Popups</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Quick links -->
+                            <!-- Notification -->
+                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                                @*<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        <i class="ti ti-bell ti-md"></i>
+                                        <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+                                    </a>*@
+                                <ul class="dropdown-menu dropdown-menu-end py-0">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Notification</h5>
+                                            <a href="javascript:void(0)" class="dropdown-notifications-all text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="ti ti-mail-opened fs-4"></i></a>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/1.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Congratulation Lettie 🎉</h6>
+                                                        <p class="mb-0">Won the monthly best seller gold badge</p>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Charles Franklin</h6>
+                                                        <p class="mb-0">Accepted your connection</p>
+                                                        <small class="text-muted">12hr ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/2.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">New Message ✉️</h6>
+                                                        <p class="mb-0">You have new message from Natalie</p>
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-shopping-cart"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Whoo! You have new order 🛒 </h6>
+                                                        <p class="mb-0">ACME Inc. made new order $1,154</p>
+                                                        <small class="text-muted">1 day ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/9.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Application has been approved 🚀 </h6>
+                                                        <p class="mb-0">Your ABC project application has been approved.</p>
+                                                        <small class="text-muted">2 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-chart-pie"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Monthly report is generated</h6>
+                                                        <p class="mb-0">July monthly financial report is generated </p>
+                                                        <small class="text-muted">3 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/5.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Send connection request</h6>
+                                                        <p class="mb-0">Peter sent you connection request</p>
+                                                        <small class="text-muted">4 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <img src="~/Content/assets/img/avatars/6.png" alt class="h-auto rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">New message from Jane</h6>
+                                                        <p class="mb-0">Your have new message from Jane</p>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar">
+                                                            <span class="avatar-initial rounded-circle bg-label-warning"><i class="ti ti-alert-triangle"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">CPU is running high</h6>
+                                                        <p class="mb-0">CPU Utilization Percent is currently at 88.63%,</p>
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
+                                                        <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-menu-footer border-top">
+                                        <a href="javascript:void(0);" class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                                            View all notifications
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ Notification -->
+                            <!-- Theme -->
+                            <li class="nav-item dropdown-style-switcher dropdown">
+                                <a class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow waves-effect waves-light" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <i class="ti ti-md ti-moon-stars"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                                    <li>
+                                        <a class="dropdown-item waves-effect theme-selector theme-light" href="javascript:void(0);" data-theme="light" onclick="changeTheme(this,'core','@ThemeColor','@CustomCSSLink')">
+                                            <span class="align-middle"><i class="ti ti-sun ti-md me-3"></i>Light</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item waves-effect theme-selector" href="javascript:void(0);" data-theme="dark" onclick="changeTheme(this,'core-dark','@ThemeColor','@CustomCSSLink')">
+                                            <span class="align-middle"><i class="ti ti-moon-stars ti-md me-3"></i>Dark</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item waves-effect theme-selector  theme-semi-dark" href="javascript:void(0);" data-theme="semi-dark" onclick="changeTheme(this,'core-semi-dark','@ThemeColor','@CustomCSSLink')">
+                                            <span class="align-middle"><i class="ti ti-device-desktop-analytics ti-md me-3"></i>Semi-Dark</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ Theme -->
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+
+
+
+                                        @if (profilePic == "NO")
+                                        {
+                                            <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                        }
+                                        else
+                                        {
+                                            <img src="@profilePic" alt class="h-auto rounded-circle">
+                                        }
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        @if (role == "E" && subrole == "SuperAdmin")
+                                        {
+                                            <a class="dropdown-item" href="/Enterprise/EnterpriseProfieView_Profiles?Id=@Enterpriseuser.UM_MainID">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar avatar-online">
+                                                            @if (profilePic == "NO")
+                                                            {
+                                                                <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <span class="fw-medium d-block">@userName</span>
+                                                        <small class="text-muted">@subrole</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                        else if (role == "E" && subrole != "SuperAdmin")
+                                        {
+                                            if (EnterpriseEmpuser != null && EnterpriseEmpuser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@EnterpriseEmpuser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else if (role == "S" && subrole == "SuperAdmin")
+                                        {
+                                            if (SmmeUser != null && SmmeUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/SMME/SMMEProfile_Dashboard?Id=@SmmeUser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else if (role == "A" && subrole != "Admin")
+                                        {
+                                            if (AdminUser != null && AdminUser.UserID != null)
+                                            {
+                                                <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@AdminUser.UserID">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-3">
+                                                            <div class="avatar avatar-online">
+                                                                @if (profilePic == "NO")
+                                                                {
+                                                                    <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <span class="fw-medium d-block">@userName</span>
+                                                            <small class="text-muted">@subrole</small>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="#">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar avatar-online">
+                                                            @if (profilePic == "NO")
+                                                            {
+                                                                <span class="avatar-initial rounded-circle bg-label-success">@prefix</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="@profilePic" alt class="h-100 rounded-circle">
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <span class="fw-medium d-block">@userName</span>
+                                                        <small class="text-muted">@subrole</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    @if (role == "E" && subrole == "SuperAdmin")
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" href="/Enterprise/EnterpriseProfieView_Profiles">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">Enterprise Profile</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="dropdown-item" href="/Account/EnterpriseSettings_company?M=E&Id=@Enterpriseuser.UM_MainID">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class="ti ti-settings me-2 ti-sm"></i>
+                                                <span class="align-middle">Enterprise Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/Enterprise/ViewAllBranch">
+                                                @*<a class="dropdown-item" href="#">*@
+                                                <i class='ti ti-building me-2 ti-sm'></i>
+                                                <span class="align-middle">Branch</span>
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                        </li>
+                                    }
+
+
+                                   @* User Profile Settings *@
+                                <li>
+                                    @if (role == "S" && subrole == "SuperAdmin")
+                                    {
+                                        if (SmmeUser != null && SmmeUser.UserID != null)
+                                        {
+                                            <a class="dropdown-item" href="/SMME/SMMEProfile?Id=@SmmeUser.UserID">
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">User Profile</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            @*<span class="text-muted">User Profile not available</span>*@
+                                        }
+                                    }
+                                    else if (role == "S" && subrole != "SuperAdmin")
+                                    {
+                                        if (SmmeUser != null && SmmeUser.UserID != null)
+                                        {
+                                            <a class="dropdown-item" href="#">
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">User Profile</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            @*<span class="text-muted">User Profile not available</span>*@
+                                        }
+                                    }
+                                    else if (role == "E" && subrole != "SuperAdmin")
+                                    {
+                                        if (EnterpriseEmpuser != null && EnterpriseEmpuser.UserID != null)
+                                        {
+                                            <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@EnterpriseEmpuser.UserID">
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">User Profile</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            @*<span class="text-muted">User Profile not available</span>*@
+                                        }
+                                    }
+                                    else if (role == "A" && subrole != "SuperAdmin")
+                                    {
+                                        if (AdminUser != null && AdminUser.UserID != null)
+                                        {
+                                            <a class="dropdown-item" href="/Home/UserProfileDetails?Id=@AdminUser.UserID">
+                                                <i class="ti ti-user-check me-2 ti-sm"></i>
+                                                <span class="align-middle">User Profile</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            @*<span class="text-muted">User Profile not available</span>*@
+                                        }
+                                    }
+                                    else if (role == "A" && subrole == "Admin")
+                                    {
+                                        <a class="dropdown-item">
+                                            <i class="ti ti-user-check me-2 ti-sm"></i>
+                                            <span class="align-middle">User Profile</span>
+                                        </a>
+                                    }
+                                    else { }
+                                </li>
+
+                                @* /User Profile Settings *@    
+                                    
+                                    <li>
+                                        @if (role == "A" && subrole == "Admin")
+                                        {
+
+                                        }
+                                        else if (role == "A" && subrole != "Admin")
+                                        {
+                                            <a class="dropdown-item" href="/Account/ResetPassword">
+                                                <i class="ti ti-zoom-reset me-2 ti-sm"></i>
+                                                <span class="align-middle">Reset Password</span>
+                                            </a>
+                                        }
+                                    </li>
+
+                                    @*<li>
+                                            <a class="dropdown-item" href="pages-account-settings-account.html">
+                                                <i class="ti ti-settings me-2 ti-sm"></i>
+                                                <span class="align-middle">User Settings</span>
+                                            </a>
+                                        </li>*@
+
+                                    <li>
+                                        @if (role == "E")
+                                        {
+                                            <a class="dropdown-item" href="/Account/EnterpriseLogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                        else if (role == "S")
+                                        {
+                                            <a class="dropdown-item" href="/Account/SMMELogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="/Account/AdminLogin">
+                                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                                <span class="align-middle">Log Out</span>
+                                            </a>
+                                        }
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <!-- Search Small Screens -->
+                    <div class="navbar-search-wrapper search-input-wrapper  d-none">
+                        <input type="text" class="form-control search-input container-fluid border-0" placeholder="Search..." aria-label="Search...">
+                        <i class="ti ti-x search-toggler cursor-pointer"></i>
+                    </div>
+                </nav>
+
+                <!-- / Navbar -->
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+
+                    <div class="container-fluid flex-grow-1 container-p-y">
+                        <div class="row g-6">
+                            <!-- Total Profit -->
+                            <div class="col-xxl-2 col-md-4 col-6 mb-4">
+                                <a href="@Url.Action("EnterpriseLists", "Enterprise")" onclick="getValue(17)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-danger mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">Enteprises</h5>
+                                            @*<p class="card-subtitle ">Total Enteprise</p>*@
+                                            <p class="text-heading mb-3 mt-1">@Model.TotalEnterprise</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Total Sales -->
+                            <div class="col-xxl-2 col-md-4 col-6 mb-4">
+                                <a href="@Url.Action("ProjectListForAdmin", "Project")" onclick="getValue(24)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-success mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">Projects</h5>
+                                            @*<p class="card-subtitle ">Total Project</p>*@
+                                            <p class="text-heading mb-3 mt-1">@Model.TotalProject</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            @*<div class="col-xxl-2 col-md-4 col-6 mb-4" style="display:none">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-primary mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">Budget</h5>
+                                            <p class="text-heading mb-3 mt-1">R <span class="total-budget">@Model.TotalBudget</span></p>
+
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <!-- Total Profit -->
+                            <div class="col-xxl-2 col-md-4 col-6 mb-4">
+                                <a href="@Url.Action("SMMELists", "SMME")" onclick="getValue(30)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-warning mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">MSMEs</h5>
+                                            @*<p class="card-subtitle ">Total MSME</p>*@
+                                            <p class="text-heading mb-3 mt-1">@Model.TotalSMME</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Total Sales -->
+                            <div class="col-xxl-2 col-md-4 col-6 mb-4">
+                                <a href="@Url.Action("ViewAllBuildQuestion", "Assessment")" onclick="getValue(35)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-primary mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">Assessments</h5>
+                                            @*<p class="card-subtitle ">Total Assessments</p>*@
+                                            <p class="text-heading mb-3 mt-1">@Model.TotalAssesment</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xxl-2 col-md-4 col-6 mb-4">
+                                <a href="@Url.Action("ViewAllJobsForAdmin", "Job")" onclick="getValue(46)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="badge p-2 bg-label-danger mb-3 rounded"><i class="ti ti-credit-card ti-28px"></i></div>
+                                            <h5 class="card-title mb-1">Jobs</h5>
+                                            @*<p class="card-subtitle ">Total Job</p>*@
+                                            <p class="text-heading mb-3 mt-1">@Model.TotalJOB</p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--/ Activity Timeline -->
+                        </div>
+                        <div class="row g-4 mb-4">
+                            @*<div class="col-sm-6 col-xl-3">
+                                    <div class="card card-border-shadow-primary h-100">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="content-left">
+                                                    <span>Total Enterprise</span>
+                                                    <div class="d-flex align-items-center my-2">
+                                                        <h3 class="mb-0 me-2"><span id="spnTotEnter">@Model.TotalEnterprise</span></h3>
+
+                                                    </div>
+                                                    <p class="mb-0">Last week analytics </p>
+                                                </div>
+                                                <div class="avatar">
+                                                    <span class="avatar-initial rounded bg-label-primary">
+                                                        <i class="ti ti-user ti-sm"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                            <div class="col-sm-6 col-xl-4">
+                                <div class="card card-border-shadow-warning h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Active Enterprises</span>
+                                                <div class="d-flex align-items-center my-2">
+                                                    <h3 class="mb-0 me-2"><span id="spnActiveEnter">@Model.TotalActiveEnterprise</span></h3>
+
+                                                </div>
+                                                @*<p class="mb-0">Last week analytics</p>*@
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-success">
+                                                    <i class="ti ti-user-check ti-sm"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-4">
+                                <div class="card card-border-shadow-danger h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Deactivated Enterprises</span>
+                                                <div class="d-flex align-items-center my-2">
+                                                    <h3 class="mb-0 me-2"><span id="spnDeactiveEnt">@Model.TotalDeactiveEnterprise</span></h3>
+
+                                                </div>
+                                                @*<p class="mb-0">Last week analytics </p>*@
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-danger">
+                                                    <i class="ti ti-user-plus ti-sm"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-4">
+                                <div class="card card-border-shadow-info h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <span>Pending Enterprises</span>
+                                                <div class="d-flex align-items-center my-2">
+                                                    <h3 class="mb-0 me-2"><span id="spnPendEnter">@Model.TotalPendingEnterprise</span></h3>
+
+                                                </div>
+                                                @*<p class="mb-0">Last week analytics</p>*@
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-warning">
+                                                    <i class="ti ti-user-exclamation ti-sm"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-xl-4 mb-4 col-md-6">
+                                <a href="@Url.Action("ProjectListForAdmin", "Project")" onclick="getValue(24)">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between" style="position: relative;">
+                                                <div class="d-flex flex-column">
+                                                    <div class="card-title mb-auto">
+                                                        <h5 class="mb-1 text-nowrap">Total Projects</h5>
+                                                    </div>
+                                                    <div class="chart-statistics">
+                                                        <h3 class="card-title mb-1" id="totalTActiviy">@Model.TotalProject</h3>
+                                                        <input type="hidden" id="hdnEmp" value="@Model.TotalProject" />
+                                                    </div>
+                                                </div>
+                                                @*<div id="generatedChartGenderStatus"></div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-4 mb-4 col-md-6">
+                                <a href="@Url.Action("CreateActivityList", "Project")" onclick="getValue(24)">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between" style="position: relative;">
+                                            <div class="d-flex flex-column">
+                                                <div class="card-title mb-auto">
+                                                    <h5 class="mb-1 text-nowrap">Total Activities</h5>
+                                                </div>
+                                                <div class="chart-statistics">
+                                                    <h3 class="card-title mb-1" id="totalTask">@Model.TotalActivity</h3>
+                                                    <input type="hidden" id="hdnTask" value="@Model.TotalActivity" />
+                                                    @*<small class="text-success text-nowrap fw-medium" id="remaningTaskPercen">20% </small>*@
+                                                </div>
+                                            </div>
+                                            @*<div id="generatedChartTaskStatus"></div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-xl-4 mb-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between" style="position: relative;">
+                                            <div class="d-flex flex-column">
+                                                <div class="card-title mb-auto">
+                                                    <h5 class="mb-1 text-nowrap">Total Tasks</h5>
+                                                </div>
+                                                <div class="chart-statistics">
+                                                    <h3 class="card-title mb-1" id="totalTask">@Model.TotalTask</h3>
+                                                    <input type="hidden" id="hdnTask" value="@Model.TotalTask" />
+                                                    @*<small class="text-success text-nowrap fw-medium" id="remaningTaskPercen">20% </small>*@
+                                                </div>
+                                            </div>
+                                            @*<div id="generatedChartTaskStatus"></div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="col-xl-4 mb-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between" style="position: relative;">
+                                            <div class="d-flex flex-column">
+                                                <div class="card-title mb-auto">
+                                                    <h5 class="mb-1 text-nowrap">Total Assessments</h5>
+                                                    <small>Staus</small>
+                                                </div>
+                                                <div class="chart-statistics">
+                                                    <h3 class="card-title mb-1" id="totalAssessments">@Model.TotalAssesment</h3>
+                                                    <small class="text-success text-nowrap fw-medium" id="remaningAssessmentsPercen">20% </small>
+                                                </div>
+                                            </div>
+                                            <div id="generatedChartAssessmentsStatus"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6 col-xl-3">
+                                <a href="@Url.Action("SMMELists", "SMME")" onclick="getValue(30)">
+                                <div class="card card-border-shadow-primary h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="content-left">
+                                                <p>All MSMEs on the System</p>
+                                                <div class="d-flex align-items-center my-2">
+                                                    <h3 class="mb-0 me-2"><span id="spnTotSmme">@Model.TotalSMME</span></h3>
+                                                </div>
+                                                @*<p class="mb-0">Last week analytics </p>*@
+                                            </div>
+                                            <div class="avatar">
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                    <i class="ti ti-user ti-sm"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                    <a href="@Url.Action("SMMELists", "SMME", new { Filter = "Active" })" onclick="getValue(30);">
+                                <div class="card card-border-shadow-warning h-100">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="content-left">
+                                                    <p>All Verified MSMEs</p>
+                                                    <div class="d-flex align-items-center my-2">
+                                                        <h3 class="mb-0 me-2"><span id="spnActiveSmme">@Model.TotalActiveSMME</span></h3>
+                                                    </div>
+                                                    @*<p class="mb-0">Last week analytics</p>*@
+                                                </div>
+                                                <div class="avatar">
+                                                    <span class="avatar-initial rounded bg-label-success">
+                                                        <i class="ti ti-user-check ti-sm"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+</div>
+                                        </a>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <a href="@Url.Action("SMMELists", "SMME", new { Filter = "Deactive" })" onclick="getValue(30);">
+                                    <div class="card card-border-shadow-danger h-100">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="content-left">
+                                                    <p>All Non-Vetted MSMEs</p>
+                                                    <div class="d-flex align-items-center my-2">
+                                                        <h3 class="mb-0 me-2"><span id="spnDeactiveSmme">@Model.TotalDeactiveSMME</span></h3>
+                                                    </div>
+                                                    @*<p class="mb-0">Last week analytics </p>*@
+                                                </div>
+                                                <div class="avatar">
+                                                    <span class="avatar-initial rounded bg-label-danger">
+                                                        <i class="ti ti-user-plus ti-sm"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+</div>
+                            <div class="col-sm-6 col-xl-3">
+                                <a href="@Url.Action("SMMELists", "SMME", new { Filter = "Pending" })" onclick="getValue(30);">
+                                    <div class="card card-border-shadow-info h-100">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="content-left">
+                                                    <p>All Supported MSMEs</p>
+                                                    <div class="d-flex align-items-center my-2">
+                                                        <h3 class="mb-0 me-2"><span id="spnPendSmme">@Model.TotalPendingSMME</span></h3>
+                                                    </div>
+                                                    @*<p class="mb-0">Last week analytics</p>*@
+                                                </div>
+                                                <div class="avatar">
+                                                    <span class="avatar-initial rounded bg-label-warning">
+                                                        <i class="ti ti-user-exclamation ti-sm"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+</div>
+                        </div>
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-xl-6 col-md-12">
+                                <div class="card h-100">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h5 class="card-title mb-0">Projects Progress Tracker</h5>
+                                        <small class="text-muted">Last 6 months </small>
+                                    </div>
+                                    <div class="card-body d-flex align-items-end">
+                                        <div class="w-100">
+                                            <div class="row gy-3">
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-primary me-4 p-2"><i class="ti ti-chart-pie-2 ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.ProjectOnTrack</h5>
+                                                            <small>In Progress</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-info me-4 p-2"><i class="ti ti-users ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.TaskCompleted</h5>
+                                                            <small>Completed</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-danger me-4 p-2"><i class="ti ti-shopping-cart ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.ProjectBehind</h5>
+                                                            <small>Cancelled</small>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-12">
+                                <div class="card h-100">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h5 class="card-title mb-0">Job Implementation Status</h5>
+                                        <small class="text-muted">Last 6 months </small>
+                                    </div>
+                                    <div class="card-body d-flex align-items-end">
+                                        <div class="w-100">
+                                            <div class="row gy-3">
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-primary me-4 p-2"><i class="ti ti-chart-pie-2 ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.TotalOpenJOB</h5>
+                                                            <small>In Progress</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-info me-4 p-2"><i class="ti ti-users ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.TotalProgressJOB</h5>
+                                                            <small>Completed</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge rounded bg-label-danger me-4 p-2"><i class="ti ti-shopping-cart ti-lg"></i></div>
+                                                        <div class="card-info">
+                                                            <h5 class="mb-0">@Model.TotalCompletedJOB</h5>
+                                                            <small>Cancelled</small>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-4 mb-4">
+                            <!-- Earning Reports -->
+                            <div class="col-xl-8 col-md-6">
+                                <div class="card ">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="card-title mb-0">
+                                            <h5 class="mb-1">BEE level</h5>
+                                            <p class="card-subtitle">BEE level Wise Overview</p>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body pb-0">
+
+                                        <div id="reportBarChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="card  h-100">
+                                    <div class="card-header mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="mb-0 text-body">Portfolio growth</p>
+
+                                        </div>
+                                        <h4 class="card-title mb-1">@Model.TotalSMME</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-4">
+                                            <div class="col-4">
+                                                <div class="d-flex gap-2 align-items-center mb-2">
+                                                    <span class="badge bg-label-info p-1 rounded"><i class="ti ti-shopping-cart ti-sm"></i></span>
+                                                    <p class="mb-0">EME</p>
+                                                </div>
+                                                <h5 class="mb-0 pt-1">@Model.EMEPerProtfolioGrowth%</h5>
+                                                <small class="text-muted">@Model.TotalEMEProtfolioGrowth</small>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="divider divider-vertical">
+                                                    <div class="divider-text">
+                                                        <span class="badge-divider-bg bg-label-secondary">VS</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <div class="d-flex gap-2 justify-content-end align-items-center mb-2">
+                                                    <p class="mb-0">QSE</p>
+                                                    <span class="badge bg-label-primary p-1 rounded"><i class="ti ti-link ti-sm"></i></span>
+                                                </div>
+                                                <h5 class="mb-0 pt-1">@Model.QSEPerProtfolioGrowth%</h5>
+                                                <small class="text-muted">@Model.TotalQSEProtfolioGrowth</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-6">
+                                            <div class="progress w-100" style="height: 10px;">
+                                                <div class="progress-bar bg-info" style="width: @Model.EMEPerProtfolioGrowth%" role="progressbar" aria-valuenow="@Model.EMEPerProtfolioGrowth" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: @Model.QSEPerProtfolioGrowth%" aria-valuenow="@Model.QSEPerProtfolioGrowth" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row g-4 mb-4">
+                                <div class="col-xl-12 col-12">
+                                    <div class="card">
+                                        <div class="card-header d-flex justify-content-between">
+                                            <div class="card-title m-0">
+                                                <h5 class="mb-1">Fund Wise Allocation</h5>
+                                                <p class="card-subtitle">Fund Wise Overview</p>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="barChart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <!-- / Content -->
+                        <!-- Footer -->
+                        <footer class="content-footer footer bg-footer-theme">
+                            <div class="container-fluid">
+                                <div class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                                    <div>
+                                        ©
+                                        <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>, made with
+                                        <img src="/Content/assets/img/favicon.ico" style="height: 17px;width: 17px;"> by <a href="#" class="fw-medium">ESD Platform</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- / Footer -->
+
+
+                        <div class="content-backdrop fade"></div>
+                    </div>
+                    <!-- Content wrapper -->
+                    <!-- Theme Custom Setting -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="mt-3">
+                            <a id="theme-setting-btn" href="javascript:void(0)" class="fa-solid fa-gear" type="button" data-bs-toggle="offcanvas" data-bs-target="#theme-custom-setting" aria-controls="offcanvasEnd"></a>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-custom-setting" aria-labelledby="offcanvasEndLabel">
+                                <div class="offcanvas-header border-bottom">
+                                    <h5 id="offcanvasEndLabel" class="offcanvas-title text-primary">Theme Settings</h5>
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body theme-customizer-inner mx-0 flex-grow-0">
+                                    <span class="badge bg-primary my-3">Theming</span>
+                                    <div class="theme-customizer-theming">
+                                        <div class="theme-customizer-color">
+
+                                            <div class="row theme-customizer-colors-option justify-content-start">
+                                                <div class="form-check custom-option custom-option-icon mb-0 ">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconprimary">
+                                                        <span onclick="SetThemeColor('#7367f0', '115,103,240')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#7367f0"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#7367f0" data-color="#7367f0" data-rgb="115,103,240" id="colorRadioIconprimary" checked="checked">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconred">
+                                                        <span onclick="SetThemeColor('#F40009', '244,0,0')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #F40009;"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#e83e8c" data-color="#e83e8c" data-rgb="232,62,140" id="colorRadioIconred">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconpink">
+                                                        <span onclick="SetThemeColor('#e83e8c', '232,62,140')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #e83e8c;"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#e83e8c" data-color="#e83e8c" data-rgb="232,62,140" id="colorRadioIconpink">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0 ">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconteal">
+                                                        <span onclick="SetThemeColor('#20c997', '32,201,151')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #20c997"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#20c997" data-color="#20c997" data-rgb="32,201,151" id="colorRadioIconteal">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIcongreen">
+                                                        <span onclick="SetThemeColor('#28a745', '40,167,69')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #28a745"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#28a745" data-color="#28a745" data-rgb="40,167,69" id="colorRadioIcongreen">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0 ">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconorange">
+                                                        <span onclick="SetThemeColor('#fd7e14', '253,126,20')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#fd7e14"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#fd7e14" data-color="#fd7e14" data-rgb="253,126,20" id="colorRadioIconorange">
+                                                </div>
+                                                <div class="form-check custom-option custom-option-icon mb-0">
+                                                    <label class="form-check-label custom-option-content p-0" for="colorRadioIconcyan">
+                                                        <span onclick="SetThemeColor('#17a2b8', '23,162,164')" class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#17a2b8"></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#17a2b8" data-color="#17a2b8" data-rgb="23,162,164" id="colorRadioIconcyan">
+                                                </div>
+                                            </div>
+                                            @*<div class="row theme-customizer-colors-option">
+                                    <div class="form-check custom-option custom-option-icon mb-0 checked">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIconprimary">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#7367f0"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#7367f0" data-color="#7367f0" data-rgb="115,103,240" id="colorRadioIconprimary" checked="checked">
+                                    </div>
+                                    <div class="form-check custom-option custom-option-icon mb-0">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIconpink">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #e83e8c;"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#e83e8c" data-color="#e83e8c" data-rgb="232,62,140" id="colorRadioIconpink">
+                                    </div>
+                                    <div class="form-check custom-option custom-option-icon mb-0 checked">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIconteal">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #20c997"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#20c997" data-color="#20c997" data-rgb="32,201,151" id="colorRadioIconteal">
+                                    </div>
+                                    <div class="form-check custom-option custom-option-icon mb-0">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIcongreen">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color: #28a745"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#28a745" data-color="#28a745" data-rgb="40,167,69" id="colorRadioIcongreen">
+                                    </div>
+                                    <div class="form-check custom-option custom-option-icon mb-0 checked">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIconorange">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#fd7e14"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#fd7e14" data-color="#fd7e14" data-rgb="253,126,20" id="colorRadioIconorange">
+                                    </div>
+                                    <div class="form-check custom-option custom-option-icon mb-0">
+                                        <label class="form-check-label custom-option-content p-0" for="colorRadioIconcyan">
+                                            <span class="custom-option-body mb-0 scaleX-n1-rtl" style="background-color:#17a2b8"></span>
+                                        </label>
+                                        <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="#17a2b8" data-color="#17a2b8" data-rgb="23,162,164" id="colorRadioIconcyan">
+                                    </div>
+                                </div>*@
+                                        </div>
+
+                                        <div class="theme-customizer-Mode mt-4">
+                                            <span class="badge bg-primary my-3">Theme Mode</span>
+                                            <div class="row theme-customizer-Mode-option justify-content-center gap-2">
+                                                <div class="form-check col-4 custom-option custom-option-icon-mode mb-0">
+                                                    <label class="form-check-label custom-option-content p-0 " for="themeModeLight" onclick="changeTheme(this,'core','@ThemeColor','@CustomCSSLink')">
+                                                        <span class="custom-option-body mb-0 scaleX-n1-rtl"><img src="~/Content/assets/img/customizer/default.svg" /></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="light" data-theme-mode="light" data-Mode="core" id="themeModeLight">
+                                                </div>
+                                                <div class="form-check col-4 custom-option custom-option-icon-mode mb-0 checked">
+                                                    <label class="form-check-label custom-option-content p-0" for="themeModeDark" onclick="changeTheme(this,'core-dark','@ThemeColor','@CustomCSSLink')">
+                                                        <span class="custom-option-body mb-0 scaleX-n1-rtl"><img style="background:#1b1e30" class="" src="~/Content/assets/img/customizer/border.svg" /></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="dark" data-theme-mode="dark" data-Mode="core-dark" id="themeModeDark">
+                                                </div>
+                                                <div class="form-check col-4 custom-option custom-option-icon-mode mb-0">
+                                                    <label class="form-check-label custom-option-content p-0" for="themeModeLight" onclick="changeTheme(this,'core-semi-dark','@ThemeColor','@CustomCSSLink')">
+                                                        <span class="custom-option-body mb-0 scaleX-n1-rtl"><img src="~/Content/assets/img/customizer/semi-dark.svg" /></span>
+                                                    </label>
+                                                    <input name="colorRadioIcon" class="form-check-input d-none" type="radio" value="light" data-theme-mode="light" data-Mode="core" id="themeModeLight">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+
+
+            <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+            <div class="drag-target"></div>
+
+        </div>
+        <!-- / Layout wrapper -->
+    </div>
+
+
+
+
+    <script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+    <script src="~/Content/assets/vendor/libs/autosize/autosize.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+    <script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+    <script src="~/Content/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/Content/assets/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
+
+    <!-- Flat Picker -->
+    <script src="~/Content/assets/vendor/libs/moment/moment.js"></script>
+    <script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+
+
+    <script src="~/Content/assets/js/main.js"></script>
+    <!-- Form Validation -->
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+    <script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+    <script src="~/Scripts/custom/AdminDashboard.js"></script>
+    <script src="~/Scripts/custom/SaveThemeStyle.js"></script>
+    <script src="~/Content/assets/js/charts-apex.js"></script>
+    
+
+    @*<script src="~/Content/assets/js/dashboards-crm.js"></script>*@
+    <script src="~/Content/assets/js/app-ecommerce-dashboard.js"></script>
+    <script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var path = window.location.pathname;
+            path = path.replace(/\/$/, "");
+            path = decodeURIComponent(path);
+            // //console.log(path);
+            localStorage.setItem('href', path);
+        });
+
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <script>
+        const openMenu = document.querySelector(".open-menu");
+        const closeMenu = document.querySelector(".close-menu");
+        const menuWrapper = document.querySelector(".menu-wrapper");
+        const hasCollapsible = document.querySelectorAll(".has-collapsible");
+
+        // Sidenav Toggle
+        openMenu.addEventListener("click", function () {
+            menuWrapper.classList.add("offcanvas");
+        });
+
+        closeMenu.addEventListener("click", function () {
+            menuWrapper.classList.remove("offcanvas");
+        });
+
+        // Collapsible Menu
+        hasCollapsible.forEach(function (collapsible) {
+            collapsible.addEventListener("click", function () {
+                collapsible.classList.toggle("active");
+
+                // Close Other Collapsible
+                hasCollapsible.forEach(function (otherCollapsible) {
+                    if (otherCollapsible !== collapsible) {
+                        otherCollapsible.classList.remove("active");
+                    }
+                });
+            });
+        });
+
+
+
+        $(function ($) {
+            let url = window.location.href;
+            $('nav ul li a').each(function () {
+                if (this.href === url) {
+                    $(this).closest('li').addClass('active');
+                }
+            });
+        });
+
+
+        function SendMail() {
+            $.ajax({
+                type: "POST",
+                url: "/ScriptJson/SendMail/",
+                data: '',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null && data != undefined && data.IsSuccess == true) {
+                        Swal.fire({
+                            title: data.Message,
+                            icon: "success",
+                            customClass: { confirmButton: "btn btn-primary waves-effect waves-light" },
+                            buttonsStyling: !1
+                        });
+
+                    } else {
+                        Swal.fire({
+                            title: data.Message,
+                            icon: "error",
+                            customClass: { confirmButton: "btn btn-primary waves-effect waves-light" },
+                            buttonsStyling: !1
+                        });
+                    }
+                },
+                error: function (data) {
+                    Swal.fire({
+                        title: "Process Not Complete",
+                        icon: "error",
+                        customClass: { confirmButton: "btn btn-primary waves-effect waves-light" },
+                        buttonsStyling: !1
+                    });
+
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,702 @@
+﻿
+@{
+    ViewBag.Title = "ProjectDetailsNew";
+    Layout = "~/Views/Shared/_BudgetLayout.cshtml";
+    @Html.Partial("~/Views/Shared/_ProjectWiseSMMEModal.cshtml");
+}
+@{
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var LinkJs = "";
+    if (Enterpriseuser != null)
+    {
+        LinkJs = Enterpriseuser.ChildMenuJsLink;
+    }
+    else if (SmmeUser != null)
+    {
+        LinkJs = SmmeUser.ChildMenuJsLink;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        LinkJs = EnterpriseEmpuser.ChildMenuJsLink;
+    }
+    else if (AdminUser != null)
+    {
+        LinkJs = AdminUser.ChildMenuJsLink;
+    }
+    else
+    {
+        LinkJs = user.ChildMenuJsLink;
+    }
+}
+
+<!-- Content -->
+<style type="text/css">
+     .hideDivProjectDet 
+        {
+            display: none !important;
+        }
+     .showDivProjectDet 
+        {
+            display: inline-flex !important;
+        }
+        .avatar .avatar-initial {
+    position: absolute;
+    top: 0;
+    /*left: -3px;*/
+    right: 0;
+    /*bottom: 3px;*/
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #c9c8ce;
+    font-weight: 500;
+}
+         #ulActivity li::marker{
+        content:none;
+    }
+   tr.header
+{
+    cursor:pointer;
+}
+ tr.header .sign:after{
+  content:"+";
+  display:inline-block;
+}
+tr.header.expand .sign:after{
+  content:"-";
+ }
+</style>
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+<div class="container-xxl flex-grow-1 container-p-y" id="section-block">
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Project Details /</span> Budgets
+    </h4>
+
+<div class="row">
+        <input type="hidden" value="@ViewBag.Id" id="hdnProject" />
+        <input type="hidden"  id="hdnEnterPriseid" />
+        <input type="hidden" id="EnrId" name="EnrId" value="@ViewBag.EnrId" />
+        <input type="hidden" id="SmmeId" name="SmmeId" value="@ViewBag.SMMEId" />
+        <input type="hidden" id="hdnUserId" name="hdnUserId" value="@ViewBag.UserId" />
+        <input type="hidden" id="hdnUserType" name="hdnUserType" value="@ViewBag.UserType" />
+        <input type="hidden" id="hdnUserRole" name="hdnUserRole" value="@ViewBag.UserRole" />
+
+    <input type="hidden" id="hdnUserMainId" value="@ViewBag.UserMainId" />
+        <!-- Website Analytics -->
+        <!-- Source Visit -->
+        <div class="col-xl-12 col-md-12 order-2 order-lg-1 mb-4">
+            <div class="card" id="project-manage-div">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title mb-0">
+                        <h3 class="mb-0" id="pName"></h3>
+                        <small class="text-muted" id="pCreated"></small>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" id="sourceVisits" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ti ti-dots-vertical ti-sm text-muted"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sourceVisits" id="oparation">
+                           @if (ViewBag.UserRole != "S")
+                           {
+                            <a class="dropdown-item" href="/Project/ProjectDetails">Add Project</a>
+                            <a class="dropdown-item" href="/Project/ProjectDetails?Id=@ViewBag.Id">Edit Project</a>
+                            <button class="dropdown-item" id="btnAsgnPpl" data-bs-target="#shareProject" data-bs-toggle="modal" data-bs-dismiss="modal" onclick="ShowAllSMME()">
+                                Assign MSME
+                            </button>
+                            <button class="dropdown-item" id="btnBranches" data-bs-target="#shareBranch" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Assign Branch
+                            </button>
+                           }
+                            
+                           @if (ViewBag.UserId <= 1)
+                           {
+                            <a class="dropdown-item" href="/Project/AssignedUser?Id=@ViewBag.Id">Assign Users</a>
+                           }
+                           else if (ViewBag.UserType == "Enr")
+                           {
+                            <a class="dropdown-item" href="/Project/AssignedUser?Id=@ViewBag.Id">Assign Users</a>
+                           }
+                           else if (ViewBag.UserRole == "S" && ViewBag.UserType == "SuperAdmin")
+                           {
+                            <a class="dropdown-item" href="/Project/AssignedUserForSMME?Id=@ViewBag.Id">Assign Users</a>
+                           }
+                        </div>
+                 
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row row-bordered g-0">
+                        <div class="col-lg-10 p-4">
+                            <div class="demo-inline-spacing">
+                                <a href="/Project/CreateActivityList?Id=@ViewBag.Id" class="btn rounded-pill btn-outline-primary" id="btnAct">
+                                    <span class="fas fa-bell me-1"></span>Activities
+                                </a>
+                                <a href="/Project/TaskList?Id=@ViewBag.Id&CAId=" class="btn rounded-pill btn-outline-primary" id="btnTask">
+                                    <span class="fas fa-tasks-alt me-1"></span>Task
+                                </a>
+                                <a href="/Project/ProjectWiseDoc?Id=@ViewBag.Id" class="btn rounded-pill btn-outline-primary" id="btnEdit">
+                                    <span class="fas fa-file me-1"></span>Files
+                                </a>
+                                <button class="btn rounded-pill btn-outline-primary" id="btnBudget">
+                                    <span class="fas fa-file-invoice-dollar me-1"></span>Budget
+                                </button>
+                                <button class="btn rounded-pill btn-outline-primary" id="btnExpenditure">
+                                    <span class="fas fa-file-invoice-dollar me-1"></span>Expenditure
+                                </button>
+                                
+
+                                @*<a href="/Project/AssignedUser?Id=@ViewBag.Id" class="btn rounded-pill btn-outline-primary" id="btnUsers" onclick="getValue(24)">
+                                    <span class="fas fa-user-plus me-1"></span>Users
+                                </a>*@
+                                <div class="modal fade" id="backDropModal" data-bs-backdrop="static" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <form class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="backDropModalTitle">Budget Setup</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row g-2">
+                                                    <div class="col mb-0">
+                                                        <label for="txtBudget" class="form-label">Budget</label>
+                                                        <input type="text" class="form-control" id="txtBudget" placeholder="Type Budget here" name="txtBudget" />
+                                                    </div>
+                                                    <div class="col mb-0">
+                                                        <label for="ddlBudgetType" class="form-label">Select Budget Type</label>
+                                                        <select id="ddlBudgetType" name="ddlBudgetType" class="select2 form-select ddlBudgetType" data-allow-clear="true"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="SaveBudgetForProject()">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="modalBudgSMME" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation For MSME</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class="col-4 mb-4">
+                                                        <label for="ddlSMME" class="form-label">MSME</label>
+                                                        <select id="ddlSMME" name="ddlSMME" class="select2 form-select ddlSMME" data-allow-clear="true"></select>
+                                                    </div>
+                                                    <div class="col-3 mb-3">
+                                                        <label for="ddlFundTypeSMME" class="form-label">Fund Type</label>
+                                                        <select id="ddlFundTypeSMME" name="ddlFundTypeSMME" class="select2 form-select ddlFundTypeSMME" data-allow-clear="true"></select>
+                                                    </div>
+
+                                                    <div class="col-2 mb-2">
+                                                        <label for="txtSMMEAmnt" class="form-label">Amount</label>
+                                                        <input type="text" class="form-control txtModal" id="txtSMMEAmnt" placeholder="Enter Amount " onkeyup="cellAmntForSMMEBudget(this)" name="txtSMMEAmnt" onkeydown="    return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" />
+                                                    </div>
+                                                    <div class="col-2 mb-3">
+                                                        <label for="txtAvailableFundSMME" class="form-label">AvailableFund</label>
+                                                        <input type="text" class="form-control txtModal" id="txtAvailableFundSMME" placeholder=" " name="txtAvailableFundSMME" disabled />
+                                                    </div>
+                                                    <div class="col-1 mb-1">
+                                                        <div style="height:20px"></div>
+                                                        <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect" onclick="AddSMMEBudget();">
+                                                            <i class="tf-icons ti ti-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="tblSMME" class="table table-bordered tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width:40%;">MSME</th>
+                                                                    <th style="width:30%;">Fund Type</th>
+                                                                    <th>Amount</th>
+                                                                    <th>AvailableFund</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="SaveBudgetDetailsForSMME()">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="modalBudgTask" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation For Task</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class="col-3 mb-3">
+                                                        <label for="ddlTask" class="form-label">Task</label>
+                                                        <select id="ddlTask" name="ddlTask" class="select2 form-select ddlTask" data-allow-clear="true"></select>
+                                                    </div>
+                                                    <div class="col-3 mb-3">
+                                                        <label for="ddlFundTypeTask" class="form-label">Fund Type</label>
+                                                        <select id="ddlFundTypeTask" name="ddlFundTypeTask" class="select2 form-select ddlFundTypeTask" data-allow-clear="true"></select>
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <label for="txtAmnt" class="form-label">Amount</label>
+                                                        <input type="text" class="form-control txtModal" id="txtTaskAmnt" placeholder="Enter Amount " onkeyup="cellAmntForTaskBudget(this)" name="txtTaskAmnt" onkeydown="    return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" />
+                                                    </div>
+                                                    <div class="col-2 mb-3">
+                                                        <label for="txtTotalAmnt" class="form-label">AvailableFund</label>
+                                                        <input type="text" class="form-control txtModal" id="txtAvailableFundTask" placeholder=" " name="txtAvailableFundTask" disabled />
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <div style="height:20px"></div>
+                                                        <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect" onclick="AddTaskBudget();">
+                                                            <i class="tf-icons ti ti-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <table id="tblTask" class="table table-bordered tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width:30%;">Task</th>
+                                                                    <th style="width:30%;">Fund Type</th>
+                                                                    <th>Amount</th>
+                                                                    <th>AvailableFund</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="SaveBudgetDetailsForTask()">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                                <div class="modal fade" id="modalBudgAcitivity" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalBudgDistribution4">Budget Allocation</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class="col-3 mb-3">
+                                                        <label for="ddlFundType" class="form-label">Activity</label>
+                                                        <select id="ddlActivity" name="ddlActivity" class="select2 form-select ddlActivity" data-allow-clear="true"></select>
+                                                    </div>
+                                                    <div class="col-3 mb-3">
+                                                        <label for="ddlFundType" class="form-label">Fund Type</label>
+                                                        <select id="ddlFundTypeAct" name="ddlFundTypeAct" class="select2 form-select ddlFundTypeAct" data-allow-clear="true"></select>
+                                                    </div>
+                                     
+                                                    <div class="col-2 mb-2">
+                                                        <label for="txtAmnt" class="form-label">Amount</label>
+                                                        <input type="text" class="form-control txtModal" id="txtAcitivityAmnt" placeholder="Enter Amount " onkeyup="cellAmntForActivityBudget(this)" name="txtAcitivityAmnt" onkeydown="    return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 8 && event.keyCode != 46);" />
+                                                    </div>
+                                                    <div class="col-2 mb-3">
+                                                        <label for="txtTotalAmnt" class="form-label">AvailableFund</label>
+                                                        <input type="text" class="form-control txtModal" id="txtAvailableFund" placeholder=" " name="txtAvailableFund" disabled />
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <div style="height:20px"></div>
+                                                        <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect" onclick="AddActivityBudget();">
+                                                            <i class="tf-icons ti ti-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="col-sm-12">
+                                                        <table id="tblActivity" class="table table-bordered tbl">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="width:30%;">Acitivity</th>
+                                                                    <th style="width:30%;">Fund Type</th>
+
+
+                                                                    <th>Amount</th>
+                                                                    <th>AvailableFund</th>
+
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody></tbody>
+
+                                                        </table>    
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="SaveBudgetDetailsForActivity()">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel4">Budget</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class="col-2 mb-3">
+                                                        <label for="ddlFundType" class="form-label">Fund Type</label>
+                                                        <select id="ddlFundType" name="ddlFundType" class="select2 form-select ddlFundType" data-allow-clear="true"></select>
+                                                    </div>
+                                                    <div class="col-2 mb-4">
+                                                        <label for="txtDesc" class="form-label">Description</label>
+                                                        <input type="text" class="form-control txtModal" id="txtDesc" placeholder="Type Description here" name="txtDesc" />
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <label for="txtQty" class="form-label">Quantity</label>
+                                                        <input type="text" class="form-control txtModal" id="txtQty" placeholder="Enter Quantity " name="txtQty" onkeyup="CalculateAmt()" onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 ) && event.keyCode!=8 && event.keyCode!=46);" />
+
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <label for="txtAmnt" class="form-label">Amount</label>
+                                                        <input type="text" class="form-control txtModal" id="txtAmnt" placeholder="Enter Amount " name="txtAmnt" onkeyup="CalculateAmt()" onkeydown="return !((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 ) && event.keyCode!=8 && event.keyCode!=46);" />
+                                                    </div>
+                                                    <div class="col-2 mb-3">
+                                                        <label for="txtTotalAmnt" class="form-label">Total</label>
+                                                        <input type="text" class="form-control txtModal" id="txtTotalAmnt" placeholder=" " name="txtTotalAmnt" disabled />
+                                                    </div>
+                                                    <div class="col-2 mb-2">
+                                                        <div style="height:20px"></div>
+                                                        <button type="button" class="btn btn-icon rounded-pill btn-success  waves-effect" onclick="AddBudget();">
+                                                            <i class="tf-icons ti ti-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col mb-12">
+                                                        <div class="">
+                                                            <table class="table table-bordered tbl" id="tblBudget">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width:20%;">Fund Type</th>
+
+                                                                        <th style="width:30%;">Descripton</th>
+                                                                        <th style="width:10%;">Quantity </th>
+                                                                        <th>Amount</th>
+                                                                        <th>Total</th>
+
+                                                                        <th>Actions</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                                <tfoot>
+                                                                    <tr>
+
+                                                                        <th colspan="4">Total Budget</th>
+                                                                        <th><input type="text" class="form-control" id="totalBdgt" disabled /></th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" onclick="SaveBudgetDetailsForProject()">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-sm-6">
+                                            <div class="d-flex align-items-center avatar-group my-3" id="divSmmE">
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="card-header d-flex justify-content-start">
+                                                <div><i class="fas fa-clock me-2 mt-2"></i></div>
+                                                <div class="card-title mb-0">
+                                                    <h5 class="mb-0">Project Started</h5>
+                                                    <small class="text-muted" id="pStart"></small>
+                                                    <input type="hidden" id="hdnBudget" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="card-header d-flex justify-content-start">
+                                                <div><i class="fas fa-clock me-2 mt-2"></i></div>
+                                                <div class="card-title mb-0">
+                                                    <h5 class="mb-0">Due date</h5>
+                                                    <small class="text-muted" id="pEnd"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card-header">
+                                                <h5 class="mb-0">Total Progress <span id="spnProgressPer"></span>%</h5>
+                                                <div class="demo-vertical-spacing">
+                                                    <div class="progress" id="progress">
+                                                       @* <div class="progress-bar" role="progressbar" style="width: 16%;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex">
+                                        <div id="branchCount" class="col-md-7 justify-content-start">
+                                            <h6>Branches : <span id="totalBranches"></span></h6>
+                                        </div>
+                                        <div id="branchNameList" class="col-md-5 justify-content-evenly">
+                                            <div class="d-flex align-items-center">
+                                                <h6 class="me-2 mb-0">Branches :</h6>
+                                                <ul class="d-flex align-items-center" id="ulBnch">
+                                                   
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>PROJECT DESCRIPTION</p><br /><p id="pDesc">
+                                    </p>
+                                </div>
+                            </div>
+
+
+            <div class="card mt-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="card-title mb-0">
+                            <h5 class="mb-0">Associated User</h5>
+                        </div>
+                    </div>
+                    <div class="card-datatable table-responsive">
+                        <table class="table" id="enterpriseUserTable">
+                            <thead class="border-top">
+                                <tr class="text-bold">
+                                    @*<th>#</th>*@
+                                    <th>Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Role</th>
+                                    <th>Parent Name</th>
+                                    <th>Email</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+
+
+        @*<div class="col-xl-5 col-md-6 order-2 order-lg-1 mb-4">
+            <div class="card" id="activityCard">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title mb-0">
+                        <h5 class="mb-0">Top 5 Acitivites</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="p-0 m-0" id="ulActivity">
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+        <!--/ Source Visit -->
+        <!-- Projects table -->
+        @*<div class="col-12 col-xl-7 col-sm-12 order-1 order-lg-2 mb-4 mb-lg-0">
+            <div class="card">
+                <div class="card-datatable table-responsive">
+                    <table class="table border-top" id="datatable-example">
+                        <thead class="border-top">
+                            <tr>
+                                <th>Task Name</th>
+                                <th>Project</th>
+                                <th>MSME</th>
+                                <th class="w-px-200">Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>*@
+        <!--/ Projects table -->
+    </div>
+    <div class="row align-items-stretch">
+        <!-- Activity Card -->
+        <div class="col-xl-5 col-md-6 order-2 order-lg-1 mb-4">
+            <div class="card h-100 d-flex flex-column" id="activityCard">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="card-title mb-0">
+                        <h5 class="mb-0">Top 5 Activities</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="p-0 m-0" id="ulActivity">
+                        <!-- Dynamic list -->
+                    </ul>
+                </div>
+                <div class="card-footer text-center mt-auto">
+                    <a id="viewAllActivitiesLink" >View All Activities</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Table Card -->
+        <div class="col-12 col-xl-7 col-sm-12 order-1 order-lg-2 mb-4 mb-lg-0">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-datatable table-responsive">
+                    <table class="table border-top" id="datatable-example">
+                        <thead class="border-top">
+                            <tr>
+                                <th>Task Name</th>
+                                <th>Project</th>
+                                <th>MSME</th>
+                                <th class="w-px-200">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="shareProject" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered">
+            <div class="modal-content p-3 p-md-5">
+                <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="row">
+                        <div class="col-md-12 col-12 mb-md-0 mb-4">
+                            <div class="text-center">
+                                <h3 class="mb-2">MSME List</h3>
+                            </div>
+                            <br />
+                            <ul class="p-0 m-0" id="ulSmmeList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multiple Lists Draggable -->
+                <!-- /Multiple Lists Draggable ends -->
+            </div>
+        </div>
+    </div>
+
+
+   @*Assign Branch Modal*@
+<div class="modal fade" id="shareBranch" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-simple modal-enable-otp modal-dialog-centered">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row">
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                        <div class="text-center">
+                            <h3 class="mb-2">Branch List</h3>
+                        </div>
+                        <br />
+                        <ul class="p-0 m-0" id="ulBranchList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<!-- / Content -->
+<script type="text/javascript">
+    var URLList = {
+
+        GetList: '@Url.Action("GetGlobalMasterTransaction", "ScriptJson")',
+        SaveRecord: '@Url.Action("InsertProjectDetails", "ScriptJson")',
+        GetEntityMasterById: '@Url.Action("GetProjectForAdmin", "ScriptJson")'
+    };
+
+
+    var globalData = {
+        TransactionType: 'SelectProjectDetails',
+        param1: 'PD_Id',
+        //paramValue: parseInt(id),
+        StoreProcedure: 'ProjectDetails_USP'
+    };
+   
+
+</script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/tagify/tagify.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+@*<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/libs/bloodhound/bloodhound.js"></script>*@
+
+<!-- Main JS -->
+@*<script src="~/Content/assets/js/main.js"></script>*@
+
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<!-- Page JS -->
+<script src="~/Content/assets/js/forms-selects.js"></script>
+@*<script src="~/Content/assets/js/forms-tagify.js"></script>*@
+@*<script src="~/Content/assets/js/forms-typeahead.js"></script>*@
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/dropdownjoin.js"></script>
+<script src="@LinkJs"></script>
+<script src="~/Scripts/custom/ProjectDetailsNew.js"></script>
+<script src="~/Scripts/utility/ProjectWiseSMMEModal.js"></script>

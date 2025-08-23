@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "SMMESettings_contact";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var Enterpriseuser = Session["EnterpriseUserDataModel"] as BODDal.Models.UserModel;
+    var user = Session["UserDataModel"] as BODDal.Models.UserModel;
+    var SmmeUser = Session["SMMEUserDataModel"] as BODDal.Models.UserModel;
+    var EnterpriseEmpuser = Session["EnterpriseEMPUserDataModel"] as BODDal.Models.UserModel;
+    var AdminUser = Session["AdminUserDataModel"] as BODDal.Models.UserModel;
+
+    var role = "";
+
+    if (Enterpriseuser != null)
+    {
+        role = Enterpriseuser.UM_Role;
+    }
+    else if (EnterpriseEmpuser != null)
+    {
+        role = EnterpriseEmpuser.UM_Role;
+    }
+    else if (SmmeUser != null)
+    {
+        role = SmmeUser.UM_Role;
+    }
+    else if (AdminUser != null)
+    {
+        role = AdminUser.UM_Role;
+    }
+    else
+    {
+        role = user.UM_Role;
+    }
+}
+
+<link href="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+@*<link rel="stylesheet" href="~/Content/assets/vendor/libs/flatpickr/flatpickr.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
+<link rel="stylesheet" href="~/Content/assets/vendor/libs/select2/select2.css" />*@
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <input type="hidden" id="hdnEnterId" value="@ViewBag.EntrId" />
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">MSME Settings /</span> Contact
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+           @{
+               var isLegalEntityDisabled = ViewBag.M == "A";
+        }
+        <ul class="nav nav-pills flex-column flex-md-row mb-4">
+            <li class="nav-item">
+                <a class="nav-link" href="SMMESettings_company?Id=@ViewBag.Id&M=@ViewBag.M">
+                    <i class="ti-xs ti ti-building"></i> MSME Details
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="javascript:void(0);">
+                    <i class="ti-xs ti ti-users me-1"></i> Contact
+                </a>
+            </li>
+            <li class="nav-item">
+                @if (isLegalEntityDisabled)
+                {
+                    <a class="nav-link disabled" href="javascript:void(0);" tabindex="-1" aria-disabled="true">
+                        <i class="ti-xs ti ti-file-description me-1"></i> Legal Entity
+                    </a>
+                }
+                else
+                {
+                    <a class="nav-link nav-validate-tab" href="SMMESettings_legalentity?Id=@ViewBag.Id&M=@ViewBag.M">
+                        <i class="ti-xs ti ti-file-description me-1"></i> Legal Entity
+                    </a>
+                }
+            </li>
+            @*<li class="nav-item">
+                    <a class="nav-link" href="SMMESettings_financial?Id=@ViewBag.Id&M=@ViewBag.M">
+                        <i class="ti-xs ti ti-file-dollar"></i> Financial
+                    </a>
+                </li>*@
+        </ul>
+
+            <div class="card mb-4">
+                <h5 class="card-header">Contact Details</h5>
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div id="dvImage">
+                            <img alt="user-avatar" class="d-block w-px-50 h-px-50 rounded" id="prfpicIMG" />
+                        </div>
+                        <div id="dvAvatar"></div>
+                        <input type="hidden" name="..." id="hdnWorkSpceUpload">  @*id Chnage for scnd*@
+                        <div class="button-wrapper">
+                            <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
+                                <span class="d-none d-sm-block">Upload MSME Logo</span>
+                                <i class="ti ti-upload d-block d-sm-none"></i>
+                                <input type="file" id="upload" class="account-file-input" data-max-size="300000" hidden accept="image/png, image/jpeg" onchange="ShowPreview(this)" />
+                                @*id Chnage for scnd*@
+                            </label>
+                            <button id="btnResetUpload" type="reset" class="btn btn-label-secondary account-image-reset mb-3">
+                                @*id Chnage for scnd*@
+                            <i class="ti ti-refresh-dot d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Reset</span>
+                        </button>
+
+                        <div class="text-muted">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-0">
+
+
+                <div class="card-body">
+                    <form id="formAccountSettings" method="GET" onsubmit="return false">
+                        <div class="row">
+                            <div class="col-12"><h5 class="">Primary Contact Details</h5></div>
+                            <div class="mb-3 col-md-6">
+                                <input type="hidden" id="hdnModeForm" value="contact" />
+                                <label class="form-label" for="multiStepsUsername">First Name<span class="text-danger">*</span></label>
+                                <input type="text" name="txtContactFirstName" id="txtContactFirstName" class="form-control alphabets" placeholder="First Name" />
+                                <input type="hidden" id="hdnId" name="hdnId" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsUsername">Last Name<span class="text-danger">*</span></label>
+                                <input type="text" name="txtContactLastName" id="txtContactLastName" class="form-control alphabets" placeholder="Last Name" />
+                                @*<input type="hidden" id="hdnId" name="hdnId" />*@
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label for="txtAge" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control bs-datepicker-autoclose" id="txtAge" name="txtAge" placeholder="dd/mm/yyyy" autocomplete="off" />
+                            </div>
+
+                            <div class="mb-3 col-md-6 custom-checkbox-radio">
+                                <label>Gender<span class="text-danger">*</span></label>
+                                <div>
+                                    <div class="form-check form-check-inline form-check-primary">
+                                        <input class="form-check-input" type="checkbox" name="gender" id="genderMale" value="Male">
+                                        <label class="form-check-label" for="genderMale">Male</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline form-check-primary">
+                                        <input class="form-check-input" type="checkbox" name="gender" id="genderFemale" value="Female">
+                                        <label class="form-check-label" for="genderFemale">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+                                <label for="ddlPrimaryIdType" class="form-label">ID Type<span class="text-danger">*</span></label>
+                                <select id="ddlPrimaryIdType" name="ddlPrimaryIdType" class="select2 form-select ddlPrimaryIdType" data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="SouthAfricanId">South African ID</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsLastName">ID Number<span class="text-danger">*</span></label>
+                                <input type="text" id="txtPrimaryIdNumber" name="txtPrimaryIdNumber" class="form-control" placeholder="Enter Your ID Number" maxlength="13"/>
+                            </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsEmail">Email Address</label>
+                                <input type="email" name="txtContactEmail" id="txtContactEmail" class="form-control" placeholder="Email Address" aria-label="txtContactEmail" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsUsername">Contact Number<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">(+27)</span>
+                                    <input type="text" class="form-control" id="PrimaryContactNumber" name="PrimaryContactNumber"   placeholder="Contact Number" oninput="formatPhoneNumber(this)" />
+                                </div>
+                            </div>
+
+                            @*<div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsEmail">Land Line Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">(+27)</span>
+                                    <input type="text" class="form-control" id="SecondaryContactNumber" name="SecondaryContactNumber" placeholder="Enter Land Line  Number" oninput="formatPhoneNumber(this)" />
+                                </div>
+                            </div>*@
+
+                            <hr/>
+                            <div class="col-12"><h5 class="">Secondary Contact Details</h5></div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsUsername">First Name</label>
+                                <input type="text" name="SecondaryContactFirstName" id="SecondaryContactFirstName" class="form-control" placeholder="First Name" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsUsername">Last Name</label>
+                                <input type="text" name="SecondaryContactLastName" id="SecondaryContactLastName" class="form-control" placeholder="Last Name" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="ddlSecondaryIdType" class="form-label">ID Type</label>
+                                <select id="ddlSecondaryIdType" name="ddlSecondaryIdType" class="select2 form-select ddlSecondaryIdType" data-allow-clear="true">
+                                    <option value="">Select</option>
+                                    <option value="SouthAfricanId">South African ID</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-sm-6">
+                                <label class="form-label" for="multiStepsLastName">ID Number</label>
+                                <input type="text" id="txtSecondaryIdNumber" name="txtSecondaryIdNumber" class="form-control" placeholder="Enter ID Number" maxlength="10"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsEmail">Email Address</label>
+                                <input type="email" name="SecondaryContactEmail" id="SecondaryContactEmail" class="form-control" placeholder="Email Address" aria-label="SecondaryContactEmail" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="multiStepsUsername">Contact Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">(+27)</span>
+                                    <input type="text" class="form-control" id="SecondaryContactNumber" name="SecondaryContactNumber" placeholder="Contact Number" oninput="formatPhoneNumber(this)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            @*<button type="submit" class="btn btn-primary me-2" id="btnUpdate">Save changes</button>*@
+                            <button type="submit" class="btn btn-info me-2" id="btnUpdateNext">Save & Next</button>
+                            <a id="btnCancelRedirect" class="btn btn-label-secondary">Cancel</a>
+                            <a class="btn btn-label-secondary" href="SMMESettings_company?Id=@ViewBag.Id&M=@ViewBag.M">Previous</a>
+
+                        </div>
+                    </form>
+                </div>
+                <!-- /Account -->
+            </div>
+            <div class="card" style="display:none">
+                <h5 class="card-header">Delete Account</h5>
+                <div class="card-body">
+                    <div class="mb-3 col-12 mb-0">
+                        <div class="alert alert-warning">
+                            <h5 class="alert-heading mb-1">Are you sure you want to delete your account?</h5>
+                            <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+                        </div>
+                    </div>
+                    <form id="formAccountDeactivation" onsubmit="return false">
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" />
+                            <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+                        </div>
+                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+        var baseUrl = '@System.Configuration.ConfigurationManager.AppSettings["BaseUrl"]';
+</script>
+
+
+<script src="~/Content/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="https://malsup.github.io/jquery.blockUI.js"></script>
+
+<script src="~/Content/assets/vendor/libs/popper/popper.js"></script>
+<script src="~/Content/assets/vendor/js/bootstrap.js"></script>
+<script src="~/Content/assets/vendor/libs/node-waves/node-waves.js"></script>
+<script src="~/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="~/Content/assets/vendor/libs/hammer/hammer.js"></script>
+<script src="~/Content/assets/vendor/libs/i18n/i18n.js"></script>
+<script src="~/Content/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/Content/assets/vendor/js/menu.js"></script>
+
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave.js"></script>
+<script src="~/Content/assets/vendor/libs/cleavejs/cleave-phone.js"></script>
+<script src="~/Content/assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
+<script src="~/Content/assets/vendor/libs/select2/select2.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/bundle/popular.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+<script src="~/Content/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
+<!-- Main JS -->
+<script src="~/Content/assets/js/main.js"></script>
+<script src="~/Content/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/Content/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+@*<script src="~/Content/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="~/Content/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>*@
+<script src="~/Content/assets/js/forms-pickers.js"></script>
+
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>
+@*<script src="~/Content/assets/js/pages-account-settings-account.js"></script>*@
+<script src="~/Content/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+<script src="~/Scripts/utility/dropdown.js"></script>
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+@*<script src="~/Scripts/utility/ChildPageMenuForEnterprise.js"></script>*@
+<script src="~/Scripts/custom/SMMESettings.js"></script>
+

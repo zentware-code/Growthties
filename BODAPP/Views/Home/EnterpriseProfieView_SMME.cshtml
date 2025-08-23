@@ -1,0 +1,204 @@
+﻿@model BODDal.Models.EnterpriseRegistration
+@{
+    ViewBag.Title = "EnterpriseProfieView_SMME";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    var random = new Random();
+    var list = new List<string> { "success", "danger", "warning", "info", "primary", "secondary" };
+    var x = random.Next(list.Count);
+
+}
+<link rel="stylesheet" href="~/Content/assets/vendor/css/pages/page-profile.css" />
+<style>
+    .tableDisplay td,th{
+        font-size:11px!important;
+        padding:3px!important;
+        text-transform:inherit!important;
+        padding-bottom:0!important;
+    }
+    .tableDisplay th{
+        text-align:left!important;
+    }
+    .tableDisplay td{
+        text-align:center!important;
+    }
+</style>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light">Enterprise Profile /</span> MSME
+    </h4>
+    <input type="hidden" value="@ViewBag.EntrId" id="hdnEntrId" />
+    <!-- Header -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="user-profile-header-banner">
+                    <img id="picture" alt="Banner image" class="rounded-top">
+                    @*<img src="~/Content/assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top">*@
+                </div>
+                <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
+                    @if (Model.ENR_Logo == "NO")
+                    {
+                        <div class="avatar avatar-xl d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
+                            <span class="avatar-initial  bg-@list[x]">@Model.ENR_PreFix</span>
+                        </div>
+                        <br />
+                    }
+                    else
+                    {
+                        <img class="d-block h-auto img-fluid ms-0 ms-sm-4 rounded user-profile-img object-fit-cover" style="max-height:120px" src="@Model.ENR_Logo" height="100" width="100" alt="User avatar">
+                    }
+                    <div class="flex-grow-1 mt-3 mt-sm-5">
+                        <div class="d-flex align-items-md-end justify-content-md-between align-items-sm-start align-items-center justify-content-start mx-4 flex-md-row flex-column gap-4">
+                            <div class="user-profile-info">
+                                <h4><span id="spnHeadName"></span></h4>
+                                <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-color-swatch'></i> <span id="spnHeadRole"></span>
+                                    </li>
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-map-pin'></i> <span id="spnCity"></span>
+                                    </li>
+                                    <li class="list-inline-item d-flex gap-1">
+                                        <i class='ti ti-calendar'></i>Joined  <span id="spnDate"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                @*<a href="javascript:void(0)" class="btn btn-danger mx-2">
+                                    Filter
+                                </a>*@
+                                @{
+                                    if (Model.ENR_Active == "Active")
+                                    {
+                                        <a href="javascript:void(0)" class="btn btn-primary">
+                                            <i class='ti ti-check me-1'></i>@Model.ENR_Active
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="javascript:void(0)" class="btn btn-danger">
+                                            <i class='ti ti-user-x me-1'></i>@Model.ENR_Active
+                                        </a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Header -->
+    <!-- Navbar pills -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                <li class="nav-item"><a class="nav-link" href="~/Home/EnterpriseProfieView_Profiles?Id=@ViewBag.EntrId"><i class='ti-xs ti ti-user-check me-1'></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="~/Home/EnterpriseProfieView_Branches?Id=@ViewBag.EntrId"><i class='ti-xs ti ti-building me-1'></i> Branches</a></li>
+                <li class="nav-item"><a class="nav-link" href="~/Home/EnterpriseProfieView_Projects?Id=@ViewBag.EntrId"><i class='ti-xs ti ti-layout-grid me-1'></i> Projects</a></li>
+                <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class='ti-xs ti ti-link me-1'></i> MSMEs</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--/ Navbar pills -->
+
+    <!-- Connection Cards -->
+    <div class="row g-4" id="smmeDivs">
+        @if (Model.EnterPriseWiseSMMEList.Count > 0)
+        {
+            foreach (var smmeval in Model.EnterPriseWiseSMMEList)
+            {
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="card">
+                        <div class="card-header p-0 text-end pt-1 pe-1">
+                            @*<div class="dropdown">
+                                <button class="btn rounded-pill text-muted border-0 p-2 me-n1 waves-effect waves-light" type="button" id="earningReportsId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical ti-md text-muted"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="earningReportsId" style="">
+                                    <a class="dropdown-item waves-effect" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item waves-effect" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>*@
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="d-flex align-items-center">
+                                @if (smmeval.SMME_Logo == "NO")
+                                {
+                                    var index = random.Next(list.Count);
+                                    <div class="avatar avatar-lg my-3" style="width:6rem;height:6rem;">
+                                        <span class="avatar-initial rounded-circle bg-@list[index]" style="display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:24px;">@smmeval.SMME_Prefix</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class=" my-3" style="width:6rem;height:6rem;">
+                                        <img src="@smmeval.SMME_Logo" alt="Avatar Image" class="rounded-circle w-100 h-100" />
+                                    </div>
+                                }
+                                <div class="ms-4 text-start" style="max-width:250px">
+                                    <h5 class=" card-title mb-1"><a href="@Url.Action("SMMEProfile_Dashboard", "SMME", new { Id = smmeval.SMME_Id })">@smmeval.SMME_CompanyName</a></h5>
+                                    @*<p class="card-title mb-1">Tantu biswas</p>*@
+                                    <p class="mb-1">@smmeval.SMME_PrimaryContactEmail</p>
+                                </div>
+                            </div>
+                            @*<p class="card-text text-muted">@smmeval.ENR_PrimaryContactEmail</p>*@
+                            <table class="tableDisplay table table-borderless text-center my-3">
+                                <tr>
+                                    <th style="width:30%">Created:</th>
+                                    <td>@smmeval.SMME_CreatedDate</td>
+                                    <th style="width:30%">Budget Allocated:</th>
+                                     <td>R <span class="total-budget">@smmeval.TotalBudgetAllocated</span></td>
+                                </tr>
+                                <tr>
+                                    <th>Projects:</th>
+                                    <td>@smmeval.TotalCompletedProject/@smmeval.TotalProject</td>
+                                    <th>Assessments:</th>
+                                    <td>@smmeval.TotalCompletedAssessment/@smmeval.TotalAssessment</td>
+                                </tr>
+                                <tr>
+                                    <th>Activities:</th>
+                                    <td>@smmeval.TotalCompletedActivity/@smmeval.TotalActivity</td>
+                                    <th>Jobs:</th>
+                                    <td>@smmeval.TotalCompletedJob/@smmeval.TotalJob</td>
+                                </tr>
+                                <tr>
+                                    <th>Tasks:</th>
+                                    <td>@smmeval.TotalCompletedTask/@smmeval.TotalTask</td>
+                                    <th>Team:</th>
+                                    <td>@smmeval.TotalTeam</td>
+                                </tr>
+                            </table>
+                            <div class="d-flex">
+                                <a href="@Url.Action("ProjectListToAssignSMME", "Project")" class="btn btn-primary flex-fill me-2">Assign Project</a>
+                                <a href="@Url.Action("AllAssignAssessmnetByAdminForSingleSMME", "Assessment", new { Id = smmeval.SMME_Id })" class="btn btn-primary flex-fill">Assessments</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="card">
+                <div class="layout-demo-wrapper">
+                    <div>
+                        <h3>No Data Found</h3>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!--/ Connection Cards -->
+
+</div>
+<script src="~/Scripts/custom/DynamicBanner.js"></script>
+<script src="~/Content/assets/js/pages-profile.js"></script>
+<script src="~/Scripts/utility/ChildPageMenu.js"></script>
+<script src="~/Scripts/custom/EnterpriseSMMEAdmin.js"></script>
+<script src="~/Scripts/utility/PhoneNumberFormet.js"></script>

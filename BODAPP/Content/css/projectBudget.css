@@ -1,0 +1,5 @@
+﻿@media only screen and (max-width: 991px) {
+    [data-layout=vertical] [data-sidebartype=full] .layout-page {
+        padding-left: 0px !important;
+    }
+}
